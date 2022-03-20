@@ -1,5 +1,5 @@
 package softwareProjectManagement;
 
-public class Programmer {
+public class ITWorker {
 
 }
