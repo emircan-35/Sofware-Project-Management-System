@@ -14,13 +14,11 @@ public class ITWorker extends Person {
 		
 		super(title,personName, personSurname, personPhone);
 		// TODO Auto-generated constructor stub
-	
+
 		this.salary=salary;
 		this.experience=experience;
 		this.knowledge=knowledge;
 		this.currentProject=currentProject;
-		
-		
 	}
 
 
