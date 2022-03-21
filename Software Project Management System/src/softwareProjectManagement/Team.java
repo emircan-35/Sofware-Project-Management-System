@@ -3,10 +3,11 @@ package softwareProjectManagement;
 import java.util.ArrayList;
 
 public class Team {
+	
+	
 	private String name;
+	
 	private ArrayList<ITWorker> members;
-	
-	
 	
 	
 	public Team(String name, ArrayList<ITWorker> members) {
