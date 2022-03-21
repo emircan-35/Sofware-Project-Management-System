@@ -24,17 +24,9 @@ public class ITWorker extends Person {
 	}
 
 
-
-
-	
-
-
-
 	public int getSalary() {
 		return salary;
 	}
-
-
 
 
 	public void setSalary(int salary) {
@@ -42,13 +34,9 @@ public class ITWorker extends Person {
 	}
 
 
-
-
 	public int getExperience() {
 		return experience;
 	}
-
-
 
 
 	public void setExperience(int experience) {
@@ -56,13 +44,9 @@ public class ITWorker extends Person {
 	}
 
 
-
-
 	public String[] getKnowledge() {
 		return knowledge;
 	}
-
-
 
 
 	public void setKnowledge(String[] knowledge) {

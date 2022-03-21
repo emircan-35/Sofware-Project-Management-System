@@ -17,6 +17,4 @@ public class Customer extends Person {
 		this.project = project;
 	}
 	
-	
-
 }
