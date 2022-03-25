@@ -37,13 +37,13 @@ public class Project {
 			this.taskDescription = taskDescription;
 		}
 		public boolean isStatus() {
-			return this.status;
+			return status;
 		}
 		public void setStatus(boolean status) {
 			this.status = status;
 		}
 		public Time getDeadline() {
-			return this.deadline;
+			return deadline;
 		}
 		public void setDeadline(Time deadline) {
 			this.deadline = deadline;
