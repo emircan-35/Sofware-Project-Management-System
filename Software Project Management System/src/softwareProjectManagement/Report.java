@@ -6,7 +6,7 @@ public class Report {
 	private String description;
 	
 	
-	public Report(ITWorker owner, String description, Task task) {
+	public Report(ITWorker owner, String description) {
 		this.owner = owner;
 		this.description = description;
 		
