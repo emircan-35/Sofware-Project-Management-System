@@ -2,31 +2,37 @@ package softwareProjectManagement;
 
 public class Report {
 	
-	private Person owner;
-	private String Description;
+	private ITWorker owner;
+	private String description;
+	private Task task;
 	
-	
-	public Report(Person owner, String description) {
+	public Report(ITWorker owner, String description, Task task) {
 		this.owner = owner;
-		Description = description;
+		this.description = description;
+		this.task = task;
 	}
 	
+	public Task getTask() {
+		return task;
+	}
+
+	public void setTask(Task task) {
+		this.task = task;
+	}
+
 	public Person getOwner() {
 		return owner;
 	}
 	
-	public void setOwner(Person owner) {
+	public void setOwner(ITWorker owner) {
 		this.owner = owner;
 	}
 	
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
-	
-	
-	
 }

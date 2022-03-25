@@ -1,5 +1,5 @@
 package softwareProjectManagement;
 
-public interface SqlHelper {
+public interface ISqlHelper {
 
 }

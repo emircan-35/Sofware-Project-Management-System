@@ -1,8 +1,6 @@
 package softwareProjectManagement;
 
 public class ITWorker extends Person {
-
-	
 	
 	private int salary;
 	private int experience;
@@ -36,30 +34,21 @@ public class ITWorker extends Person {
 		return experience;
 	}
 
-
 	public void setExperience(int experience) {
 		this.experience = experience;
 	}
-
 
 	public String[] getKnowledge() {
 		return knowledge;
 	}
 
-
 	public void setKnowledge(String[] knowledge) {
 		this.knowledge = knowledge;
 	}
 
-
-
-
 	public Project getCurrentProject() {
 		return currentProject;
 	}
-
-
-
 
 	public void setCurrentProject(Project currentProject) {
 		this.currentProject = currentProject;
