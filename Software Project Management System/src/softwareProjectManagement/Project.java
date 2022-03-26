@@ -9,6 +9,7 @@ public class Project {
 	private String projectDescription;
 	private Team responsibleTeam;
 	private Manager manager;
+	private int progress;
 	private ArrayList<Task> tasks;
 	private boolean status;
 	
@@ -125,6 +126,16 @@ public class Project {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+
+	public int getProgress() {
+		return progress;
+	}
+
+
+	public void setProgress(int progress) {
+		this.progress = progress;
 	}
 
 	
