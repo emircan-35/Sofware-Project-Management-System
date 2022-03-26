@@ -7,6 +7,7 @@ public class Meet {
 	private String name;
 	private String description;
 	private Time meetingTime;
+	private Project project;
 	private ArrayList<Person> attendees;
 	private boolean status;
 
@@ -65,6 +66,16 @@ public class Meet {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+
+	public Project getProject() {
+		return project;
+	}
+
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 	
 	
