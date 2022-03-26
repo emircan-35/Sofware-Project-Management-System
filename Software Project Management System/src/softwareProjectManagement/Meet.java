@@ -8,6 +8,7 @@ public class Meet {
 	private String description;
 	private Time meetingTime;
 	private ArrayList<Person> attendees;
+	private boolean status;
 
 	
 
@@ -54,6 +55,16 @@ public class Meet {
 
 	public void setAttendees(ArrayList<Person> attendees) {
 		this.attendees = attendees;
+	}
+
+
+	public boolean isStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 	
