@@ -13,6 +13,7 @@ public class Project {
 	private int progress;
 	private ArrayList<Task> tasks;
 	private boolean status;
+	private Meet[] meets;
 	
 	private class Task{
 		private ITWorker responsibleEmployee;
@@ -147,6 +148,16 @@ public class Project {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+
+	public Meet[] getMeets() {
+		return meets;
+	}
+
+
+	public void setMeets(Meet[] meets) {
+		this.meets = meets;
 	}
 
 	
