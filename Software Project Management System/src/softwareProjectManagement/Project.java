@@ -8,6 +8,7 @@ public class Project {
 	private String projectName;
 	private String projectDescription;
 	private Team responsibleTeam;
+	private Customer customer;
 	private Manager manager;
 	private int progress;
 	private ArrayList<Task> tasks;
@@ -136,6 +137,16 @@ public class Project {
 
 	public void setProgress(int progress) {
 		this.progress = progress;
+	}
+
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	
