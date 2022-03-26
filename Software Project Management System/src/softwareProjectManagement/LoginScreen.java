@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import keeptoo.KGradientPanel;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LoginScreen {
 
@@ -71,6 +73,13 @@ public class LoginScreen {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Login");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("Hello world");
+				
+			}
+		});
 		btnNewButton.setBounds(26, 229, 131, 39);
 		frame.getContentPane().add(btnNewButton);
 		
