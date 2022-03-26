@@ -51,7 +51,7 @@ public class LoginScreen {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(255, 255, 0));
-		frame.setBounds(100, 100, 369, 336);
+		frame.setBounds(100, 100, 362, 330);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
