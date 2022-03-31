@@ -1,4 +1,4 @@
-package softwareProjectManagement;
+package uiScreens;
 
 import java.awt.EventQueue;
 

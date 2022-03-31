@@ -1,4 +1,4 @@
-package softwareProjectManagement;
+package uiScreens;
 
 import java.awt.EventQueue;
 
@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import keeptoo.KGradientPanel;
-
 
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;

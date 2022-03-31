@@ -1,4 +1,4 @@
-package softwareProjectManagement;
+package uiScreens;
 
 import java.awt.EventQueue;
 
@@ -43,12 +43,12 @@ public class ITWorkerScreen {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 646, 567);
+		frame.setBounds(100, 100, 537, 567);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		KGradientPanel gradientPanel = new KGradientPanel();
-		gradientPanel.setBounds(459, 0, 171, 528);
+		gradientPanel.setBounds(359, 0, 171, 528);
 		frame.getContentPane().add(gradientPanel);
 		gradientPanel.setLayout(null);
 		
