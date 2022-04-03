@@ -15,7 +15,7 @@ public class Project {
 	private boolean status;
 	private Meet[] meets;
 	
-	private class Task{
+	public class Task{
 		private ITWorker responsibleEmployee;
 		private String taskDescription;
 		private boolean status; //done --> completed, otherwise false		

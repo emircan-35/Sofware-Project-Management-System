@@ -50,6 +50,8 @@ public class ManagerScreen {
 		frame.getContentPane().setLayout(null);
 		
 		KGradientPanel gradientPanel = new KGradientPanel();
+		gradientPanel.kEndColor = Color.RED;
+		gradientPanel.kStartColor = Color.BLUE;
 		gradientPanel.setBounds(359, 0, 243, 573);
 		frame.getContentPane().add(gradientPanel);
 		gradientPanel.setLayout(null);
