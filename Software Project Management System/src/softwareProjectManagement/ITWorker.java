@@ -6,9 +6,10 @@ public class ITWorker extends Person {
 	private int experience;
 	private String[] knowledge;
 	private Project currentProject;
+	private boolean isWorkingOnProject;
 	
 	
-	public ITWorker(String title,String personName, String personSurname, String personPhone,int salary,int experience,String[] knowledge,Project currentProject) {
+	public ITWorker(String title,String personName, String personSurname, String personPhone,int salary,int experience,String[] knowledge,Project currentProject,boolean isWorkingOnProject) {
 		
 		super(title,personName, personSurname, personPhone);
 		// TODO Auto-generated constructor stub
@@ -17,6 +18,17 @@ public class ITWorker extends Person {
 		this.experience=experience;
 		this.knowledge=knowledge;
 		this.currentProject=currentProject;
+		this.isWorkingOnProject=isWorkingOnProject;
+	}
+
+
+	public boolean isWorkingOnProject() {
+		return isWorkingOnProject;
+	}
+
+
+	public void setWorkingOnProject(boolean isWorkingOnProject) {
+		this.isWorkingOnProject = isWorkingOnProject;
 	}
 
 
