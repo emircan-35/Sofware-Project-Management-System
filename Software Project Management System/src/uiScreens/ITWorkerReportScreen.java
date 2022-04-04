@@ -101,18 +101,18 @@ public class ITWorkerReportScreen {
 		
 		KGradientPanel gradientPanel_1 = new KGradientPanel();
 		gradientPanel_1.kStartColor = Color.RED;
-		gradientPanel_1.setBounds(0, 384, 861, 462);
+		gradientPanel_1.setBounds(-11, 384, 872, 462);
 		frame.getContentPane().add(gradientPanel_1);
 		gradientPanel_1.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Arial", Font.BOLD, 15));
-		textArea.setBounds(10, 11, 823, 376);
+		textArea.setBounds(21, 11, 823, 376);
 		gradientPanel_1.add(textArea);
 		
 		JButton btnNewButton = new JButton("Send Report");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setBounds(342, 404, 138, 34);
+		btnNewButton.setBounds(347, 398, 138, 34);
 		gradientPanel_1.add(btnNewButton);
 		
 		JLabel lblItworker_3_1 = new JLabel("<TitleDescription>");

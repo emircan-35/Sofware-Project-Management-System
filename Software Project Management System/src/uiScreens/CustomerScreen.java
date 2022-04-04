@@ -49,7 +49,7 @@ public class CustomerScreen {
 		
 		KGradientPanel gradientPanel = new KGradientPanel();
 		gradientPanel.kStartColor = Color.RED;
-		gradientPanel.setBounds(0, 282, 524, 120);
+		gradientPanel.setBounds(0, 282, 535, 120);
 		frame.getContentPane().add(gradientPanel);
 		gradientPanel.setLayout(null);
 		
