@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class MeetsScreen {
+public class ManagerMeetsScreen {
 
 	private JFrame frame;
 	private JTable table;
@@ -29,7 +29,7 @@ public class MeetsScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MeetsScreen window = new MeetsScreen();
+					ManagerMeetsScreen window = new ManagerMeetsScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class MeetsScreen {
 	/**
 	 * Create the application.
 	 */
-	public MeetsScreen() {
+	public ManagerMeetsScreen() {
 		initialize();
 	}
 

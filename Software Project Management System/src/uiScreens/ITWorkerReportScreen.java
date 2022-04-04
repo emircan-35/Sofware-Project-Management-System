@@ -106,6 +106,7 @@ public class ITWorkerReportScreen {
 		gradientPanel_1.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Arial", Font.BOLD, 15));
 		textArea.setBounds(10, 11, 823, 376);
 		gradientPanel_1.add(textArea);
 		

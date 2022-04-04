@@ -166,6 +166,8 @@ public class ITWorkerScreen {
 		scrollPane_1.setViewportView(table_1);
 		
 		KGradientPanel gradientPanel = new KGradientPanel();
+		gradientPanel.kStartColor = Color.BLUE;
+		gradientPanel.kEndColor = Color.RED;
 		gradientPanel.setBounds(-12, 0, 1100, 891);
 		frame.getContentPane().add(gradientPanel);
 		gradientPanel.setLayout(null);
