@@ -19,11 +19,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
 
 public class ManagerTasksScreen {
 
 	private JFrame frame;
 	private JTable table;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -54,7 +56,7 @@ public class ManagerTasksScreen {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1025, 719);
+		frame.setBounds(100, 100, 1025, 785);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		KGradientPanel gradientPanel = new KGradientPanel();
@@ -80,7 +82,7 @@ public class ManagerTasksScreen {
 		gradientPanel.add(lblProjectName_1);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(278, 11, 721, 658);
+		scrollPane.setBounds(278, 11, 721, 723);
 		gradientPanel.add(scrollPane);
 
 		table = new JTable();
@@ -149,7 +151,18 @@ public class ManagerTasksScreen {
 		gradientPanel.add(comboBox_2);
 
 		JButton btnAddTask = new JButton("Add Task");
-		btnAddTask.setBounds(10, 613, 230, 40);
+		btnAddTask.setBounds(10, 694, 230, 40);
 		gradientPanel.add(btnAddTask);
+		
+		textField = new JTextField();
+		textField.setBounds(10, 652, 230, 31);
+		gradientPanel.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblWorkerId = new JLabel("Worker Id:");
+		lblWorkerId.setForeground(Color.WHITE);
+		lblWorkerId.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblWorkerId.setBounds(10, 601, 206, 61);
+		gradientPanel.add(lblWorkerId);
 	}
 }
