@@ -16,6 +16,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
 
 public class ManagerScreen {
 
@@ -59,14 +60,14 @@ public class ManagerScreen {
 		
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 575, 527);
+		frame.setBounds(100, 100, 575, 800);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		KGradientPanel gradientPanel = new KGradientPanel();
 		gradientPanel.kEndColor = Color.RED;
 		gradientPanel.kStartColor = Color.BLUE;
-		gradientPanel.setBounds(359, 0, 243, 573);
+		gradientPanel.setBounds(359, 0, 243, 761);
 		frame.getContentPane().add(gradientPanel);
 		gradientPanel.setLayout(null);
 		
@@ -83,7 +84,7 @@ public class ManagerScreen {
 				System.out.println("MeetsScreen");
 			}
 		});
-		btnNewButton.setBounds(38, 161, 115, 32);
+		btnNewButton.setBounds(38, 167, 115, 32);
 		gradientPanel.add(btnNewButton);
 		
 		JButton btnProjectTasks = new JButton("Project Tasks");
@@ -94,7 +95,7 @@ public class ManagerScreen {
 				
 			}
 		});
-		btnProjectTasks.setBounds(38, 204, 115, 32);
+		btnProjectTasks.setBounds(38, 255, 115, 32);
 		gradientPanel.add(btnProjectTasks);
 		
 		JButton btnTeam = new JButton("Team");
@@ -105,20 +106,8 @@ public class ManagerScreen {
 				
 			}
 		});
-		btnTeam.setBounds(38, 247, 115, 32);
+		btnTeam.setBounds(38, 342, 115, 32);
 		gradientPanel.add(btnTeam);
-		
-		JButton btnProject = new JButton("Project");
-		btnProject.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				System.out.println("Project Info Screen");
-				
-				
-			}
-		});
-		btnProject.setBounds(38, 290, 115, 32);
-		gradientPanel.add(btnProject);
 		
 		JButton btnReports = new JButton("Reports");
 		btnReports.addActionListener(new ActionListener() {
@@ -128,7 +117,7 @@ public class ManagerScreen {
 				
 			}
 		});
-		btnReports.setBounds(38, 333, 115, 32);
+		btnReports.setBounds(38, 420, 115, 32);
 		gradientPanel.add(btnReports);
 		
 		JLabel lblNewLabel = new JLabel("Personal \r");
@@ -210,5 +199,62 @@ public class ManagerScreen {
 		lblNewLabel_3_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_6.setBounds(178, 440, 83, 14);
 		frame.getContentPane().add(lblNewLabel_3_6);
+		
+		KGradientPanel gradientPanel_1 = new KGradientPanel();
+		gradientPanel_1.setLayout(null);
+		gradientPanel_1.kStartColor = Color.BLUE;
+		gradientPanel_1.setkStartColor(Color.BLUE);
+		gradientPanel_1.kEndColor = Color.RED;
+		gradientPanel_1.setkEndColor(Color.RED);
+		gradientPanel_1.setBounds(0, 687, 365, 86);
+		frame.getContentPane().add(gradientPanel_1);
+		
+		JButton btnNewButton_1_1 = new JButton("Cancel");
+		btnNewButton_1_1.setForeground(new Color(255, 0, 0));
+		btnNewButton_1_1.setBounds(201, 21, 139, 37);
+		gradientPanel_1.add(btnNewButton_1_1);
+		
+		JButton btnNewButton_1_1_1 = new JButton("Complete");
+		btnNewButton_1_1_1.setBounds(35, 21, 139, 37);
+		gradientPanel_1.add(btnNewButton_1_1_1);
+		
+		JLabel lblProjectInformation = new JLabel("Project Information");
+		lblProjectInformation.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblProjectInformation.setBounds(10, 471, 339, 75);
+		frame.getContentPane().add(lblProjectInformation);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 482, 339, 2);
+		frame.getContentPane().add(separator);
+		
+		JLabel lblNewLabel_1_7 = new JLabel("Project Owner:");
+		lblNewLabel_1_7.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_1_7.setBounds(10, 551, 169, 34);
+		frame.getContentPane().add(lblNewLabel_1_7);
+		
+		JLabel lblNewLabel_3_7 = new JLabel("New label");
+		lblNewLabel_3_7.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_3_7.setBounds(167, 562, 83, 14);
+		frame.getContentPane().add(lblNewLabel_3_7);
+		
+		JLabel lblNewLabel_1_7_1 = new JLabel("Project Status:");
+		lblNewLabel_1_7_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_1_7_1.setBounds(10, 587, 169, 34);
+		frame.getContentPane().add(lblNewLabel_1_7_1);
+		
+		JLabel lblNewLabel_3_7_1 = new JLabel("New label");
+		lblNewLabel_3_7_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_3_7_1.setBounds(167, 598, 83, 14);
+		frame.getContentPane().add(lblNewLabel_3_7_1);
+		
+		JLabel lblNewLabel_1_7_1_1 = new JLabel("Project Workers:");
+		lblNewLabel_1_7_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_1_7_1_1.setBounds(10, 623, 187, 34);
+		frame.getContentPane().add(lblNewLabel_1_7_1_1);
+		
+		JLabel lblNewLabel_3_7_1_1 = new JLabel("15");
+		lblNewLabel_3_7_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_3_7_1_1.setBounds(167, 632, 83, 14);
+		frame.getContentPane().add(lblNewLabel_3_7_1_1);
 	}
 }

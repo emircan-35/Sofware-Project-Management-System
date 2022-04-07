@@ -68,6 +68,7 @@ public class ITWorkerScreen {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Personal \r");
+		lblNewLabel_1.setBackground(Color.WHITE);
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblNewLabel_1.setBounds(10, 11, 339, 75);

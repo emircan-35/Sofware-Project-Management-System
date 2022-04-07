@@ -34,7 +34,6 @@ public class ManagerTeamMembers {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel( new FlatDarkLaf() );
 					ManagerTeamMembers window = new ManagerTeamMembers();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
