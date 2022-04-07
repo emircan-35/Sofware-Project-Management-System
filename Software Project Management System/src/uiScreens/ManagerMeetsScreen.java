@@ -30,7 +30,7 @@ public class ManagerMeetsScreen {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void OpenManagerMeetsScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -64,7 +64,7 @@ public class ManagerMeetsScreen {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 693, 577);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		KGradientPanel gradientPanel = new KGradientPanel();

@@ -20,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.JSeparator;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ITWorkerScreen {
 
@@ -30,7 +32,7 @@ public class ITWorkerScreen {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void OpenITWorkerScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -210,6 +212,15 @@ public class ITWorkerScreen {
 		gradientPanel.add(btnNewButton);
 		
 		JButton btnCompleeteTask = new JButton("Complete Task");
+		btnCompleeteTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ITWorkerReportScreen.OpenITWorkerReportsScreen();
+				
+				
+				
+			}
+		});
 		btnCompleeteTask.setBounds(23, 464, 170, 44);
 		gradientPanel.add(btnCompleeteTask);
 		

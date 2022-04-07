@@ -26,8 +26,7 @@ public class LoginScreen {
 	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -35,7 +34,7 @@ public class LoginScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+
 					LoginScreen window = new LoginScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -93,7 +92,20 @@ public class LoginScreen {
 				
 			public void actionPerformed(ActionEvent e) {
 				
-				ManagerScreen.openManagerScreen();
+				
+				
+				if(textField.getText().equals("manager")) {
+					ManagerScreen.openManagerScreen();
+				}
+				else if(textField.getText().equals("itworker")) {
+					ITWorkerScreen.OpenITWorkerScreen();
+				}
+				else {
+					CustomerScreen.OpenCustomerScreen();
+				}
+				
+				
+				
 				
 				frame.dispose();	
 			}

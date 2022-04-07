@@ -25,7 +25,7 @@ public class ITWorkerReportScreen {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void OpenITWorkerReportsScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -62,7 +62,7 @@ public class ITWorkerReportScreen {
 		frame = new JFrame();
 		frame.setBounds(new Rectangle(0, 0, 1000, 1000));
 		frame.setBounds(100, 100, 861, 869);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Title:");

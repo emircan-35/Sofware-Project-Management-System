@@ -82,6 +82,7 @@ public class ManagerScreen {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("MeetsScreen");
+				ManagerMeetsScreen.OpenManagerMeetsScreen();
 			}
 		});
 		btnNewButton.setBounds(38, 167, 115, 32);
@@ -92,6 +93,7 @@ public class ManagerScreen {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("Project Tasks");
+				ManagerTasksScreen.OpenManagerTasksScreen();
 				
 			}
 		});
@@ -103,7 +105,7 @@ public class ManagerScreen {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("Team Screen");
-				
+				ManagerTeamMembers.OpenManagerTeamScreen();
 			}
 		});
 		btnTeam.setBounds(38, 342, 115, 32);
@@ -114,6 +116,7 @@ public class ManagerScreen {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("Reports Screen");
+				ManagerReportsList.OpenManagerReportsScreen();
 				
 			}
 		});
