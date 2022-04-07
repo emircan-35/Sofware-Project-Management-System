@@ -7,6 +7,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import com.formdev.flatlaf.FlatDarkLaf;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -30,6 +35,7 @@ public class LoginScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					LoginScreen window = new LoginScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -50,6 +56,12 @@ public class LoginScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		try {
+			UIManager.setLookAndFeel( new FlatDarkLaf() );
+		} catch (UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(255, 255, 0));

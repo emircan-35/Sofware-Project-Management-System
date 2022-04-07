@@ -9,11 +9,16 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
+import com.formdev.flatlaf.FlatDarkLaf;
+
 import javax.swing.JSeparator;
 
 public class ITWorkerScreen {
@@ -29,6 +34,7 @@ public class ITWorkerScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					UIManager.setLookAndFeel( new FlatDarkLaf() );
 					ITWorkerScreen window = new ITWorkerScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -49,6 +55,12 @@ public class ITWorkerScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		try {
+			UIManager.setLookAndFeel( new FlatDarkLaf() );
+		} catch (UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 981, 915);

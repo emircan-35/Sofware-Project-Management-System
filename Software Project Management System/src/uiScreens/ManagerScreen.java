@@ -6,6 +6,11 @@ import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import com.formdev.flatlaf.FlatDarkLaf;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -23,6 +28,7 @@ public class ManagerScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					ManagerScreen window = new ManagerScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -43,6 +49,14 @@ public class ManagerScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		try {
+			UIManager.setLookAndFeel( new FlatDarkLaf() );
+		} catch (UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 575, 527);

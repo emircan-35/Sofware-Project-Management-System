@@ -11,6 +11,11 @@ import keeptoo.KGradientPanel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import com.formdev.flatlaf.FlatDarkLaf;
+
 import java.awt.Color;
 
 public class ITWorkerReportScreen {
@@ -24,6 +29,7 @@ public class ITWorkerReportScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					ITWorkerReportScreen window = new ITWorkerReportScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -44,6 +50,15 @@ public class ITWorkerReportScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		
+		try {
+			UIManager.setLookAndFeel( new FlatDarkLaf() );
+		} catch (UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		frame = new JFrame();
 		frame.setBounds(new Rectangle(0, 0, 1000, 1000));
 		frame.setBounds(100, 100, 861, 869);
