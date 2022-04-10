@@ -6,7 +6,10 @@ public interface ISqlHelper {
 	// Update
 	// Delete
 	// Select
-	
+	void insertData();
+	void updateData();
+	void deleteData();
+	void selectData();
 	
 	
 }
