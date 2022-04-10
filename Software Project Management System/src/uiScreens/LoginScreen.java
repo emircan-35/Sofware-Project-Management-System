@@ -102,7 +102,7 @@ public class LoginScreen {
 					ITWorkerScreen.OpenITWorkerScreen();
 					frame.dispose();	
 				}
-				else {
+				else if(textField.getText().equals("customer")) {
 					CustomerScreen.OpenCustomerScreen();
 					frame.dispose();	
 				}
