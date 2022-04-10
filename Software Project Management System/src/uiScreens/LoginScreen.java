@@ -96,18 +96,20 @@ public class LoginScreen {
 				
 				if(textField.getText().equals("manager")) {
 					ManagerScreen.openManagerScreen();
+					frame.dispose();	
 				}
 				else if(textField.getText().equals("itworker")) {
 					ITWorkerScreen.OpenITWorkerScreen();
+					frame.dispose();	
 				}
 				else {
 					CustomerScreen.OpenCustomerScreen();
+					frame.dispose();	
 				}
 				
 				
 				
 				
-				frame.dispose();	
 			}
 		});
 		btnNewButton.setBounds(26, 229, 131, 39);
