@@ -1,4 +1,4 @@
-package softwareProjectManagement;
+package databaseProcesses;
 
 public interface ISqlHelper {
 	

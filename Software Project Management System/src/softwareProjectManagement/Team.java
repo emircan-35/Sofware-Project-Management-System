@@ -4,14 +4,9 @@ import java.util.ArrayList;
 
 public class Team {
 	
-	
-	private String name;
-	
 	private ArrayList<ITWorker> members;
 	
-	
 	public Team(String name, ArrayList<ITWorker> members) {
-		this.name = name;
 		this.members = members;
 	}
 	
@@ -27,12 +22,7 @@ public class Team {
 		if (members.contains(newMember)) members.add(newMember);
 		//else condition should be coded in the future 
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 	public ArrayList<ITWorker> getMembers() {
 		return members;
 	}

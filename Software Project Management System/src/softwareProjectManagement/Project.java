@@ -4,92 +4,97 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 public class Project {
-	
+
 	private String projectName;
 	private String projectDescription;
+	private boolean status;
+	private int progress;
 	private Team responsibleTeam;
 	private Customer customer;
 	private Manager manager;
-	private int progress;
 	private ArrayList<Task> tasks;
-	private boolean status;
 	private Meet[] meets;
-	
-	public class Task{
+
+	public class Task {
 		private ITWorker responsibleEmployee;
 		private String taskDescription;
-		private boolean status; //done --> completed, otherwise false		
+		private boolean status; // done --> completed, otherwise false
 		private Time deadline;
-		
+
 		public Task(ITWorker responsibleEmployee, String taskDescription, boolean status, Time deadline) {
 			this.responsibleEmployee = responsibleEmployee;
 			this.taskDescription = taskDescription;
 			this.status = status;
 			this.deadline = deadline;
 		}
+
 		public ITWorker getResponsibleEmployee() {
 			return responsibleEmployee;
 		}
+
 		public void setResponsibleEmployee(ITWorker responsibleEmployee) {
 			this.responsibleEmployee = responsibleEmployee;
 		}
+
 		public String getTaskDescription() {
 			return taskDescription;
 		}
+
 		public void setTaskDescription(String taskDescription) {
 			this.taskDescription = taskDescription;
 		}
+
 		public boolean isStatus() {
 			return status;
 		}
+
 		public void setStatus(boolean status) {
 			this.status = status;
 		}
+
 		public Time getDeadline() {
 			return deadline;
 		}
+
 		public void setDeadline(Time deadline) {
 			this.deadline = deadline;
 		}
-		
-		
+
 	}
 
-	
 	public Manager getManager() {
 		return manager;
 	}
-
 
 	public void setManager(Manager manager) {
 		this.manager = manager;
 	}
 
-
 	public void changeTaskDeadline(Task task, Time newDeadline) {
-		int index=tasks.indexOf(task);
-		if (index!=-1) tasks.get(index).setDeadline(newDeadline);
-		//else condition should be coded in the future 
+		int index = tasks.indexOf(task);
+		if (index != -1)
+			tasks.get(index).setDeadline(newDeadline);
+		// else condition should be coded in the future
 	}
-	
-	
+
 	public void deleteTask(Task deletedTask) {
-		int index=tasks.indexOf(deletedTask);
-		if (index!=-1) tasks.remove(index);
-		//else condition should be coded in the future 
+		int index = tasks.indexOf(deletedTask);
+		if (index != -1)
+			tasks.remove(index);
+		// else condition should be coded in the future
 	}
-	
+
 	public void completeTask(Task completedTask) {
-		int index=tasks.indexOf(completedTask);
-		if (index!=-1) tasks.get(index).setStatus(true);
-		//else condition should be coded in the future 
+		int index = tasks.indexOf(completedTask);
+		if (index != -1)
+			tasks.get(index).setStatus(true);
+		// else condition should be coded in the future
 	}
-	
 
 	public void createTask(ITWorker responsibleEmployee, String taskDescription, Time deadline) {
-		tasks.add(new Task(responsibleEmployee,taskDescription,false,deadline));
+		tasks.add(new Task(responsibleEmployee, taskDescription, false, deadline));
 	}
-	
+
 	public String getProjectName() {
 		return projectName;
 	}
@@ -130,35 +135,28 @@ public class Project {
 		this.status = status;
 	}
 
-
 	public int getProgress() {
 		return progress;
 	}
-
 
 	public void setProgress(int progress) {
 		this.progress = progress;
 	}
 
-
 	public Customer getCustomer() {
 		return customer;
 	}
-
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
-
 	public Meet[] getMeets() {
 		return meets;
 	}
-
 
 	public void setMeets(Meet[] meets) {
 		this.meets = meets;
 	}
 
-	
 }
