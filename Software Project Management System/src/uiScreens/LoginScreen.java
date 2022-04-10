@@ -108,7 +108,7 @@ public class LoginScreen {
 					frame.dispose();	
 				}
 				
-				
+				System.out.println("Gökay Branch deneme");
 				
 				
 			}
