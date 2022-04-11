@@ -1,15 +1,19 @@
 package databaseProcesses;
 
+import java.sql.ResultSet;
+
 public interface ISqlHelper {
-	
+
 	// Insert
+	void insertData(String inserexecute);
+
 	// Update
+	void updateData(String updateexecute);
+
 	// Delete
+	void deleteData(String deleteExecute);
+
 	// Select
-	void insertData();
-	void updateData();
-	void deleteData();
-	void selectData();
-	
-	
+	ResultSet selectData(String SelectDataExecute);
+
 }

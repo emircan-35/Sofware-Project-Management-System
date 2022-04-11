@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Person;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
@@ -25,12 +27,12 @@ public class ManagerScreen {
 	/**
 	 * Launch the application.
 	 */
-	public static void openManagerScreen() {
+	public static void openManagerScreen(Person person) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					
-					ManagerScreen window = new ManagerScreen();
+					ManagerScreen window = new ManagerScreen(person);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +44,7 @@ public class ManagerScreen {
 	/**
 	 * Create the application.
 	 */
-	public ManagerScreen() {
+	public ManagerScreen(Person person) {
 		initialize();
 	}
 

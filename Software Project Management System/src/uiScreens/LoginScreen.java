@@ -12,16 +12,23 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import databaseProcesses.GeneralDB;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Manager;
+import softwareProjectManagement.Person;
 
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
 
-public class LoginScreen {
+public class LoginScreen extends GeneralDB {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -30,7 +37,7 @@ public class LoginScreen {
 	/**
 	 * Launch the application.
 	 */
-	 //FIRST PUSH FOR GOKAY BRANCH
+	// FIRST PUSH FOR GOKAY BRANCH
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -57,87 +64,63 @@ public class LoginScreen {
 	 */
 	private void initialize() {
 		try {
-			UIManager.setLookAndFeel( new FlatDarkLaf() );
+			UIManager.setLookAndFeel(new FlatDarkLaf());
 		} catch (UnsupportedLookAndFeelException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.getContentPane().setBackground(new Color(255, 255, 0));
-		frame.setBounds(100, 100, 362, 330);
+		frame.setBounds(100, 100, 586, 330);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
+
+		KGradientPanel gradientPanel = new KGradientPanel();
+		frame.getContentPane().add(gradientPanel, BorderLayout.CENTER);
+		gradientPanel.setLayout(null);
+
 		JLabel lblNewLabel = new JLabel("Username:");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(26, 114, 131, 31);
-		frame.getContentPane().add(lblNewLabel);
-		
+		lblNewLabel.setBounds(148, 112, 131, 31);
+		gradientPanel.add(lblNewLabel);
+
 		JLabel lblNewLabel_1 = new JLabel("Password:");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(25, 165, 114, 31);
-		frame.getContentPane().add(lblNewLabel_1);
-		
+		lblNewLabel_1.setBounds(148, 174, 114, 31);
+		gradientPanel.add(lblNewLabel_1);
+
 		textField = new JTextField();
-		textField.setBounds(25, 143, 237, 27);
-		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		
+		textField.setBounds(148, 136, 237, 27);
+		gradientPanel.add(textField);
+
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
-			
-			
-				
 			public void actionPerformed(ActionEvent e) {
+
 				
-				
-				
-				if(textField.getText().equals("manager")) {
-					ManagerScreen.openManagerScreen();
-					frame.dispose();	
-				}
-				else if(textField.getText().equals("itworker")) {
-					ITWorkerScreen.OpenITWorkerScreen();
-					frame.dispose();	
-				}
-				else if(textField.getText().equals("customer")) {
-					CustomerScreen.OpenCustomerScreen();
-					frame.dispose();	
-				}
-				
-				System.out.println("Gökay Branch deneme");
-				
-				
+
 			}
 		});
-		btnNewButton.setBounds(26, 229, 131, 39);
-		frame.getContentPane().add(btnNewButton);
-		
+		btnNewButton.setBounds(182, 241, 131, 39);
+		gradientPanel.add(btnNewButton);
+
 		JLabel lblNewLabel_2 = new JLabel("Software Development");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_2.setBounds(35, 23, 414, 68);
-		frame.getContentPane().add(lblNewLabel_2);
-		
+		lblNewLabel_2.setBounds(133, 11, 414, 68);
+		gradientPanel.add(lblNewLabel_2);
+
 		JLabel lblNewLabel_3 = new JLabel(" Management System");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_3.setBounds(37, 72, 252, 31);
-		frame.getContentPane().add(lblNewLabel_3);
-		
+		lblNewLabel_3.setBounds(143, 59, 252, 31);
+		gradientPanel.add(lblNewLabel_3);
+
 		passwordField = new JPasswordField();
-		passwordField.setBounds(26, 191, 236, 27);
-		frame.getContentPane().add(passwordField);
-		
-		KGradientPanel gradientPanel = new KGradientPanel();
-		gradientPanel.kEndColor = Color.RED;
-		gradientPanel.kStartColor = Color.BLUE;
-		gradientPanel.setBounds(0, 0, 353, 297);
-		frame.getContentPane().add(gradientPanel);
-		
-		
+		passwordField.setBounds(149, 203, 236, 27);
+		gradientPanel.add(passwordField);
+
 	}
 }
