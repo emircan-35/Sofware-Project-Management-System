@@ -99,7 +99,9 @@ public class LoginScreen extends GeneralDB {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				
+				ManagerScreen.openManagerScreen(null);
+				CustomerScreen.OpenCustomerScreen();
+				ITWorkerScreen.OpenITWorkerScreen();
 
 			}
 		});
