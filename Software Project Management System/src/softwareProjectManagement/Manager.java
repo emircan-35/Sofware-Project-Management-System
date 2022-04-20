@@ -2,11 +2,13 @@ package softwareProjectManagement;
 
 public class Manager extends Person {
 	
-	
+	private String managerid;
 	private int salary;
 	
-	public Manager(String title, String personName, String personSurname, String personPhone) {
+	public Manager(String managerid,String title, String personName, String personSurname, String personPhone, int salary) {
 		super(title, personName, personSurname, personPhone);
+		this.salary= salary;
+		this.managerid=managerid;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -18,5 +20,14 @@ public class Manager extends Person {
 		this.salary = salary;
 	}
 
+	public String getManagerid() {
+		return managerid;
+	}
+
+	public void setManagerid(String managerid) {
+		this.managerid = managerid;
+	}
+	
+	
 	
 }

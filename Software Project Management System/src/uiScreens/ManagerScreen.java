@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Manager;
 import softwareProjectManagement.Person;
 
 import java.awt.BorderLayout;
@@ -13,14 +14,18 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import databaseProcesses.GeneralDB;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 
-public class ManagerScreen {
+public class ManagerScreen extends GeneralDB {
 
 	private JFrame frame;
 
@@ -45,13 +50,13 @@ public class ManagerScreen {
 	 * Create the application.
 	 */
 	public ManagerScreen(Person person) {
-		initialize();
+		initialize(person);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(Person person) {
 		
 		try {
 			UIManager.setLookAndFeel( new FlatDarkLaf() );
@@ -125,6 +130,8 @@ public class ManagerScreen {
 		btnReports.setBounds(38, 420, 115, 32);
 		gradientPanel.add(btnReports);
 		
+		Manager manager = (Manager) person;
+		
 		JLabel lblNewLabel = new JLabel("Personal \r");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblNewLabel.setBounds(10, 11, 339, 75);
@@ -155,54 +162,55 @@ public class ManagerScreen {
 		lblNewLabel_1_3.setBounds(10, 291, 169, 34);
 		frame.getContentPane().add(lblNewLabel_1_3);
 		
-		JLabel lblNewLabel_1_4 = new JLabel("Experience:");
-		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_1_4.setBounds(10, 336, 140, 34);
-		frame.getContentPane().add(lblNewLabel_1_4);
-		
 		JLabel lblNewLabel_1_5 = new JLabel("Salary:");
 		lblNewLabel_1_5.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_1_5.setBounds(10, 381, 103, 34);
+		lblNewLabel_1_5.setBounds(10, 336, 103, 34);
 		frame.getContentPane().add(lblNewLabel_1_5);
 		
 		JLabel lblNewLabel_1_6 = new JLabel("Phone Number:");
 		lblNewLabel_1_6.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_1_6.setBounds(10, 426, 169, 34);
+		lblNewLabel_1_6.setBounds(10, 381, 169, 34);
 		frame.getContentPane().add(lblNewLabel_1_6);
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
+		JLabel lblNewLabel_3 = new JLabel(person.getTitle());
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3.setBounds(67, 167, 83, 14);
+		lblNewLabel_3.setBounds(67, 167, 112, 23);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("New label");
+		JLabel lblNewLabel_3_1 = new JLabel(person.getPersonName());
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_1.setBounds(80, 215, 83, 14);
+		lblNewLabel_3_1.setBounds(80, 215, 99, 20);
 		frame.getContentPane().add(lblNewLabel_3_1);
 		
-		JLabel lblNewLabel_3_2 = new JLabel("New label");
+		JLabel lblNewLabel_3_2 = new JLabel(person.getPersonSurname());
 		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_2.setBounds(114, 260, 83, 14);
+		lblNewLabel_3_2.setBounds(114, 260, 147, 20);
 		frame.getContentPane().add(lblNewLabel_3_2);
 		
-		JLabel lblNewLabel_3_3 = new JLabel("New label");
-		lblNewLabel_3_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_3.setBounds(178, 305, 83, 14);
-		frame.getContentPane().add(lblNewLabel_3_3);
 		
-		JLabel lblNewLabel_3_4 = new JLabel("New label");
-		lblNewLabel_3_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_4.setBounds(135, 350, 83, 14);
-		frame.getContentPane().add(lblNewLabel_3_4);
+		ResultSet rs = selectData("select projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
+				+ "where workerid =+"+ manager.getManagerid());
+		try {
+			rs.next();
+			JLabel lblNewLabel_3_3 = new JLabel(rs.getString(1));
+			lblNewLabel_3_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblNewLabel_3_3.setBounds(183, 292, 166, 34);
+			frame.getContentPane().add(lblNewLabel_3_3);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
-		JLabel lblNewLabel_3_5 = new JLabel("New label");
+		
+		
+		JLabel lblNewLabel_3_5 = new JLabel(""+manager.getSalary()+"$");
 		lblNewLabel_3_5.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_5.setBounds(96, 392, 83, 14);
+		lblNewLabel_3_5.setBounds(90, 343, 132, 23);
 		frame.getContentPane().add(lblNewLabel_3_5);
 		
-		JLabel lblNewLabel_3_6 = new JLabel("New label");
+		JLabel lblNewLabel_3_6 = new JLabel(manager.getPersonPhone());
 		lblNewLabel_3_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_6.setBounds(178, 440, 83, 14);
+		lblNewLabel_3_6.setBounds(178, 384, 171, 31);
 		frame.getContentPane().add(lblNewLabel_3_6);
 		
 		KGradientPanel gradientPanel_1 = new KGradientPanel();

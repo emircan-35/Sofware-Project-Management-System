@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public abstract class GeneralDB implements ISqlHelper {
 
 	private String username = "gokay2027";
-	private String password = "***"; //Þifreyi tekrar GÝRERSÝN
+	private String password = "8605968605"; //Þifreyi tekrar GÝRERSÝN
 	private Connection con;			//DATABASE ÞEMASI BAÞTAN KURULACAK DATABASE ADI AYNI OLACAK
 	private Statement stmt;
 
@@ -18,15 +18,16 @@ public abstract class GeneralDB implements ISqlHelper {
 
 		try {
 
-			this.con = DriverManager.getConnection("jdbc:mysql://192.168.1.41:3306/softwaremanagementdb", username,
+			this.con = DriverManager.getConnection("jdbc:mysql://192.168.1.39:3306/softwaremanagementsystem", username,
 					password);
 
 			this.stmt = con.createStatement();
 
 			System.out.println("Veritabaný baðlantýsý yapýldý");
-
 			
-
+			ResultSet aa = selectData("select * from customer");
+			
+			
 		} catch (Exception e) {
 
 			System.out.println(e);

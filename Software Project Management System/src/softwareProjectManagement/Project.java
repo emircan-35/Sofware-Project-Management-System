@@ -9,7 +9,6 @@ public class Project {
 	private String projectDescription;
 	private boolean status;
 	private Team responsibleTeam;
-	private Customer customer;
 	private ArrayList<Task> tasks;
 	private Meet[] meets;
 
@@ -98,15 +97,6 @@ public class Project {
 
 	public void setStatus(boolean status) {
 		this.status = status;
-	}
-
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
 	}
 
 	public Meet[] getMeets() {

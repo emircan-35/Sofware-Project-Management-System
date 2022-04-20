@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -15,6 +17,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import databaseProcesses.GeneralDB;
 
 import javax.swing.JButton;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import keeptoo.KGradientPanel;
@@ -27,6 +30,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
+import javax.swing.JRadioButton;
 
 public class LoginScreen extends GeneralDB {
 
@@ -71,9 +75,9 @@ public class LoginScreen extends GeneralDB {
 		}
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 586, 330);
+		frame.setBounds(100, 100, 552, 374);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		ButtonGroup buttonGroup = new ButtonGroup();
 		KGradientPanel gradientPanel = new KGradientPanel();
 		frame.getContentPane().add(gradientPanel, BorderLayout.CENTER);
 		gradientPanel.setLayout(null);
@@ -99,13 +103,55 @@ public class LoginScreen extends GeneralDB {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				ManagerScreen.openManagerScreen(null);
-				CustomerScreen.OpenCustomerScreen();
-				ITWorkerScreen.OpenITWorkerScreen();
+				try {
+					String selection = buttonGroup.getSelection().getActionCommand();
+
+					if (selection.equals("Customer")) {
+
+						ResultSet persondata = selectData(
+								"SELECT * FROM softwaremanagementsystem.customer where customerusername = " + "\""
+										+ textField.getText() + "\"" + " and" + " customerpassword = " + "\""
+										+ passwordField.getText() + "\"" + ";");
+						persondata.next();
+
+						if (persondata.getString(1).equals("1")) {
+
+							//Person person = new Customer();
+
+							CustomerScreen.OpenCustomerScreen();
+
+						}
+
+					} else {
+
+						ResultSet persondata = selectData(
+								"select worker.workerid, workername, workersurname, experience, workersalary, workerPhoneNumber, title.titleName from softwaremanagementsystem.worker \r\n"
+										+ "inner join title on worker.Title_idTitle = title.idTitle \r\n"
+										+ "where workerUsername = \""+ textField.getText()+"\" and workerPassword =\""+ passwordField.getText()+"\";");
+						persondata.next();
+						System.out.println(persondata.getString(7));
+						if (persondata.getString(7).equalsIgnoreCase("manager")) {
+
+							Person person = new Manager(persondata.getString(1),persondata.getString(7), persondata.getString(2),
+									persondata.getString(3), persondata.getString(6), persondata.getInt(5));
+							ManagerScreen.openManagerScreen(person);
+
+						} else {
+
+							ITWorkerScreen.OpenITWorkerScreen();
+
+						}
+
+					}
+				} catch (Exception e1) {
+					// TODO: handle exception
+					JOptionPane.showMessageDialog(frame, "Wrong data was entered try again",
+							"Some data was given incorrect", JOptionPane.WARNING_MESSAGE);
+				}
 
 			}
 		});
-		btnNewButton.setBounds(182, 241, 131, 39);
+		btnNewButton.setBounds(177, 241, 163, 31);
 		gradientPanel.add(btnNewButton);
 
 		JLabel lblNewLabel_2 = new JLabel("Software Development");
@@ -123,6 +169,20 @@ public class LoginScreen extends GeneralDB {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(149, 203, 236, 27);
 		gradientPanel.add(passwordField);
+
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Customer");
+		rdbtnNewRadioButton.setBounds(111, 292, 109, 23);
+		gradientPanel.add(rdbtnNewRadioButton);
+
+		JRadioButton rdbtnWorker = new JRadioButton("Worker");
+		rdbtnWorker.setBounds(250, 292, 109, 23);
+		gradientPanel.add(rdbtnWorker);
+
+		rdbtnWorker.setActionCommand("Worker");
+		rdbtnNewRadioButton.setActionCommand("Customer");
+
+		buttonGroup.add(rdbtnNewRadioButton);
+		buttonGroup.add(rdbtnWorker);
 
 	}
 }
