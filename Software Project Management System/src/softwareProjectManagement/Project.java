@@ -12,6 +12,11 @@ public class Project {
 	private ArrayList<Task> tasks;
 	private Meet[] meets;
 
+	public Project(String projectName, String projectDescription) {
+		this.projectName=projectName;
+		this.projectDescription=projectDescription;
+		this.status=false;
+	}
 	public class Task {
 		private ITWorker responsibleEmployee;
 		private String taskDescription;

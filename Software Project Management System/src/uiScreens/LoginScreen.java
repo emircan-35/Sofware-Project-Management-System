@@ -61,6 +61,7 @@ public class LoginScreen extends GeneralDB {
 	 */
 	public LoginScreen() {
 		initialize();
+		ManagerScreen.openManagerScreen(new Manager("1","manager", "emircan", "tepe", "545 824 6644", 4000));
 	}
 
 	/**
@@ -102,7 +103,6 @@ public class LoginScreen extends GeneralDB {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				try {
 					String selection = buttonGroup.getSelection().getActionCommand();
 

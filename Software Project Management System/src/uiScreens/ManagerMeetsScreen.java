@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Meet;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,7 +14,13 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Time;
+
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -135,6 +143,20 @@ public class ManagerMeetsScreen {
 		JButton btnNewButton = new JButton("Arrange Meet");
 		btnNewButton.setBounds(10, 387, 168, 38);
 		frame.getContentPane().add(btnNewButton);
+		//If presses to the arrange meet button,
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(textField.getText().isEmpty()||textField_1.getText().isEmpty()||textField_2.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "Please fill the empty space(s)",
+							"one text at least is empty!", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				Meet newMeeting=new Meet(textField.getText(),textField_1.getText(),new Time(0));
+				//DB OPERATIONS SHOULD BE INSERTED HERE
+				//ALSO TIME OBJECT SHOULD BE SET
+				
+			}
+		});
 		
 		JButton btnCancelMeet = new JButton("Cancel Meet");
 		btnCancelMeet.setBounds(10, 436, 168, 38);

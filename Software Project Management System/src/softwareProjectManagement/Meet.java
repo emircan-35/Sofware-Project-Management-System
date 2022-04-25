@@ -12,11 +12,10 @@ public class Meet {
 
 	
 
-	public Meet(String name, String description, Time meetingTime, ArrayList<Person> attendees) {
+	public Meet(String name, String description, Time meetingTime) {
 		this.name = name;
 		this.description = description;
 		this.meetingTime = meetingTime;
-		this.attendees = attendees;
 	}
 
 

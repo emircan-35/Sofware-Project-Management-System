@@ -8,11 +8,17 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Project;
 
 public class CustomerOrderScreen {
 
@@ -85,6 +91,7 @@ public class CustomerOrderScreen {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton.setBounds(282, 302, 189, 38);
 		gradientPanel.add(btnNewButton);
+
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -95,5 +102,24 @@ public class CustomerOrderScreen {
 		lblProjectDescription.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblProjectDescription.setBounds(10, 145, 204, 72);
 		frame.getContentPane().add(lblProjectDescription);
+		
+		//When pressing the button
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String projectName=textField.getText();
+				String projectDescription=textArea.getText();
+				System.out.println(projectName);
+				//If one of the text areas is empty
+				if (projectName.isEmpty()||projectDescription.isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "Please fill the empty space(s)",
+							"Name or Description is empty!", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				Project newProject=new Project(projectName,projectDescription);
+				//DB OPERATIONS SHOULD BE INSERTED HERE
+				//AFTER THAT, MANAGER SHOULD BE ABLE TO SEE THE PROJECT ORDER, ASSIGN A TEAM ETC.
+				
+			}
+		});
 	}
 }
