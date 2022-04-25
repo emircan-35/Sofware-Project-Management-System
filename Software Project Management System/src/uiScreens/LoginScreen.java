@@ -61,7 +61,6 @@ public class LoginScreen extends GeneralDB {
 	 */
 	public LoginScreen() {
 		initialize();
-		ManagerScreen.openManagerScreen(new Manager("1","manager", "emircan", "tepe", "545 824 6644", 4000));
 	}
 
 	/**
