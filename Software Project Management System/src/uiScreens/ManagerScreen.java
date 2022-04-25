@@ -188,6 +188,18 @@ public class ManagerScreen extends GeneralDB {
 		frame.getContentPane().add(lblNewLabel_3_2);
 		
 		
+		ResultSet rs = selectData("select projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
+				+ "where workerid =+"+ manager.getManagerid());
+		try {
+			rs.next();
+			JLabel lblNewLabel_3_3 = new JLabel(rs.getString(1));
+			lblNewLabel_3_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblNewLabel_3_3.setBounds(183, 292, 166, 34);
+			frame.getContentPane().add(lblNewLabel_3_3);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		
 		
