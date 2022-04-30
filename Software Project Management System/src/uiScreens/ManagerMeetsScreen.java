@@ -12,7 +12,12 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -135,10 +140,22 @@ public class ManagerMeetsScreen {
 		JButton btnNewButton = new JButton("Arrange Meet");
 		btnNewButton.setBounds(10, 387, 168, 38);
 		frame.getContentPane().add(btnNewButton);
-		
+
 		JButton btnCancelMeet = new JButton("Cancel Meet");
 		btnCancelMeet.setBounds(10, 436, 168, 38);
 		frame.getContentPane().add(btnCancelMeet);
 		
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (textField.getText().isEmpty()||textField_1.getText().isEmpty()||textField_2.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "At least one area is empty! Try Again",
+							"EMPTY AREA", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				
+			}
+		});
 	}
 }

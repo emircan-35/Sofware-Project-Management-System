@@ -24,7 +24,7 @@ public  class GeneralDB implements ISqlHelper {
 
 			this.stmt = con.createStatement();
 
-			System.out.println("Veritabaný baðlantýsý yapýldý");
+			System.out.println("DB connection established");
 			
 			ResultSet aa = selectData("select * from customer");
 			
