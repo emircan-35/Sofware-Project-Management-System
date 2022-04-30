@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Meet;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -31,7 +34,6 @@ public class ManagerMeetsScreen {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
 	/**
 	 * Launch the application.
 	 */
@@ -154,7 +156,8 @@ public class ManagerMeetsScreen {
 							"EMPTY AREA", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
-				
+				Meet newMeet=new Meet(textField.getText(),textField_1.getText());
+				ManagerChooseScreen.OpenManagerChooseScreen(newMeet);
 			}
 		});
 	}

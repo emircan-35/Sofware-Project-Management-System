@@ -7,27 +7,34 @@ public class Meet {
 	private String name;
 	private String description;
 	private Time meetingTime;
-	private ArrayList<Person> attendees;
+	private ArrayList<Integer> attendeesIds;
 	private boolean status;
 
 	
 
-	public Meet(String name, String description, Time meetingTime, ArrayList<Person> attendees) {
+	public Meet(String name, String description) {
 		this.name = name;
 		this.description = description;
-		this.meetingTime = meetingTime;
-		this.attendees = attendees;
+		//MEETING TIME SHOULD BE ADDED!!
 	}
 
 
-	public void discardAttendee(Person attendee) {
-		attendees.remove(attendee);
-	}
+
 	
-	public void addAttendee(Person attendee) {
-		attendees.add(attendee);
+	public ArrayList<Integer> getAttendeesIds() {
+		return attendeesIds;
 	}
-	
+
+
+
+
+	public void setAttendeesIds(ArrayList<Integer> attendeesIds) {
+		this.attendeesIds = attendeesIds;
+	}
+
+
+
+
 	public String getName() {
 		return name;
 	}
@@ -48,14 +55,7 @@ public class Meet {
 	}
 
 
-	public ArrayList<Person> getAttendees() {
-		return attendees;
-	}
 
-
-	public void setAttendees(ArrayList<Person> attendees) {
-		this.attendees = attendees;
-	}
 
 
 	public boolean isStatus() {
