@@ -6,19 +6,20 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class GeneralDB implements ISqlHelper {
+public  class GeneralDB implements ISqlHelper {
 
-	private String username = "gokay2027";
-	private String password = "8605968605"; //Þifreyi tekrar GÝRERSÝN
+	private String username = "root";
+	private String password = "4152"; //Þifreyi tekrar GÝRERSÝN
 	private Connection con;			//DATABASE ÞEMASI BAÞTAN KURULACAK DATABASE ADI AYNI OLACAK
 	private Statement stmt;
+	private static GeneralDB DB=new GeneralDB();
 
-	public GeneralDB() {
+	private GeneralDB() {
 		// TODO Auto-generated constructor stub
 
 		try {
 
-			this.con = DriverManager.getConnection("jdbc:mysql://192.168.1.39:3306/softwaremanagementsystem", username,
+			this.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/softwaremanagementsystem", username,
 					password);
 
 			this.stmt = con.createStatement();
@@ -94,5 +95,7 @@ public abstract class GeneralDB implements ISqlHelper {
 		}
 
 	}
-
+	public static GeneralDB getObject() {
+		return DB;
+	}
 }

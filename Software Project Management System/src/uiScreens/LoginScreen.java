@@ -32,12 +32,12 @@ import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
 
-public class LoginScreen extends GeneralDB {
+public class LoginScreen  {
 
 	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField passwordField;
-
+	private GeneralDB DB=GeneralDB.getObject();
 	/**
 	 * Launch the application.
 	 */
@@ -108,7 +108,7 @@ public class LoginScreen extends GeneralDB {
 
 					if (selection.equals("Customer")) {
 
-						ResultSet persondata = selectData(
+						ResultSet persondata = DB.selectData(
 								"SELECT * FROM softwaremanagementsystem.customer where customerusername = " + "\""
 										+ textField.getText() + "\"" + " and" + " customerpassword = " + "\""
 										+ passwordField.getText() + "\"" + ";");
@@ -124,7 +124,7 @@ public class LoginScreen extends GeneralDB {
 
 					} else {
 
-						ResultSet persondata = selectData(
+						ResultSet persondata = DB.selectData(
 								"select worker.workerid, workername, workersurname, experience, workersalary, workerPhoneNumber, title.titleName from softwaremanagementsystem.worker \r\n"
 										+ "inner join title on worker.Title_idTitle = title.idTitle \r\n"
 										+ "where workerUsername = \""+ textField.getText()+"\" and workerPassword =\""+ passwordField.getText()+"\";");

@@ -25,9 +25,10 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 
-public class ManagerScreen extends GeneralDB {
+public class ManagerScreen {
 
 	private JFrame frame;
+	private GeneralDB DB=GeneralDB.getObject();
 
 	/**
 	 * Launch the application.
@@ -188,7 +189,7 @@ public class ManagerScreen extends GeneralDB {
 		frame.getContentPane().add(lblNewLabel_3_2);
 		
 		
-		ResultSet rs = selectData("select projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
+		ResultSet rs = DB.selectData("select projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
 				+ "where workerid =+"+ manager.getManagerid());
 		try {
 			rs.next();
