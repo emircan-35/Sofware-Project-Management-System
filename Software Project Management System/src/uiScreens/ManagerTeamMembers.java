@@ -95,6 +95,7 @@ public class ManagerTeamMembers {
 		frame.getContentPane().add(lblNewLabel_1);
 
 		textField = new JTextField();
+		textField.setEditable(false);
 		textField.setBounds(10, 143, 183, 27);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
@@ -105,6 +106,7 @@ public class ManagerTeamMembers {
 		frame.getContentPane().add(lblNewLabel_1_1);
 
 		textField_1 = new JTextField();
+		textField_1.setEditable(false);
 		textField_1.setColumns(10);
 		textField_1.setBounds(10, 220, 183, 27);
 		frame.getContentPane().add(textField_1);
@@ -115,6 +117,7 @@ public class ManagerTeamMembers {
 		frame.getContentPane().add(lblNewLabel_1_2);
 
 		textField_2 = new JTextField();
+		textField_2.setEditable(false);
 		textField_2.setColumns(10);
 		textField_2.setBounds(10, 299, 183, 27);
 		frame.getContentPane().add(textField_2);
@@ -125,6 +128,7 @@ public class ManagerTeamMembers {
 		frame.getContentPane().add(lblNewLabel_1_3);
 
 		textField_3 = new JTextField();
+		textField_3.setEditable(false);
 		textField_3.setColumns(10);
 		textField_3.setBounds(10, 378, 183, 27);
 		frame.getContentPane().add(textField_3);
