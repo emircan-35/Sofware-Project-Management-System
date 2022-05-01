@@ -32,12 +32,13 @@ import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
 
-public class LoginScreen  {
+public class LoginScreen {
 
 	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	private GeneralDB DB=GeneralDB.getObject();
+	private GeneralDB DB = GeneralDB.getObject();
+
 	/**
 	 * Launch the application.
 	 */
@@ -108,15 +109,15 @@ public class LoginScreen  {
 
 					if (selection.equals("Customer")) {
 
-						ResultSet persondata = DB.selectData(
-								"SELECT * FROM softwaremanagementsystem.customer where customerusername = " + "\""
-										+ textField.getText() + "\"" + " and" + " customerpassword = " + "\""
+						ResultSet persondata = DB
+								.selectData("SELECT * FROM softwaremanagementsystem.customer where customerusername = "
+										+ "\"" + textField.getText() + "\"" + " and" + " customerpassword = " + "\""
 										+ passwordField.getText() + "\"" + ";");
 						persondata.next();
 
 						if (persondata.getString(1).equals("1")) {
 
-							//Person person = new Customer();
+							// Person person = new Customer();
 
 							CustomerScreen.OpenCustomerScreen();
 
@@ -127,13 +128,15 @@ public class LoginScreen  {
 						ResultSet persondata = DB.selectData(
 								"select worker.workerid, workername, workersurname, experience, workersalary, workerPhoneNumber, title.titleName from softwaremanagementsystem.worker \r\n"
 										+ "inner join title on worker.Title_idTitle = title.idTitle \r\n"
-										+ "where workerUsername = \""+ textField.getText()+"\" and workerPassword =\""+ passwordField.getText()+"\";");
+										+ "where workerUsername = \"" + textField.getText()
+										+ "\" and workerPassword =\"" + passwordField.getText() + "\";");
 						persondata.next();
 						System.out.println(persondata.getString(7));
 						if (persondata.getString(7).equalsIgnoreCase("manager")) {
 
-							Person person = new Manager(persondata.getString(1),persondata.getString(7), persondata.getString(2),
-									persondata.getString(3), persondata.getString(6), persondata.getInt(5));
+							Person person = new Manager(persondata.getString(1), persondata.getString(7),
+									persondata.getString(2), persondata.getString(3), persondata.getString(6),
+									persondata.getInt(5));
 							ManagerScreen.openManagerScreen(person);
 
 						} else {

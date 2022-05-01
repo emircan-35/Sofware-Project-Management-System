@@ -8,18 +8,16 @@ import java.sql.SQLException;
 
 public  class GeneralDB implements ISqlHelper {
 
-	private String username = "root";
-	private String password = "4152"; //Þifreyi tekrar GÝRERSÝN
+	private String username = "gokay2027";
+	private String password = "8605968605"; //Þifreyi tekrar GÝRERSÝN
 	private Connection con;			//DATABASE ÞEMASI BAÞTAN KURULACAK DATABASE ADI AYNI OLACAK
 	private Statement stmt;
 	private static GeneralDB DB=new GeneralDB();
 
 	private GeneralDB() {
-		// TODO Auto-generated constructor stub
-
 		try {
 
-			this.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/softwaremanagementsystem", username,
+			this.con = DriverManager.getConnection("jdbc:mysql://localhost/softwaremanagementsystem", username,
 					password);
 
 			this.stmt = con.createStatement();
