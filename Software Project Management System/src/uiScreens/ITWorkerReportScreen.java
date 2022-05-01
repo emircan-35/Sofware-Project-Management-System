@@ -61,53 +61,53 @@ public class ITWorkerReportScreen {
 		
 		frame = new JFrame();
 		frame.setBounds(new Rectangle(0, 0, 1000, 1000));
-		frame.setBounds(100, 100, 861, 869);
+		frame.setBounds(100, 100, 861, 721);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Title:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 21));
-		lblNewLabel.setBounds(10, 11, 149, 53);
+		lblNewLabel.setBounds(10, 0, 149, 53);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblItworker = new JLabel("<TitleName>");
 		lblItworker.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblItworker.setBounds(69, 11, 149, 53);
+		lblItworker.setBounds(69, 0, 149, 53);
 		frame.getContentPane().add(lblItworker);
 		
 		JLabel lblName = new JLabel("Name:");
 		lblName.setFont(new Font("Tahoma", Font.BOLD, 21));
-		lblName.setBounds(10, 75, 149, 53);
+		lblName.setBounds(10, 44, 149, 53);
 		frame.getContentPane().add(lblName);
 		
 		JLabel lblSurname = new JLabel("Surname:");
 		lblSurname.setFont(new Font("Tahoma", Font.BOLD, 21));
-		lblSurname.setBounds(10, 141, 149, 53);
+		lblSurname.setBounds(10, 92, 149, 53);
 		frame.getContentPane().add(lblSurname);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number:");
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.BOLD, 21));
-		lblPhoneNumber.setBounds(10, 205, 257, 53);
+		lblPhoneNumber.setBounds(10, 138, 257, 53);
 		frame.getContentPane().add(lblPhoneNumber);
 		
 		JLabel lblTaskDescription = new JLabel("Task Description:");
 		lblTaskDescription.setFont(new Font("Tahoma", Font.BOLD, 21));
-		lblTaskDescription.setBounds(10, 269, 228, 53);
+		lblTaskDescription.setBounds(10, 187, 228, 53);
 		frame.getContentPane().add(lblTaskDescription);
 		
 		JLabel lblItworker_1 = new JLabel("<Name>");
 		lblItworker_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblItworker_1.setBounds(79, 75, 149, 53);
+		lblItworker_1.setBounds(79, 44, 149, 53);
 		frame.getContentPane().add(lblItworker_1);
 		
 		JLabel lblItworker_2 = new JLabel("<Surname>");
 		lblItworker_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblItworker_2.setBounds(118, 139, 149, 53);
+		lblItworker_2.setBounds(118, 92, 149, 53);
 		frame.getContentPane().add(lblItworker_2);
 		
 		JLabel lblItworker_3 = new JLabel("<Phone Number>");
 		lblItworker_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblItworker_3.setBounds(182, 205, 149, 53);
+		lblItworker_3.setBounds(179, 138, 149, 53);
 		frame.getContentPane().add(lblItworker_3);
 		
 		KGradientPanel gradientPanel = new KGradientPanel();
@@ -116,24 +116,24 @@ public class ITWorkerReportScreen {
 		
 		KGradientPanel gradientPanel_1 = new KGradientPanel();
 		gradientPanel_1.kStartColor = Color.RED;
-		gradientPanel_1.setBounds(-11, 384, 872, 462);
+		gradientPanel_1.setBounds(0, 237, 872, 462);
 		frame.getContentPane().add(gradientPanel_1);
 		gradientPanel_1.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Arial", Font.BOLD, 15));
-		textArea.setBounds(21, 11, 823, 376);
+		textArea.setBounds(10, 11, 823, 376);
 		gradientPanel_1.add(textArea);
 		
 		JButton btnNewButton = new JButton("Send Report");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setBounds(347, 398, 138, 34);
+		btnNewButton.setBounds(276, 398, 244, 34);
 		gradientPanel_1.add(btnNewButton);
 		
 		JLabel lblItworker_3_1 = new JLabel("<TitleDescription>");
 		lblItworker_3_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblItworker_3_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblItworker_3_1.setBounds(192, 269, 594, 98);
+		lblItworker_3_1.setBounds(201, 165, 594, 98);
 		frame.getContentPane().add(lblItworker_3_1);
 	}
 }

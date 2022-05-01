@@ -11,6 +11,8 @@ import javax.swing.table.DefaultTableModel;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import databaseProcesses.GeneralDB;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
@@ -26,6 +28,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class ManagerMeetsScreen {
 
@@ -33,7 +36,7 @@ public class ManagerMeetsScreen {
 	private JTable table;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
+	private GeneralDB DB=GeneralDB.getObject();
 	/**
 	 * Launch the application.
 	 */
@@ -70,17 +73,17 @@ public class ManagerMeetsScreen {
 		
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 693, 577);
+		frame.setBounds(100, 100, 717, 577);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		KGradientPanel gradientPanel = new KGradientPanel();
-		gradientPanel.setBounds(188, 0, 499, 538);
+		gradientPanel.setBounds(198, 0, 519, 538);
 		frame.getContentPane().add(gradientPanel);
 		gradientPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 467, 516);
+		scrollPane.setBounds(10, 11, 482, 516);
 		gradientPanel.add(scrollPane);
 		
 		table = new JTable();
@@ -111,47 +114,62 @@ public class ManagerMeetsScreen {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Description:");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1_1.setBounds(10, 161, 129, 24);
+		lblNewLabel_1_1.setBounds(10, 189, 129, 24);
 		frame.getContentPane().add(lblNewLabel_1_1);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(10, 189, 168, 24);
+		textField_1.setBounds(10, 224, 168, 24);
 		frame.getContentPane().add(textField_1);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("Time: (TextBox de\u011Fi\u015Fecek)");
+		JLabel lblNewLabel_1_2 = new JLabel("Time:");
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1_2.setBounds(10, 234, 181, 24);
+		lblNewLabel_1_2.setBounds(10, 275, 181, 24);
 		frame.getContentPane().add(lblNewLabel_1_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(10, 262, 168, 24);
-		frame.getContentPane().add(textField_2);
 		
 		JLabel lblNewLabel_2 = new JLabel("Project:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblNewLabel_2.setBounds(10, 312, 129, 38);
+		lblNewLabel_2.setBounds(1, 393, 129, 38);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Project Name");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_3.setBounds(89, 322, 98, 22);
+		lblNewLabel_3.setBounds(80, 403, 98, 22);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		JButton btnNewButton = new JButton("Arrange Meet");
-		btnNewButton.setBounds(10, 387, 168, 38);
+		btnNewButton.setBounds(10, 440, 168, 38);
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnCancelMeet = new JButton("Cancel Meet");
-		btnCancelMeet.setBounds(10, 436, 168, 38);
+		btnCancelMeet.setBounds(10, 489, 168, 38);
 		frame.getContentPane().add(btnCancelMeet);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(10, 310, 51, 30);
+		frame.getContentPane().add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(66, 310, 51, 30);
+		frame.getContentPane().add(comboBox_1);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setBounds(127, 310, 61, 30);
+		frame.getContentPane().add(comboBox_2);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setBounds(29, 351, 51, 38);
+		frame.getContentPane().add(comboBox_3);
+		
+		JComboBox comboBox_3_1 = new JComboBox();
+		comboBox_3_1.setBounds(88, 351, 51, 38);
+		frame.getContentPane().add(comboBox_3_1);
 		
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (textField.getText().isEmpty()||textField_1.getText().isEmpty()||textField_2.getText().isEmpty()) {
+				if (textField.getText().isEmpty()||textField_1.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(frame, "At least one area is empty! Try Again",
 							"EMPTY AREA", JOptionPane.WARNING_MESSAGE);
 					return;
