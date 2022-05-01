@@ -1,7 +1,7 @@
 package softwareProjectManagement;
 
 public class ITWorker extends Person {
-	
+	private int id;
 	private int salary;
 	private int experience;
 	private String[] knowledge;
@@ -9,11 +9,10 @@ public class ITWorker extends Person {
 	private boolean isWorkingOnProject;
 	
 	
-	public ITWorker(String title,String personName, String personSurname, String personPhone,int salary,int experience,String[] knowledge,Project currentProject,boolean isWorkingOnProject) {
-		
+	public ITWorker(String id,String title,String personName, String personSurname, String personPhone,int salary,int experience,String[] knowledge,Project currentProject,boolean isWorkingOnProject) {
 		super(title,personName, personSurname, personPhone);
 		// TODO Auto-generated constructor stub
-
+		this.id=Integer.parseInt(id);
 		this.salary=salary;
 		this.experience=experience;
 		this.knowledge=knowledge;

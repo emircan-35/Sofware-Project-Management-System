@@ -15,8 +15,6 @@ public  class GeneralDB implements ISqlHelper {
 	private static GeneralDB DB=new GeneralDB();
 
 	private GeneralDB() {
-		// TODO Auto-generated constructor stub
-
 		try {
 
 			this.con = DriverManager.getConnection("jdbc:mysql://localhost/softwaremanagementsystem", username,
