@@ -1,22 +1,19 @@
 package softwareProjectManagement;
 
+import java.util.ArrayList;
+
 public class Customer extends Person {
 
-	private Project project;
+	private ArrayList<Project> projects;
 	
-	public Customer(String title, String personName, String personSurname, String personPhone,Project project) {
+	public Customer(int id,String title, String personName, String personSurname, String personPhone) {
 		
-		super(title, personName, personSurname, personPhone);
+		super(id,title, personName, personSurname, personPhone);
+		projects=new ArrayList<Project>();
 		// TODO Auto-generated constructor stub
-		this.project = project;
 	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
+	public void addProject(Project newProject) {
+		projects.add(newProject);
 	}
 	
 }

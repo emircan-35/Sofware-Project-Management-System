@@ -1,13 +1,14 @@
 package softwareProjectManagement;
 
 public abstract class Person {
-	
+	private int id;
 	private String title;
 	private String personName;
 	private String personSurname;
 	private String personPhone;
 	
-	public Person(String title,String personName,String personSurname,String personPhone) {
+	public Person(int id,String title,String personName,String personSurname,String personPhone) {
+		this.id=id;
 		this.title=title;
 		this.personName=personName;
 		this.personSurname=personSurname;
@@ -21,6 +22,14 @@ public abstract class Person {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPersonName() {

@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Customer;
+
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -24,12 +26,12 @@ public class CustomerScreen {
 	/**
 	 * Launch the application.
 	 */
-	public static void OpenCustomerScreen() {
+	public static void OpenCustomerScreen(Customer customer) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 
-					CustomerScreen window = new CustomerScreen();
+					CustomerScreen window = new CustomerScreen(customer);
 					window.frmCustomer.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,15 +42,17 @@ public class CustomerScreen {
 
 	/**
 	 * Create the application.
+	 * @param customer 
 	 */
-	public CustomerScreen() {
-		initialize();
+	public CustomerScreen(Customer customer) {
+		initialize(customer);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @param customer 
 	 */
-	private void initialize() {
+	private void initialize(Customer customer) {
 		try {
 			UIManager.setLookAndFeel(new FlatDarkLaf());
 		} catch (UnsupportedLookAndFeelException e1) {
@@ -78,7 +82,7 @@ public class CustomerScreen {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				CustomerOrderScreen.OpenCustomerOrderScreen();
+				CustomerOrderScreen.OpenCustomerOrderScreen(customer);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 9));

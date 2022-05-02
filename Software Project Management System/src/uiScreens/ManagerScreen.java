@@ -178,7 +178,7 @@ public class ManagerScreen {
 		
 		
 		ResultSet rs = DB.selectData("select projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
-				+ "where workerid =+"+ manager.getManagerid());
+				+ "where workerid =+"+ manager.getId());
 		try {
 			rs.next();
 			JLabel lblNewLabel_3_3 = new JLabel(rs.getString(1));
