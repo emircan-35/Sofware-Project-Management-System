@@ -105,7 +105,11 @@ public class ManagerTasksScreen {
 
 		table = new JTable();
 		table.setModel(
-				new DefaultTableModel(new Object[][] {}, new String[] { "New column", "New column", "New column" }));
+				new DefaultTableModel(new Object[][] {}, new String[] { "Task Name", "Task Description", "Deadline","Worker" }));
+		
+		
+		
+		
 		scrollPane.setViewportView(table);
 
 		JButton btnNewButton = new JButton("Accept Task");
@@ -139,14 +143,26 @@ public class ManagerTasksScreen {
 		frame.getContentPane().add(lblDeadLine);
 
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		comboBox.setBounds(10, 571, 56, 31);
 		frame.getContentPane().add(comboBox);
 
 		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
 		comboBox_1.setBounds(76, 571, 56, 31);
 		frame.getContentPane().add(comboBox_1);
 
 		JComboBox comboBox_2 = new JComboBox();
+		
+		String[] years = new String[100];
+		
+		for(int i=0;i<years.length;i++) {
+			
+			years[i]=2022+i+"";
+			
+		}
+		
+		comboBox_2.setModel(new DefaultComboBoxModel(years));
 		comboBox_2.setBounds(142, 571, 98, 31);
 		frame.getContentPane().add(comboBox_2);
 

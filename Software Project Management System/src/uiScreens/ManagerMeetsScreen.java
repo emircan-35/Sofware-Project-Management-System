@@ -36,7 +36,7 @@ public class ManagerMeetsScreen {
 	private JTable table;
 	private JTextField textField;
 	private JTextField textField_1;
-	private GeneralDB DB=GeneralDB.getObject();
+	private GeneralDB DB = GeneralDB.getObject();
 	/**
 	 * Launch the application.
 	 */
@@ -158,11 +158,11 @@ public class ManagerMeetsScreen {
 		frame.getContentPane().add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(29, 351, 51, 38);
+		comboBox_3.setBounds(29, 351, 51, 30);
 		frame.getContentPane().add(comboBox_3);
 		
 		JComboBox comboBox_3_1 = new JComboBox();
-		comboBox_3_1.setBounds(88, 351, 51, 38);
+		comboBox_3_1.setBounds(88, 351, 51, 31);
 		frame.getContentPane().add(comboBox_3_1);
 		
 		
