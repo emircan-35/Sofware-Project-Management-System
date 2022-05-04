@@ -4,14 +4,22 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 public class Project {
-
+	private int customerID;
 	private String projectName;
 	private String projectDescription;
 	private boolean status;
 	private Team responsibleTeam;
 	private ArrayList<Task> tasks;
 	private Meet[] meets;
-
+	private int money;
+	public Project(int customerID,String projectName,String projectDescription,int money){
+		this.customerID=customerID;
+		this.projectName=projectName;
+		this.projectDescription=projectDescription;
+		this.money=money;
+		this.status=false;
+	}
+	
 	public class Task {
 		private ITWorker responsibleEmployee;
 		private String taskDescription;
@@ -73,6 +81,14 @@ public class Project {
 
 	public void setProjectDescription(String projectDescription) {
 		this.projectDescription = projectDescription;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
 	}
 
 	public Team getResponsibleTeam() {

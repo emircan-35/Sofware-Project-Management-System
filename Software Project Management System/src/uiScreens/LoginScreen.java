@@ -21,6 +21,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Customer;
 import softwareProjectManagement.Manager;
 import softwareProjectManagement.Person;
 
@@ -117,9 +118,10 @@ public class LoginScreen {
 
 						if (persondata.getString(1).equals("1")) {
 
-							// Person person = new Customer();
-
-							CustomerScreen.OpenCustomerScreen();
+							Customer customer=new Customer(Integer.parseInt(persondata.getString(1)),"Customer",persondata.getString(2),persondata.getString(3),
+									persondata.getString(4));
+	
+							CustomerScreen.OpenCustomerScreen(customer);
 
 						}
 
@@ -131,12 +133,19 @@ public class LoginScreen {
 										+ "where workerUsername = \"" + textField.getText()
 										+ "\" and workerPassword =\"" + passwordField.getText() + "\";");
 						persondata.next();
-						System.out.println(persondata.getString(7));
 						if (persondata.getString(7).equalsIgnoreCase("manager")) {
+							System.out.println(persondata.getString(1));
+							System.out.println(persondata.getString(2));
+							System.out.println(persondata.getString(3));
+							System.out.println(persondata.getString(4));
+							System.out.println(persondata.getString(5));
+							System.out.println(persondata.getString(6));
+							System.out.println(persondata.getString(7));
 
-							Person person = new Manager(persondata.getString(1), persondata.getString(7),
-									persondata.getString(2), persondata.getString(3), persondata.getString(6),
-									persondata.getInt(5));
+							//	public Manager(int id,String title, String personName, String personSurname, String personPhone, int salary) {
+							
+							Person person = new Manager(Integer.parseInt(persondata.getString(1)),persondata.getString(7), persondata.getString(2),
+									persondata.getString(3), persondata.getString(6), Integer.parseInt(persondata.getString(5)));
 							ManagerScreen.openManagerScreen(person);
 
 						} else {
@@ -148,6 +157,7 @@ public class LoginScreen {
 					}
 				} catch (Exception e1) {
 					// TODO: handle exception
+					System.out.println(e1);
 					JOptionPane.showMessageDialog(frame, "Wrong data was entered try again",
 							"Some data was given incorrect", JOptionPane.WARNING_MESSAGE);
 				}
