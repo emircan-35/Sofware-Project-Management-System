@@ -107,9 +107,6 @@ public class ManagerTasksScreen {
 		table.setModel(
 				new DefaultTableModel(new Object[][] {}, new String[] { "Task Name", "Task Description", "Deadline","Worker" }));
 		
-		
-		
-		
 		scrollPane.setViewportView(table);
 
 		JButton btnNewButton = new JButton("Accept Task");
