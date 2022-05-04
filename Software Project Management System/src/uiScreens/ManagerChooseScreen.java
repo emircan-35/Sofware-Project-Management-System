@@ -75,8 +75,9 @@ public class ManagerChooseScreen {
 		
 		String[] columnNames={"ID","Name","Surname","Join"};
 		DefaultTableModel tableModel=new DefaultTableModel(columnNames, 0);
-		ResultSet workers=DB.selectData("select worker.workerid, workername, workersurname from softwaremanagementsystem.worker");
 		try {
+			ResultSet workers=DB.selectData("select worker.workerid, workername, workersurname from softwaremanagementsystem.worker");
+
 			while (workers.next()) {
 				Object[] row= {workers.getString(1),workers.getString(2),workers.getString(3),false};
 				tableModel.addRow(row);

@@ -6,13 +6,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public  class GeneralDB implements ISqlHelper {
+public class GeneralDB implements ISqlHelper {
 
 	private String username = "gokay2027";
-	private String password = "8605968605"; //Þifreyi tekrar GÝRERSÝN
-	private Connection con;			//DATABASE ÞEMASI BAÞTAN KURULACAK DATABASE ADI AYNI OLACAK
+	private String password = "8605968605"; // Þifreyi tekrar GÝRERSÝN
+	private Connection con; // DATABASE ÞEMASI BAÞTAN KURULACAK DATABASE ADI AYNI OLACAK
 	private Statement stmt;
-	private static GeneralDB DB=new GeneralDB();
+	private static GeneralDB DB = new GeneralDB();
 
 	private GeneralDB() {
 		try {
@@ -23,10 +23,9 @@ public  class GeneralDB implements ISqlHelper {
 			this.stmt = con.createStatement();
 
 			System.out.println("DB connection established");
-			
+
 			ResultSet aa = selectData("select * from customer");
-			
-			
+
 		} catch (Exception e) {
 
 			System.out.println(e);
@@ -35,64 +34,41 @@ public  class GeneralDB implements ISqlHelper {
 	}
 
 	@Override
-	public void insertData(String insertsql) {
+	public void insertData(String insertsql) throws SQLException {
 		// TODO Auto-generated method stub
-		try {
 
-			stmt.executeUpdate(insertsql);
+		stmt.executeUpdate(insertsql);
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	@Override
-	public void deleteData(String deleteexe) {
+	public void deleteData(String deleteexe) throws SQLException {
 		// TODO Auto-generated method stub
-		try {
 
-			stmt.executeUpdate(deleteexe);
+		stmt.executeUpdate(deleteexe);
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	@SuppressWarnings("unused")
 	@Override
-	public ResultSet selectData(String selectExe) {
+	public ResultSet selectData(String selectExe) throws SQLException {
 
 		ResultSet rs;
 
 		// TODO Auto-generated method stub
 
-		try {
-
-			return rs = stmt.executeQuery(selectExe);
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-
-			e.printStackTrace();
-
-			return null;
-		}
+		return rs = stmt.executeQuery(selectExe);
 
 	}
 
 	@Override
-	public void updateData(String updateExe) {
+	public void updateData(String updateExe) throws SQLException {
 		// TODO Auto-generated method stub
-		try {
-			stmt.executeUpdate(updateExe);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		stmt.executeUpdate(updateExe);
 
 	}
+
 	public static GeneralDB getObject() {
 		return DB;
 	}
