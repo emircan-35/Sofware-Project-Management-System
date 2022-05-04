@@ -12,21 +12,22 @@ public class Project {
 	private ArrayList<Task> tasks;
 	private Meet[] meets;
 	private int money;
-	public Project(int customerID,String projectName,String projectDescription,int money){
-		this.customerID=customerID;
-		this.projectName=projectName;
-		this.projectDescription=projectDescription;
-		this.money=money;
-		this.status=false;
+
+	public Project(int customerID, String projectName, String projectDescription, int money) {
+		this.customerID = customerID;
+		this.projectName = projectName;
+		this.projectDescription = projectDescription;
+		this.money = money;
+		this.status = false;
 	}
-	
+
 	public class Task {
 		private ITWorker responsibleEmployee;
 		private String taskDescription;
 		private boolean status; // done --> completed, otherwise false
-		private Time deadline;
+		private String deadline;
 
-		public Task(ITWorker responsibleEmployee, String taskDescription, boolean status, Time deadline) {
+		public Task(ITWorker responsibleEmployee, String taskDescription, boolean status, String deadline) {
 			this.responsibleEmployee = responsibleEmployee;
 			this.taskDescription = taskDescription;
 			this.status = status;
@@ -57,11 +58,11 @@ public class Project {
 			this.status = status;
 		}
 
-		public Time getDeadline() {
+		public String getDeadline() {
 			return deadline;
 		}
 
-		public void setDeadline(Time deadline) {
+		public void setDeadline(String deadline) {
 			this.deadline = deadline;
 		}
 
