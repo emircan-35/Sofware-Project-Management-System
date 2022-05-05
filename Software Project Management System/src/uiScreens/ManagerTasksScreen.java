@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.lang.System.Logger.Level;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 import javax.swing.JTree;
@@ -42,11 +43,11 @@ import java.awt.event.MouseEvent;
 public class ManagerTasksScreen {
 
 	private JFrame frame;
-	private JTextField textField;
 	private JTable table;
 	private String selectedid = "";
 	private String projectid = null;
 	GeneralDB DB = GeneralDB.getObject();
+	private JComboBox comboBox_3;
 
 	/**
 	 * Launch the application.
@@ -190,7 +191,7 @@ public class ManagerTasksScreen {
 
 				try {
 					DB.updateData(acceptQuery);
-					
+
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -205,18 +206,16 @@ public class ManagerTasksScreen {
 		JButton btnNewButton_1 = new JButton("Delete Task");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
-					String deleteQuery ="DELETE FROM task WHERE task.idTask="+selectedid;
+					String deleteQuery = "DELETE FROM task WHERE task.idTask=" + selectedid;
 					DB.deleteData(deleteQuery);
 					refreshTable(projectid);
 				} catch (Exception e2) {
 					// TODO: handle exception
-					JOptionPane.showMessageDialog(frame,
-						    "Task which has report can not be deleted",
-						    "Task has report",
-						    JOptionPane.WARNING_MESSAGE);
-					
+					JOptionPane.showMessageDialog(frame, "Task which has report can not be deleted", "Task has report",
+							JOptionPane.WARNING_MESSAGE);
+
 				}
 			}
 		});
@@ -287,19 +286,65 @@ public class ManagerTasksScreen {
 		frame.getContentPane().add(comboBox_2);
 
 		JButton btnAddTask = new JButton("Add Task");
+		btnAddTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String taskDescription = textArea.getText();
+				String time = comboBox.getSelectedItem() + "-" + comboBox_1.getSelectedItem() + "-"
+						+ comboBox_2.getSelectedItem();
+				String selectedWorkerId = ("" + comboBox_3.getSelectedItem()).split(" ")[0];
+				
+				System.out.println(selectedWorkerId);
+				
+				String insertQuery ="INSERT INTO task (task.TaskDescription, task.Taskstatus, task.deadline, task.Project_idProject, task.Worker_workerid)\r\n"
+						+ "VALUES (\"%s\",\"0\",\"%s\",\"%s\",\"%s\");";
+				String query = String.format(insertQuery, taskDescription,time,projectid,selectedWorkerId);
+				
+				try {
+					DB.insertData(query);
+					refreshTable(projectid);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		btnAddTask.setBounds(10, 694, 230, 40);
 		frame.getContentPane().add(btnAddTask);
-
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(10, 652, 230, 31);
-		frame.getContentPane().add(textField);
 
 		JLabel lblWorkerId = new JLabel("Worker Id:");
 		lblWorkerId.setForeground(Color.WHITE);
 		lblWorkerId.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblWorkerId.setBounds(10, 601, 206, 61);
 		frame.getContentPane().add(lblWorkerId);
+
+		comboBox_3 = new JComboBox();
+
+		String workerResultQuery = "select * from worker inner join\r\n"
+				+ "project on worker.Team_idTeam=project.Team_idTeam\r\n" + "where project.idProject=" + projectid;
+
+		try {
+			ResultSet workersList = DB.selectData(workerResultQuery);
+
+			ArrayList<String> workerInfo = new ArrayList<String>();
+
+			while (workersList.next()) {
+
+				workerInfo.add(workersList.getString("workerid") + " " + workersList.getString("workerName") + " "
+						+ workersList.getString("workerSurname"));
+
+			}
+
+			comboBox_3.setModel(new DefaultComboBoxModel(workerInfo.toArray()));
+			workersList.close();
+			comboBox_3.setBounds(10, 648, 230, 31);
+			frame.getContentPane().add(comboBox_3);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		String[] combobox2model = new String[2100 - 2022];
 		for (int i = 0; i < combobox2model.length; i++) {
 

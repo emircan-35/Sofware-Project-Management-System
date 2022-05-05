@@ -22,25 +22,31 @@ public class Project {
 	}
 
 	public class Task {
-		private ITWorker responsibleEmployee;
+		private String workerName;
 		private String taskDescription;
 		private boolean status; // done --> completed, otherwise false
 		private String deadline;
 
-		public Task(ITWorker responsibleEmployee, String taskDescription, boolean status, String deadline) {
-			this.responsibleEmployee = responsibleEmployee;
+		public Task(String workerName, String taskDescription, boolean status, String deadline) {
+			this.workerName = workerName;
 			this.taskDescription = taskDescription;
 			this.status = status;
 			this.deadline = deadline;
 		}
 
-		public ITWorker getResponsibleEmployee() {
-			return responsibleEmployee;
+
+
+		public String getWorkerName() {
+			return workerName;
 		}
 
-		public void setResponsibleEmployee(ITWorker responsibleEmployee) {
-			this.responsibleEmployee = responsibleEmployee;
+
+
+		public void setWorkerName(String workerName) {
+			this.workerName = workerName;
 		}
+
+
 
 		public String getTaskDescription() {
 			return taskDescription;
