@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.ITWorker;
+import softwareProjectManagement.Team;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -16,8 +19,13 @@ import javax.swing.table.DefaultTableModel;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import databaseProcesses.GeneralDB;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ManagerTeamMembers {
@@ -28,15 +36,16 @@ public class ManagerTeamMembers {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTable table;
+	private GeneralDB DB = GeneralDB.getObject();
 
 	/**
 	 * Launch the application.
 	 */
-	public static void OpenManagerTeamScreen() {
+	public static void OpenManagerTeamScreen(int teamId) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ManagerTeamMembers window = new ManagerTeamMembers();
+					ManagerTeamMembers window = new ManagerTeamMembers(teamId);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,22 +56,19 @@ public class ManagerTeamMembers {
 
 	/**
 	 * Create the application.
+	 * 
+	 * @throws SQLException
 	 */
-	public ManagerTeamMembers() {
-		initialize();
+	public ManagerTeamMembers(int teamid) throws SQLException {
+		initialize(teamid);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * @throws SQLException
 	 */
-	private void initialize() {
-
-		try {
-			UIManager.setLookAndFeel(new FlatDarkLaf());
-		} catch (UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+	private void initialize(int teamid) throws SQLException {
 
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -83,14 +89,26 @@ public class ManagerTeamMembers {
 		table.setModel(
 				new DefaultTableModel(new Object[][] {}, new String[] { "Name", "Surname", "Title", "Experience" }));
 		scrollPane.setViewportView(table);
+
+		ArrayList<ITWorker> teamWorkers = new ArrayList<ITWorker>();
+
+		ResultSet rs = DB.selectData("select * from worker inner join title\r\n" + "on Title_idTitle=title.idTitle\r\n"
+				+ "where Team_idTeam=" + teamid);
+
+		while (rs.next()) {
+
+			ITWorker worker = new ITWorker(rs.getInt("workerid"), rs.getString("titleName"), rs.getString("workerName"),
+					rs.getString("workerSurname"), rs.getString("workerPhoneNumber"), rs.getInt("workerSalary"),
+					rs.getInt("experience"), rs.getInt("Team_idTeam"));
+
+			teamWorkers.add(worker);
+
+			System.out.println(worker.getPersonName());
+
+		}
 		
-		
-		
-		
-		
-		
-		
-		
+		//LÝSTEYE BURADAN SIRALANACAK UNUTMA!!!!!
+		Team team = new Team(teamid,teamWorkers);
 		
 		
 

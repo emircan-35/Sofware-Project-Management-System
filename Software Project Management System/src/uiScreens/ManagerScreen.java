@@ -59,12 +59,6 @@ public class ManagerScreen {
 	 */
 	private void initialize(Person person) {
 
-		try {
-			UIManager.setLookAndFeel(new FlatDarkLaf());
-		} catch (UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -113,7 +107,21 @@ public class ManagerScreen {
 			public void actionPerformed(ActionEvent e) {
 
 				System.out.println("Team Screen");
-				ManagerTeamMembers.OpenManagerTeamScreen();
+
+				int teamid;
+
+				try {
+
+					ResultSet rs = DB.selectData("select * from worker\r\n" + "where workerid = " + person.getId());
+					rs.next();
+					teamid = rs.getInt("Team_idTeam");
+					System.out.println(teamid);
+					ManagerTeamMembers.OpenManagerTeamScreen(teamid);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
 		});
 		btnTeam.setBounds(38, 482, 125, 32);
