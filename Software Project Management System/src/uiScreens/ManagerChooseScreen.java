@@ -59,7 +59,7 @@ public class ManagerChooseScreen {
 	private void initialize(Meet newMeet) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JLabel lblNewLabel = new JLabel("Please tick those who you want to make it able to join the meeting");
 		frame.getContentPane().add(lblNewLabel, BorderLayout.NORTH);

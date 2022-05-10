@@ -293,13 +293,13 @@ public class ManagerTasksScreen {
 				String time = comboBox.getSelectedItem() + "-" + comboBox_1.getSelectedItem() + "-"
 						+ comboBox_2.getSelectedItem();
 				String selectedWorkerId = ("" + comboBox_3.getSelectedItem()).split(" ")[0];
-				
+
 				System.out.println(selectedWorkerId);
-				
-				String insertQuery ="INSERT INTO task (task.TaskDescription, task.Taskstatus, task.deadline, task.Project_idProject, task.Worker_workerid)\r\n"
+
+				String insertQuery = "INSERT INTO task (task.TaskDescription, task.Taskstatus, task.deadline, task.Project_idProject, task.Worker_workerid)\r\n"
 						+ "VALUES (\"%s\",\"0\",\"%s\",\"%s\",\"%s\");";
-				String query = String.format(insertQuery, taskDescription,time,projectid,selectedWorkerId);
-				
+				String query = String.format(insertQuery, taskDescription, time, projectid, selectedWorkerId);
+
 				try {
 					DB.insertData(query);
 					refreshTable(projectid);
@@ -307,7 +307,7 @@ public class ManagerTasksScreen {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 			}
 		});
 		btnAddTask.setBounds(10, 694, 230, 40);
