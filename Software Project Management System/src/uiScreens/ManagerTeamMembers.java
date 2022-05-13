@@ -93,6 +93,7 @@ public class ManagerTeamMembers {
 		gradientPanel.add(scrollPane);
 
 		table = new JTable();
+		table.setDefaultEditor(Object.class, null);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -217,7 +218,18 @@ public class ManagerTeamMembers {
 					JOptionPane.showMessageDialog(frame, "You should choose a worker First",
 							"You have to choose worker first", JOptionPane.WARNING_MESSAGE);
 				} else {
-					ManagerReportsList.OpenManagerReportsScreen();
+
+					for (int i = 0; i < team.getMembers().size(); i++) {
+
+						if (Integer.toString(team.getMembers().get(i).getId()).equals(selectedId)) {
+
+							System.out.println(selectedId);
+							ManagerReportsList.OpenManagerReportsScreen(team.getMembers().get(i));
+							break;
+						}
+
+					}
+
 				}
 
 			}

@@ -34,19 +34,13 @@ public class Project {
 			this.deadline = deadline;
 		}
 
-
-
 		public String getWorkerName() {
 			return workerName;
 		}
 
-
-
 		public void setWorkerName(String workerName) {
 			this.workerName = workerName;
 		}
-
-
 
 		public String getTaskDescription() {
 			return taskDescription;

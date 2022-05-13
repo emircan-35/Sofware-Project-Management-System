@@ -3,16 +3,16 @@ package softwareProjectManagement;
 import softwareProjectManagement.Project.Task;
 
 public class Report {
-	
+
 	private ITWorker owner;
 	private String description;
 	private Task task;
-	
-	public Report(ITWorker owner, String description,Task task) {
+
+	public Report(ITWorker owner, String description, Task task) {
 		this.task = task;
 		this.owner = owner;
 		this.description = description;
-		
+
 	}
 
 	public ITWorker getOwner() {
@@ -38,6 +38,5 @@ public class Report {
 	public void setTask(Task task) {
 		this.task = task;
 	}
-	
-	
+
 }
