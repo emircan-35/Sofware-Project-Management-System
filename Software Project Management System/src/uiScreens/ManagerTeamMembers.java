@@ -8,6 +8,8 @@ import softwareProjectManagement.ITWorker;
 import softwareProjectManagement.Team;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -27,8 +29,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ManagerTeamMembers {
+
+	private String selectedId;
 
 	private JFrame frame;
 	private JTextField textField;
@@ -41,11 +47,11 @@ public class ManagerTeamMembers {
 	/**
 	 * Launch the application.
 	 */
-	public static void OpenManagerTeamScreen(int teamId) {
+	public static void OpenManagerTeamScreen(int teamId, String projectName) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ManagerTeamMembers window = new ManagerTeamMembers(teamId);
+					ManagerTeamMembers window = new ManagerTeamMembers(teamId, projectName);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,8 +65,8 @@ public class ManagerTeamMembers {
 	 * 
 	 * @throws SQLException
 	 */
-	public ManagerTeamMembers(int teamid) throws SQLException {
-		initialize(teamid);
+	public ManagerTeamMembers(int teamid, String projectName) throws SQLException {
+		initialize(teamid, projectName);
 	}
 
 	/**
@@ -68,7 +74,7 @@ public class ManagerTeamMembers {
 	 * 
 	 * @throws SQLException
 	 */
-	private void initialize(int teamid) throws SQLException {
+	private void initialize(int teamid, String projectName) throws SQLException {
 
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -82,12 +88,32 @@ public class ManagerTeamMembers {
 		gradientPanel.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
+
 		scrollPane.setBounds(10, 28, 564, 656);
 		gradientPanel.add(scrollPane);
 
 		table = new JTable();
-		table.setModel(
-				new DefaultTableModel(new Object[][] {}, new String[] { "Name", "Surname", "Title", "Experience" }));
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+				selectedId = (String) table.getValueAt(table.getSelectedRow(), 0);
+
+				String name = (String) table.getValueAt(table.getSelectedRow(), 1);
+				String surname = (String) table.getValueAt(table.getSelectedRow(), 2);
+				String title = (String) table.getValueAt(table.getSelectedRow(), 3);
+				String experience = (String) table.getValueAt(table.getSelectedRow(), 4);
+
+				textField.setText(name);
+				textField_1.setText(surname);
+				textField_2.setText(title);
+				textField_3.setText(experience);
+
+			}
+		});
+
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "Worker Id", "Name", "Surname", "Title", "Experience" }));
 		scrollPane.setViewportView(table);
 
 		ArrayList<ITWorker> teamWorkers = new ArrayList<ITWorker>();
@@ -106,11 +132,21 @@ public class ManagerTeamMembers {
 			System.out.println(worker.getPersonName());
 
 		}
-		
-		//LÝSTEYE BURADAN SIRALANACAK UNUTMA!!!!!
-		Team team = new Team(teamid,teamWorkers);
-		
-		
+
+		// LÝSTEYE BURADAN SIRALANACAK UNUTMA!!!!!
+		Team team = new Team(teamid, teamWorkers);
+
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+
+		for (int i = 0; i < team.getMembers().size(); i++) {
+
+			String[] row = { team.getMembers().get(i).getId() + "", team.getMembers().get(i).getPersonName(),
+					team.getMembers().get(i).getPersonSurname(), team.getMembers().get(i).getTitle(),
+					"" + team.getMembers().get(i).getExperience() + " years" };
+
+			model.addRow(row);
+
+		}
 
 		JLabel lblNewLabel = new JLabel("Team Members");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
@@ -169,13 +205,20 @@ public class ManagerTeamMembers {
 		JLabel lblNewLabel_1_3_1_1 = new JLabel("<Project Name>");
 		lblNewLabel_1_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_1_3_1_1.setBounds(31, 435, 204, 81);
+		lblNewLabel_1_3_1_1.setText(projectName);
+
 		frame.getContentPane().add(lblNewLabel_1_3_1_1);
 
 		JButton btnNewButton = new JButton("Show Reports");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				ManagerReportsList.OpenManagerReportsScreen();
+				if (textField.getText().equals("")) {
+					JOptionPane.showMessageDialog(frame, "You should choose a worker First",
+							"You have to choose worker first", JOptionPane.WARNING_MESSAGE);
+				} else {
+					ManagerReportsList.OpenManagerReportsScreen();
+				}
 
 			}
 		});

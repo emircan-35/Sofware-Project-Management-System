@@ -29,6 +29,7 @@ public class ManagerScreen {
 
 	private JFrame frame;
 	private GeneralDB DB = GeneralDB.getObject();
+	private String projectName;
 
 	/**
 	 * Launch the application.
@@ -116,7 +117,7 @@ public class ManagerScreen {
 					rs.next();
 					teamid = rs.getInt("Team_idTeam");
 					System.out.println(teamid);
-					ManagerTeamMembers.OpenManagerTeamScreen(teamid);
+					ManagerTeamMembers.OpenManagerTeamScreen(teamid,projectName);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -189,10 +190,12 @@ public class ManagerScreen {
 					"select projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
 							+ "where workerid =+" + manager.getId());
 			rs.next();
+			projectName=rs.getString(1);
 			JLabel lblNewLabel_3_3 = new JLabel(rs.getString(1));
 			lblNewLabel_3_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			lblNewLabel_3_3.setBounds(183, 292, 166, 34);
 			frame.getContentPane().add(lblNewLabel_3_3);
+			rs.close();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
