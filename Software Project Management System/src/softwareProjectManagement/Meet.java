@@ -1,27 +1,33 @@
 package softwareProjectManagement;
 
-import java.sql.Time;
-import java.util.ArrayList;
-
 public class Meet {
+	private String meetingId;
 	private String name;
 	private String description;
-	private Time meetingTime;
-	private ArrayList<Integer> attendeesIds;
-	private boolean status;
+	private String meetingTime;
 
-	public Meet(String name, String description) {
+	public Meet(String meetingId, String name, String description, String meetingTime) {
+		this.meetingId = meetingId;
 		this.name = name;
 		this.description = description;
-		// MEETING TIME SHOULD BE ADDED!!
+		this.meetingTime = meetingTime;
+
 	}
 
-	public ArrayList<Integer> getAttendeesIds() {
-		return attendeesIds;
+	public String getMeetingId() {
+		return meetingId;
 	}
 
-	public void setAttendeesIds(ArrayList<Integer> attendeesIds) {
-		this.attendeesIds = attendeesIds;
+	public void setMeetingId(String meetingId) {
+		this.meetingId = meetingId;
+	}
+
+	public String getMeetingTime() {
+		return meetingTime;
+	}
+
+	public void setMeetingTime(String meetingTime) {
+		this.meetingTime = meetingTime;
 	}
 
 	public String getName() {
@@ -38,22 +44,6 @@ public class Meet {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Time getMeetingTime() {
-		return meetingTime;
-	}
-
-	public void setMeetingTime(Time meetingTime) {
-		this.meetingTime = meetingTime;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
 	}
 
 }

@@ -30,6 +30,7 @@ public class ManagerScreen {
 	private JFrame frame;
 	private GeneralDB DB = GeneralDB.getObject();
 	private String projectName;
+	private int teamid;
 
 	/**
 	 * Launch the application.
@@ -50,16 +51,24 @@ public class ManagerScreen {
 
 	/**
 	 * Create the application.
+	 * 
+	 * @throws SQLException
 	 */
-	public ManagerScreen(Person person) {
+	public ManagerScreen(Person person) throws SQLException {
 		initialize(person);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * @throws SQLException
 	 */
-	private void initialize(Person person) {
+	private void initialize(Person person) throws SQLException {
 
+		ResultSet rs = DB.selectData("select * from worker\r\n" + "where workerid = " + person.getId());
+		rs.next();
+		teamid = rs.getInt("Team_idTeam");
+		System.out.println(teamid);
 
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -85,7 +94,7 @@ public class ManagerScreen {
 			public void actionPerformed(ActionEvent e) {
 
 				System.out.println("MeetsScreen");
-				ManagerMeetsScreen.OpenManagerMeetsScreen();
+				ManagerMeetsScreen.OpenManagerMeetsScreen(projectName, teamid + "");
 			}
 		});
 		btnNewButton.setBounds(38, 232, 125, 32);
@@ -109,19 +118,7 @@ public class ManagerScreen {
 
 				System.out.println("Team Screen");
 
-				int teamid;
-
-				try {
-
-					ResultSet rs = DB.selectData("select * from worker\r\n" + "where workerid = " + person.getId());
-					rs.next();
-					teamid = rs.getInt("Team_idTeam");
-					System.out.println(teamid);
-					ManagerTeamMembers.OpenManagerTeamScreen(teamid,projectName);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				ManagerTeamMembers.OpenManagerTeamScreen(teamid, projectName);
 
 			}
 		});
@@ -186,16 +183,16 @@ public class ManagerScreen {
 		frame.getContentPane().add(lblNewLabel_3_2);
 
 		try {
-			ResultSet rs = DB.selectData(
+			ResultSet resultset = DB.selectData(
 					"select projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
 							+ "where workerid =+" + manager.getId());
-			rs.next();
-			projectName=rs.getString(1);
-			JLabel lblNewLabel_3_3 = new JLabel(rs.getString(1));
+			resultset.next();
+			projectName = resultset.getString(1);
+			JLabel lblNewLabel_3_3 = new JLabel(resultset.getString(1));
 			lblNewLabel_3_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			lblNewLabel_3_3.setBounds(183, 292, 166, 34);
 			frame.getContentPane().add(lblNewLabel_3_3);
-			rs.close();
+			resultset.close();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
