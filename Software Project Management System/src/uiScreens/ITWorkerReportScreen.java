@@ -60,7 +60,7 @@ public class ITWorkerReportScreen {
 		}
 		
 		frame = new JFrame();
-		frame.setEnabled(false);
+		frame.setResizable(false);
 		frame.setBounds(new Rectangle(0, 0, 1000, 1000));
 		frame.setBounds(100, 100, 861, 721);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

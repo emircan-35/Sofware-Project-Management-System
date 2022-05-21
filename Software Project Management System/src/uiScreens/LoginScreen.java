@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import javax.swing.JSeparator;
+
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -18,7 +18,7 @@ import databaseProcesses.GeneralDB;
 
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
+
 import java.awt.Color;
 import keeptoo.KGradientPanel;
 import softwareProjectManagement.Customer;
@@ -28,7 +28,7 @@ import softwareProjectManagement.Person;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
@@ -69,6 +69,7 @@ public class LoginScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
 		try {
 			UIManager.setLookAndFeel(new FlatDarkLaf());
 		} catch (UnsupportedLookAndFeelException e1) {
@@ -118,9 +119,9 @@ public class LoginScreen {
 
 						if (persondata.getString(1).equals("1")) {
 
-							Customer customer=new Customer(Integer.parseInt(persondata.getString(1)),"Customer",persondata.getString(2),persondata.getString(3),
-									persondata.getString(4));
-	
+							Customer customer = new Customer(Integer.parseInt(persondata.getString(1)), "Customer",
+									persondata.getString(2), persondata.getString(3), persondata.getString(4));
+
 							CustomerScreen.OpenCustomerScreen(customer);
 
 						}
@@ -142,10 +143,12 @@ public class LoginScreen {
 							System.out.println(persondata.getString(6));
 							System.out.println(persondata.getString(7));
 
-							//	public Manager(int id,String title, String personName, String personSurname, String personPhone, int salary) {
-							
-							Person person = new Manager(Integer.parseInt(persondata.getString(1)),persondata.getString(7), persondata.getString(2),
-									persondata.getString(3), persondata.getString(6), Integer.parseInt(persondata.getString(5)));
+							// public Manager(int id,String title, String personName, String personSurname,
+							// String personPhone, int salary) {
+
+							Person person = new Manager(Integer.parseInt(persondata.getString(1)),
+									persondata.getString(7), persondata.getString(2), persondata.getString(3),
+									persondata.getString(6), Integer.parseInt(persondata.getString(5)));
 							ManagerScreen.openManagerScreen(person);
 
 						} else {
