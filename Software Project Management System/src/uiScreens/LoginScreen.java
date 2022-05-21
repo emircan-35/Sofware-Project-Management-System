@@ -22,6 +22,7 @@ import javax.swing.ButtonGroup;
 import java.awt.Color;
 import keeptoo.KGradientPanel;
 import softwareProjectManagement.Customer;
+import softwareProjectManagement.ITWorker;
 import softwareProjectManagement.Manager;
 import softwareProjectManagement.Person;
 
@@ -129,7 +130,7 @@ public class LoginScreen {
 					} else {
 
 						ResultSet persondata = DB.selectData(
-								"select worker.workerid, workername, workersurname, experience, workersalary, workerPhoneNumber, title.titleName from softwaremanagementsystem.worker \r\n"
+								"select worker.workerid, workername, workersurname, experience, workersalary, workerPhoneNumber, title.titleName, Team_idTeam from softwaremanagementsystem.worker \r\n"
 										+ "inner join title on worker.Title_idTitle = title.idTitle \r\n"
 										+ "where workerUsername = \"" + textField.getText()
 										+ "\" and workerPassword =\"" + passwordField.getText() + "\";");
@@ -152,8 +153,8 @@ public class LoginScreen {
 							ManagerScreen.openManagerScreen(person);
 
 						} else {
-
-							ITWorkerScreen.OpenITWorkerScreen();
+							Person person=new ITWorker(Integer.parseInt(persondata.getString(1)), persondata.getString(7), persondata.getString(2), persondata.getString(3), persondata.getString(6), Integer.parseInt(persondata.getString(5)), Integer.parseInt(persondata.getString(4)), Integer.parseInt(persondata.getString(8)));
+							ITWorkerScreen.OpenITWorkerScreen(person);
 
 						}
 

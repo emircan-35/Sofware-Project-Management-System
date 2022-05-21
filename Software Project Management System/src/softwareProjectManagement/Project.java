@@ -26,8 +26,9 @@ public class Project {
 		private String taskDescription;
 		private boolean status; // done --> completed, otherwise false
 		private String deadline;
-
-		public Task(String workerName, String taskDescription, boolean status, String deadline) {
+		private int id;
+		public Task(int id,String workerName, String taskDescription, boolean status, String deadline) {
+			this.id=id;
 			this.workerName = workerName;
 			this.taskDescription = taskDescription;
 			this.status = status;
@@ -36,6 +37,14 @@ public class Project {
 
 		public String getWorkerName() {
 			return workerName;
+		}
+
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
 		}
 
 		public void setWorkerName(String workerName) {
@@ -53,7 +62,11 @@ public class Project {
 		public boolean isStatus() {
 			return status;
 		}
-
+		public String getStatus() {
+			if (isStatus()) {
+				return "True";
+			}else return "False";
+		}
 		public void setStatus(boolean status) {
 			this.status = status;
 		}
@@ -114,6 +127,11 @@ public class Project {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	public String getStatus() {
+		if (isStatus()) {
+			return "True";
+		}else return "False";
 	}
 
 	public Meet[] getMeets() {

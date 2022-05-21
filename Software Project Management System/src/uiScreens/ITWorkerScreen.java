@@ -4,7 +4,15 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.ITWorker;
+import softwareProjectManagement.Meet;
+import softwareProjectManagement.Person;
+import softwareProjectManagement.Project;
+import softwareProjectManagement.Project.Task;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -19,25 +27,35 @@ import javax.swing.table.DefaultTableModel;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import databaseProcesses.GeneralDB;
+
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ITWorkerScreen {
 
+	private int selectedMeetId=-1;
+	private int selectedTaskId=-1;
 	private JFrame frame;
 	private JTable table;
 	private JTable table_1;
-
+	private GeneralDB DB=GeneralDB.getObject();
 	/**
 	 * Launch the application.
 	 */
-	public static void OpenITWorkerScreen() {
+	public static void OpenITWorkerScreen(Person person) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel( new FlatDarkLaf() );
-					ITWorkerScreen window = new ITWorkerScreen();
+					ITWorkerScreen window = new ITWorkerScreen(person);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,15 +66,19 @@ public class ITWorkerScreen {
 
 	/**
 	 * Create the application.
+	 * @param person 
+	 * @throws SQLException 
 	 */
-	public ITWorkerScreen() {
-		initialize();
+	public ITWorkerScreen(Person person) throws SQLException {
+		initialize(person);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @param person 
+	 * @throws SQLException 
 	 */
-	private void initialize() {
+	private void initialize(Person person) throws SQLException {
 		try {
 			UIManager.setLookAndFeel( new FlatDarkLaf() );
 		} catch (UnsupportedLookAndFeelException e1) {
@@ -175,9 +197,25 @@ public class ITWorkerScreen {
 			new Object[][] {
 			},
 			new String[] {
-				"Task Description", "Status", "Deadline"
+				"ID","Task Description", "Status", "Deadline"
 			}
 		));
+		
+		table_1.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				selectedTaskId=Integer.parseInt((String) table_1.getValueAt(table_1.getSelectedRow(), 0));
+			}
+
+		});
+		ResultSet rs=DB.selectData("select * from task where Worker_Workerid="+person.getId());
+		ArrayList<Task> tasks=new ArrayList();
+		Project project=new Project(0, null, null, 0);
+		//String workerName, String taskDescription, boolean status, String deadline) 
+		while (rs.next()) tasks.add(project.new Task(rs.getInt(1),person.getPersonName(),rs.getString(2),rs.getBoolean(3),rs.getString(4)));
+		for (Task task : tasks) {
+			String[] row={Integer.toString(task.getId()),task.getTaskDescription(),task.getStatus(),task.getDeadline()};
+ 			((DefaultTableModel) table_1.getModel()).addRow(row);
+		}
 		scrollPane_1.setViewportView(table_1);
 		
 		KGradientPanel gradientPanel = new KGradientPanel();
@@ -196,9 +234,25 @@ public class ITWorkerScreen {
 			new Object[][] {
 			},
 			new String[] {
-				"Meet Name", "Description", "Time"
+				"ID","Meet Name", "Description", "Time"
 			}
 		));
+
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				selectedMeetId=Integer.parseInt((String) table.getValueAt(table.getSelectedRow(), 0));
+			}
+		});
+		ArrayList<Meet> meets=new ArrayList<>();
+		rs = DB.selectData("select * from meet where Team_idTeam="+((ITWorker)person).getTeamId()+";");
+		while (rs.next()) {
+			//	public Meet(String meetingId, int teamID,String name, String description, String meetingTime) {
+			meets.add(new Meet(rs.getInt(1),rs.getInt(5),rs.getString(2),rs.getString(3),rs.getString(4)));
+		}
+		for (Meet meet : meets) {
+			String[] row= {Integer.toString(meet.getMeetingId()),meet.getName(),meet.getDescription(),meet.getMeetingTime()};
+			((DefaultTableModel) table.getModel()).addRow(row);
+		}
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_4 = new JLabel("MEETS");
@@ -210,12 +264,33 @@ public class ITWorkerScreen {
 		JButton btnNewButton = new JButton("Cancel Meet");
 		btnNewButton.setBounds(820, 468, 125, 36);
 		gradientPanel.add(btnNewButton);
-		
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectedMeetId==-1) return;
+				try {
+					String insertQueryMeet = String.format(
+							"INSERT INTO attendence (isAttended, worker_workerid, meet_idMeet)\r\n"
+									+ "VALUES (\"%s\",\"%s\",\"%s\");",
+							0, person.getId(), selectedMeetId);
+					DB.insertData(insertQueryMeet);
+				} catch (SQLException e1	) {
+					// TODO Auto-generated catch block
+
+				}
+								
+			}
+		});
 		JButton btnCompleeteTask = new JButton("Complete Task");
 		btnCompleeteTask.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				ITWorkerReportScreen.OpenITWorkerReportsScreen();
+				if (selectedTaskId==-1) {
+					JOptionPane.showMessageDialog(frame, "SELECT ONE TASK",
+							"NO TASK SELECTED", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				ITWorkerReportScreen.OpenITWorkerReportsScreen(selectedTaskId,person);
 				
 				
 				
@@ -227,7 +302,24 @@ public class ITWorkerScreen {
 		JButton btnNewButton_1 = new JButton("Accept Meet");
 		btnNewButton_1.setBounds(685, 468, 125, 36);
 		gradientPanel.add(btnNewButton_1);
-		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectedMeetId==-1) return;
+				try {
+					String insertQueryMeet = String.format(
+							"INSERT INTO attendence (isAttended, worker_workerid, meet_idMeet)\r\n"
+									+ "VALUES (\"%s\",\"%s\",\"%s\");",
+							1, person.getId(), selectedMeetId);
+					DB.insertData(insertQueryMeet);
+				} catch (SQLException e1	) {
+					// TODO Auto-generated catch block
+
+				}
+				
+			}
+		});
 		JSeparator separator = new JSeparator();
 		separator.setBounds(23, 515, 943, 2);
 		gradientPanel.add(separator);

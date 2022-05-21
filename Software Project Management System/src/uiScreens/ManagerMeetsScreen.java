@@ -324,10 +324,10 @@ public class ManagerMeetsScreen {
 
 		while (rs.next()) {
 
-			Meet meet = new Meet(rs.getString("idMeet"), rs.getString("meetName"), rs.getString("meetDescription"),
+			Meet meet = new Meet(rs.getInt("idMeet"), Integer.parseInt(teamid),rs.getString("meetName"), rs.getString("meetDescription"),
 					rs.getString("meetTime"));
 
-			String[] row = { meet.getMeetingId(), meet.getName(), meet.getDescription(), meet.getMeetingTime() };
+			String[] row = { Integer.toString(meet.getMeetingId()), meet.getName(), meet.getDescription(), meet.getMeetingTime() };
 
 			tableModel.addRow(row);
 
