@@ -120,6 +120,12 @@ public class LoginScreen {
 										+ passwordField.getText() + "\"" + ";");
 						persondata.next();
 
+						
+						System.out.println(persondata.getString(1));
+						System.out.println(persondata.getString(2));
+						System.out.println(persondata.getString(3));
+						System.out.println(persondata.getString(4));
+						
 						Customer customer = new Customer(Integer.parseInt(persondata.getString(1)), "Customer",
 								persondata.getString(2), persondata.getString(3), persondata.getString(4));
 

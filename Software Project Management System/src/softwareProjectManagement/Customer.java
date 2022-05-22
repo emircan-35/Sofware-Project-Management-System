@@ -19,8 +19,11 @@ public class Customer extends Person {
 	}
 	@SuppressWarnings("unused")
 	private void addProjects() throws SQLException {
+		
 		ResultSet rs=DB.selectData("select * from project where Customer_idCustomer="+this.getId());
-		while (rs.next()) addProject(new Project(this.getId(),this.getId(),rs.getString(2),rs.getString(3),rs.getInt(8)));
+		
+		while (rs.next()) addProject(new Project(this.getId(),this.getId(),rs.getString(2),rs.getString(3)));
+	
 	}
 	public void addProject(Project newProject) {
 		projects.add(newProject);

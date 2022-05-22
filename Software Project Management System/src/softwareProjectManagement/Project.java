@@ -12,14 +12,13 @@ public class Project {
 	private Team responsibleTeam;
 	private ArrayList<Task> tasks;
 	private Meet[] meets;
-	private int money;
 
-	public Project(int projectId,int customerID, String projectName, String projectDescription, int money) {
+	public Project(int projectId, int customerID, String projectName, String projectDescription) {
 		this.setCustomerID(customerID);
 		this.setProjectId(projectId);
 		this.projectName = projectName;
 		this.projectDescription = projectDescription;
-		this.money = money;
+
 		this.status = false;
 	}
 
@@ -29,8 +28,9 @@ public class Project {
 		private boolean status; // done --> completed, otherwise false
 		private String deadline;
 		private int id;
-		public Task(int id,String workerName, String taskDescription, boolean status, String deadline) {
-			this.id=id;
+
+		public Task(int id, String workerName, String taskDescription, boolean status, String deadline) {
+			this.id = id;
 			this.workerName = workerName;
 			this.taskDescription = taskDescription;
 			this.status = status;
@@ -64,11 +64,14 @@ public class Project {
 		public boolean isStatus() {
 			return status;
 		}
+
 		public String getStatus() {
 			if (isStatus()) {
 				return "True";
-			}else return "False";
+			} else
+				return "False";
 		}
+
 		public void setStatus(boolean status) {
 			this.status = status;
 		}
@@ -99,14 +102,6 @@ public class Project {
 		this.projectDescription = projectDescription;
 	}
 
-	public int getMoney() {
-		return money;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
-	}
-
 	public Team getResponsibleTeam() {
 		return responsibleTeam;
 	}
@@ -130,10 +125,12 @@ public class Project {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
 	public String getStatus() {
 		if (isStatus()) {
 			return "True";
-		}else return "False";
+		} else
+			return "False";
 	}
 
 	public Meet[] getMeets() {
