@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextArea;
 import java.awt.Rectangle;
@@ -13,8 +15,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.ITWorker;
 import softwareProjectManagement.Person;
 import softwareProjectManagement.Project.Task;
+import softwareProjectManagement.Report;
 
 import javax.swing.JTextPane;
 import javax.swing.JButton;
@@ -154,7 +158,23 @@ public class ITWorkerReportScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if (textArea.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "A REPORT CANNOT BE EMPTY",
+							"EMPTY TEXT AREA", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				//int id,ITWorker owner, String description, Task task) {
+				Report report=new Report(1, (ITWorker) person, textArea.getText(),null);
+				String insertQueryReport = String.format(
+						"INSERT INTO  report(idReport, reportDescription, Worker_workerid,Task_idTask,Task_Project_idProject)\r\n"
+								+ "VALUES (\"%s\",\"%s\",\"%s\",\"%s\",\"%s\");",
+						5, report.getDescription(), person.getId(),1,1);
+				try {
+					DB.insertData(insertQueryReport);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

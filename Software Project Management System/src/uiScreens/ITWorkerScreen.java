@@ -8,6 +8,7 @@ import softwareProjectManagement.ITWorker;
 import softwareProjectManagement.Meet;
 import softwareProjectManagement.Person;
 import softwareProjectManagement.Project;
+import softwareProjectManagement.Report;
 import softwareProjectManagement.Project.Task;
 
 import javax.swing.JLabel;
