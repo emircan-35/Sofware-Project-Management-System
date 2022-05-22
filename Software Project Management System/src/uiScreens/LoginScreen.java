@@ -109,9 +109,9 @@ public class LoginScreen {
 
 				try {
 					String selection = buttonGroup.getSelection().getActionCommand();
-					
+
 					System.out.println(selection);
-					
+
 					if (selection.equalsIgnoreCase("Customer")) {
 
 						ResultSet persondata = DB
@@ -120,14 +120,10 @@ public class LoginScreen {
 										+ passwordField.getText() + "\"" + ";");
 						persondata.next();
 
-						if (persondata.getString(1).equals("1")) {
+						Customer customer = new Customer(Integer.parseInt(persondata.getString(1)), "Customer",
+								persondata.getString(2), persondata.getString(3), persondata.getString(4));
 
-							Customer customer = new Customer(Integer.parseInt(persondata.getString(1)), "Customer",
-									persondata.getString(2), persondata.getString(3), persondata.getString(4));
-
-							CustomerScreen.OpenCustomerScreen(customer);
-
-						}
+						CustomerScreen.OpenCustomerScreen(customer);
 
 					} else {
 
@@ -137,6 +133,7 @@ public class LoginScreen {
 										+ "where workerUsername = \"" + textField.getText()
 										+ "\" and workerPassword =\"" + passwordField.getText() + "\";");
 						persondata.next();
+						
 						if (persondata.getString(7).equalsIgnoreCase("manager")) {
 							System.out.println(persondata.getString(1));
 							System.out.println(persondata.getString(2));
@@ -155,7 +152,11 @@ public class LoginScreen {
 							ManagerScreen.openManagerScreen(person);
 
 						} else {
-							Person person=new ITWorker(Integer.parseInt(persondata.getString(1)), persondata.getString(7), persondata.getString(2), persondata.getString(3), persondata.getString(6), Integer.parseInt(persondata.getString(5)), Integer.parseInt(persondata.getString(4)), Integer.parseInt(persondata.getString(8)));
+							Person person = new ITWorker(Integer.parseInt(persondata.getString(1)),
+									persondata.getString(7), persondata.getString(2), persondata.getString(3),
+									persondata.getString(6), Integer.parseInt(persondata.getString(5)),
+									Integer.parseInt(persondata.getString(4)),
+									Integer.parseInt(persondata.getString(8)));
 							ITWorkerScreen.OpenITWorkerScreen(person);
 
 						}
