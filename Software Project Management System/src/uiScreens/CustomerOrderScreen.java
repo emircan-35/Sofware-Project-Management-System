@@ -127,12 +127,10 @@ public class CustomerOrderScreen {
 					return;
 				}
 
-				Project newProject=new Project(customer.getId(),textField.getText(),textArea.getText(),Integer.parseInt(textField_1.getText()));
-				customer.addProject(newProject);
 				String insertQueryProject = String.format(
 						"INSERT INTO project (ProjectName,ProjectDescription,projectStatus, Customer_idCustomer,Customer_Title_idTitle,offeredAmount,Team_idTeam)\r\n"
 								+ "VALUES (\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\");",
-						textField.getText(), textArea.getText(), 0, newProject.getCustomerID(),3,textField_1.getText(),1);				
+						textField.getText(), textArea.getText(), 0, customer.getId(),3,textField_1.getText(),1);				
 				try {
 					DB.insertData(insertQueryProject);
 				} catch (SQLException e1) {

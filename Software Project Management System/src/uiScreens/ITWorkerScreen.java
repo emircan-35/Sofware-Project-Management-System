@@ -210,7 +210,7 @@ public class ITWorkerScreen {
 		});
 		ResultSet rs=DB.selectData("select * from task where Worker_Workerid="+person.getId());
 		ArrayList<Task> tasks=new ArrayList();
-		Project project=new Project(0, null, null, 0);
+		Project project=new Project(0,0, null, null, 0);
 		//String workerName, String taskDescription, boolean status, String deadline) 
 		while (rs.next()) tasks.add(project.new Task(rs.getInt(1),person.getPersonName(),rs.getString(2),rs.getBoolean(3),rs.getString(4)));
 		for (Task task : tasks) {

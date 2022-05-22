@@ -12,17 +12,29 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import databaseProcesses.GeneralDB;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Component;
+
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JProgressBar;
+import javax.swing.JComboBox;
 
 public class CustomerScreen {
 
 	private JFrame frmCustomer;
-
+	private GeneralDB DB=GeneralDB.getObject();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -88,11 +100,45 @@ public class CustomerScreen {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 9));
 		btnNewButton.setBounds(10, 54, 106, 32);
 		gradientPanel.add(btnNewButton);
-
-		JButton btnProjectStatus = new JButton("Project Status");
-		btnProjectStatus.setFont(new Font("Tahoma", Font.BOLD, 9));
-		btnProjectStatus.setBounds(126, 54, 106, 32);
-		gradientPanel.add(btnProjectStatus);
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(240, 59, 146, 5);
+		gradientPanel.add(progressBar);
+		progressBar.setValue(statusPercent(1));
+		
+		ArrayList<String> projectNames=customer.getProjectNames();
+		String[] projectNames1=new String[projectNames.size()];
+		for (int i = 0; i < projectNames1.length; i++) projectNames1[i]=projectNames.get(i);
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		
+		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setBounds(411, 63, 47, 14);
+		gradientPanel.add(lblNewLabel_4);
+		JComboBox comboBox = new JComboBox(new DefaultComboBoxModel(projectNames1));
+		comboBox.setBounds(187, 59, 30, 22);
+		comboBox.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String nameProject=(String) comboBox.getSelectedItem();
+				int chosenId=-1;
+				try {
+					ResultSet rs=DB.selectData("select idProject from project where ProjectName=\""+nameProject+"\"");
+					if (rs.next()) {
+						chosenId=rs.getInt(1);
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if (chosenId!=-1) {
+					int percent=statusPercent(chosenId)*100;
+					progressBar.setValue(percent);
+					lblNewLabel_4.setText(Integer.toString(percent));
+				}
+			}
+		});
+		gradientPanel.add(comboBox);
 
 		JLabel lblNewLabel_1 = new JLabel("Personal \r");
 		lblNewLabel_1.setBackground(Color.WHITE);
@@ -144,5 +190,22 @@ public class CustomerScreen {
 		lblNewLabel_3_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_6.setBounds(178, 248, 83, 14);
 		frmCustomer.getContentPane().add(lblNewLabel_3_6);
+	}
+	private int statusPercent(int projectID) {
+		
+		int totalTask=0;
+		int completedTask=0;
+		try {
+			ResultSet rs=DB.selectData("select * from task where Project_idProject="+projectID);
+			while (rs.next()) {
+				totalTask++;
+				if (rs.getBoolean(3)) completedTask++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (totalTask==0||completedTask==0) return 0;
+		else return completedTask/totalTask;
 	}
 }
