@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -125,11 +126,19 @@ public class CustomerOrderScreen {
 							"EMPTY AREA!", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
+
 				Project newProject=new Project(customer.getId(),textField.getText(),textArea.getText(),Integer.parseInt(textField_1.getText()));
 				customer.addProject(newProject);
-				//DB.insertData("INSERT INTO Project(ProjectName, ProjectDesription,Status,Customer_idCustomer,Customer_Title_idTitle,offeredAmount)\n"+
-				//"VALUES ('"+newProject.getProjectName()+"','"+newProject.getProjectDescription()+"',"+"0,"+customer.getId()+","+0+","+newProject.getMoney()+";");
-				
+				String insertQueryProject = String.format(
+						"INSERT INTO project (ProjectName,ProjectDescription,projectStatus, Customer_idCustomer,Customer_Title_idTitle,offeredAmount,Team_idTeam)\r\n"
+								+ "VALUES (\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\");",
+						textField.getText(), textArea.getText(), 0, newProject.getCustomerID(),3,textField_1.getText(),1);				
+				try {
+					DB.insertData(insertQueryProject);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 	}

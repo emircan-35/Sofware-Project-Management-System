@@ -166,9 +166,9 @@ public class ITWorkerReportScreen {
 				//int id,ITWorker owner, String description, Task task) {
 				Report report=new Report(1, (ITWorker) person, textArea.getText(),null);
 				String insertQueryReport = String.format(
-						"INSERT INTO  report(idReport, reportDescription, Worker_workerid,Task_idTask,Task_Project_idProject)\r\n"
-								+ "VALUES (\"%s\",\"%s\",\"%s\",\"%s\",\"%s\");",
-						5, report.getDescription(), person.getId(),1,1);
+						"INSERT INTO  report(reportDescription, Worker_workerid,Task_idTask,Task_Project_idProject)\r\n"
+								+ "VALUES (\"%s\",\"%s\",\"%s\",\"%s\");",
+						report.getDescription(), person.getId(),1,1);
 				try {
 					DB.insertData(insertQueryReport);
 				} catch (SQLException e1) {

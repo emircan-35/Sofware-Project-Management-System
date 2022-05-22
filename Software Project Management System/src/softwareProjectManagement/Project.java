@@ -14,7 +14,7 @@ public class Project {
 	private int money;
 
 	public Project(int customerID, String projectName, String projectDescription, int money) {
-		this.customerID = customerID;
+		this.setCustomerID(customerID);
 		this.projectName = projectName;
 		this.projectDescription = projectDescription;
 		this.money = money;
@@ -140,6 +140,14 @@ public class Project {
 
 	public void setMeets(Meet[] meets) {
 		this.meets = meets;
+	}
+
+	public int getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
 
 }

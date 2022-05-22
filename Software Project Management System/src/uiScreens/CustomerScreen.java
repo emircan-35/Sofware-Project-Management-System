@@ -110,7 +110,7 @@ public class CustomerScreen {
 		lblNewLabel_1_1.setBounds(10, 102, 103, 34);
 		frmCustomer.getContentPane().add(lblNewLabel_1_1);
 
-		JLabel lblNewLabel_3 = new JLabel("New label");
+		JLabel lblNewLabel_3 = new JLabel("Customer");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3.setBounds(67, 113, 83, 14);
 		frmCustomer.getContentPane().add(lblNewLabel_3);
@@ -120,7 +120,7 @@ public class CustomerScreen {
 		lblNewLabel_1_1_1.setBounds(10, 147, 103, 34);
 		frmCustomer.getContentPane().add(lblNewLabel_1_1_1);
 
-		JLabel lblNewLabel_3_1 = new JLabel("New label");
+		JLabel lblNewLabel_3_1 = new JLabel(customer.getPersonName());
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_1.setBounds(80, 161, 83, 14);
 		frmCustomer.getContentPane().add(lblNewLabel_3_1);
@@ -130,7 +130,7 @@ public class CustomerScreen {
 		lblNewLabel_1_2.setBounds(10, 192, 103, 34);
 		frmCustomer.getContentPane().add(lblNewLabel_1_2);
 
-		JLabel lblNewLabel_3_2 = new JLabel("New label");
+		JLabel lblNewLabel_3_2 = new JLabel(customer.getPersonSurname());
 		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_2.setBounds(114, 206, 83, 14);
 		frmCustomer.getContentPane().add(lblNewLabel_3_2);
@@ -140,7 +140,7 @@ public class CustomerScreen {
 		lblNewLabel_1_6.setBounds(10, 237, 169, 34);
 		frmCustomer.getContentPane().add(lblNewLabel_1_6);
 
-		JLabel lblNewLabel_3_6 = new JLabel("New label");
+		JLabel lblNewLabel_3_6 = new JLabel(customer.getPersonPhone());
 		lblNewLabel_3_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_6.setBounds(178, 248, 83, 14);
 		frmCustomer.getContentPane().add(lblNewLabel_3_6);
