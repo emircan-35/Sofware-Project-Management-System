@@ -179,23 +179,23 @@ public class ManagerReportsList {
 		Button button = new Button("Export as PDF");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				exportPDF(person);
+				try {
+					exportPDF(person);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		button.setBounds(20, 153, 118, 38);
 		frame.getContentPane().add(button);
 	}
-	private void exportPDF(Person person) {
+	private void exportPDF(Person person) throws IOException {
 		Document doc = new Document();  
 		try {
 			File file=new File("PDFs");
 			if (!file.exists()) {
-				try {
-					file.createNewFile();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				file.mkdirs();
 			}
 			PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("PDFs\\"+person.getPersonName()+"_"+person.getPersonSurname()+"_report.pdf"));
 			doc.open();  
