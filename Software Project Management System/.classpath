@@ -6,11 +6,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/emirc/Desktop/flatlaf-2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/emirc/git/Sofware-Project-Management-System/Software Project Management System/jars/flatlaf-2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/emirc/git/Sofware-Project-Management-System/Software Project Management System/jars/jgoodies-common-1.8.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/emirc/git/Sofware-Project-Management-System/Software Project Management System/jars/jgoodies-forms-1.9.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/emirc/git/Sofware-Project-Management-System/Software Project Management System/jars/KGradientPanel.jar"/>
-	<classpathentry kind="lib" path="C:/Users/emirc/git/Sofware-Project-Management-System/Software Project Management System/jars/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="jars/KGradientPanel.jar"/>
+	<classpathentry kind="lib" path="jars/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="jars/flatlaf-2.1.jar"/>
+	<classpathentry kind="lib" path="jars/jgoodies-common-1.8.1.jar"/>
+	<classpathentry kind="lib" path="jars/jgoodies-forms-1.9.0.jar"/>
+	<classpathentry kind="lib" path="jars/itextpdf-5.5.13.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

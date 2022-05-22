@@ -7,6 +7,10 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import databaseProcesses.GeneralDB;
 
@@ -27,6 +31,9 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.awt.Button;
 
 public class ManagerReportsList {
 
@@ -166,5 +173,32 @@ public class ManagerReportsList {
 		});
 		btnNewButton.setBounds(246, 148, 177, 38);
 		frame.getContentPane().add(btnNewButton);
+		
+		Button button = new Button("Export as PDF");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exportPDF(person);
+			}
+		});
+		button.setBounds(20, 153, 118, 38);
+		frame.getContentPane().add(button);
+	}
+	private void exportPDF(Person person) {
+		Document doc = new Document();  
+		try {
+			PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("PDFs\\"+person.getPersonName()+"_"+person.getPersonSurname()+"_report.pdf"));
+			doc.open();  
+			doc.add(new Paragraph(reportDescription)); 
+			doc.close();
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+
+
 	}
 }
