@@ -109,8 +109,8 @@ public class LoginScreen {
 
 				try {
 					String selection = buttonGroup.getSelection().getActionCommand();
-
-					if (selection.equals("Customer")) {
+					System.out.println(selection);
+					if (selection.equalsIgnoreCase("Customer")) {
 
 						ResultSet persondata = DB
 								.selectData("SELECT * FROM softwaremanagementsystem.customer where customerusername = "

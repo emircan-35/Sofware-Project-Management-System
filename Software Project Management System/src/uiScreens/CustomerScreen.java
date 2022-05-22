@@ -102,7 +102,7 @@ public class CustomerScreen {
 		gradientPanel.add(btnNewButton);
 		
 		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(240, 59, 146, 5);
+		progressBar.setBounds(240, 59, 146, 27);
 		gradientPanel.add(progressBar);
 		progressBar.setValue(statusPercent(1));
 		

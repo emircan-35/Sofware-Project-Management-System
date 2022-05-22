@@ -31,8 +31,10 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.awt.Button;
 
 public class ManagerReportsList {
@@ -174,18 +176,27 @@ public class ManagerReportsList {
 		btnNewButton.setBounds(246, 148, 177, 38);
 		frame.getContentPane().add(btnNewButton);
 		
-		Button button = new Button("Export as PDF");
+		JButton button = new JButton("Export as PDF");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				exportPDF(person);
+				try {
+					exportPDF(person);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		button.setBounds(20, 153, 118, 38);
+		button.setBounds(10, 148, 151, 38);
 		frame.getContentPane().add(button);
 	}
-	private void exportPDF(Person person) {
+	private void exportPDF(Person person) throws IOException {
 		Document doc = new Document();  
 		try {
+			File file=new File("PDFs");
+			if (!file.exists()) {
+				file.mkdirs();
+			}
 			PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("PDFs\\"+person.getPersonName()+"_"+person.getPersonSurname()+"_report.pdf"));
 			doc.open();  
 			doc.add(new Paragraph(reportDescription)); 
