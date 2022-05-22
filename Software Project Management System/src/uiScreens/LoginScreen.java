@@ -109,7 +109,9 @@ public class LoginScreen {
 
 				try {
 					String selection = buttonGroup.getSelection().getActionCommand();
+					
 					System.out.println(selection);
+					
 					if (selection.equalsIgnoreCase("Customer")) {
 
 						ResultSet persondata = DB
