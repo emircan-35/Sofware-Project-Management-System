@@ -90,55 +90,31 @@ public class CustomerScreen {
 		lblNewLabel.setBounds(10, 11, 106, 32);
 		gradientPanel.add(lblNewLabel);
 
-		JButton btnNewButton = new JButton("Project Order");
+		JButton btnNewButton = new JButton("Demand Message");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				CustomerOrderScreen.OpenCustomerOrderScreen(customer);
+				CustomerMessageScreen.OpenCustomerOrderScreen(customer);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 9));
-		btnNewButton.setBounds(10, 54, 106, 32);
+		btnNewButton.setBounds(10, 54, 144, 32);
 		gradientPanel.add(btnNewButton);
 		
 		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(240, 59, 146, 27);
+		progressBar.setBounds(186, 54, 254, 27);
 		gradientPanel.add(progressBar);
 		progressBar.setValue(statusPercent(1));
+		
+		JLabel lblProjectProgress = new JLabel("Project Progress:");
+		lblProjectProgress.setForeground(Color.WHITE);
+		lblProjectProgress.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblProjectProgress.setBounds(186, 14, 171, 32);
+		gradientPanel.add(lblProjectProgress);
 		
 		ArrayList<String> projectNames=customer.getProjectNames();
 		String[] projectNames1=new String[projectNames.size()];
 		for (int i = 0; i < projectNames1.length; i++) projectNames1[i]=projectNames.get(i);
-		@SuppressWarnings({ "unchecked", "rawtypes" })
-		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setBounds(411, 63, 47, 14);
-		gradientPanel.add(lblNewLabel_4);
-		JComboBox comboBox = new JComboBox(new DefaultComboBoxModel(projectNames1));
-		comboBox.setBounds(187, 59, 30, 22);
-		comboBox.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String nameProject=(String) comboBox.getSelectedItem();
-				int chosenId=-1;
-				try {
-					ResultSet rs=DB.selectData("select idProject from project where ProjectName=\""+nameProject+"\"");
-					if (rs.next()) {
-						chosenId=rs.getInt(1);
-					}
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				if (chosenId!=-1) {
-					int percent=statusPercent(chosenId)*100;
-					progressBar.setValue(percent);
-					lblNewLabel_4.setText(Integer.toString(percent));
-				}
-			}
-		});
-		gradientPanel.add(comboBox);
 
 		JLabel lblNewLabel_1 = new JLabel("Personal \r");
 		lblNewLabel_1.setBackground(Color.WHITE);
@@ -168,7 +144,7 @@ public class CustomerScreen {
 
 		JLabel lblNewLabel_3_1 = new JLabel(customer.getPersonName());
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_1.setBounds(80, 161, 83, 14);
+		lblNewLabel_3_1.setBounds(83, 154, 320, 23);
 		frmCustomer.getContentPane().add(lblNewLabel_3_1);
 
 		JLabel lblNewLabel_1_2 = new JLabel("Surname:");
@@ -178,7 +154,7 @@ public class CustomerScreen {
 
 		JLabel lblNewLabel_3_2 = new JLabel(customer.getPersonSurname());
 		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_2.setBounds(114, 206, 83, 14);
+		lblNewLabel_3_2.setBounds(114, 200, 302, 23);
 		frmCustomer.getContentPane().add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_1_6 = new JLabel("Phone Number:");
@@ -188,7 +164,7 @@ public class CustomerScreen {
 
 		JLabel lblNewLabel_3_6 = new JLabel(customer.getPersonPhone());
 		lblNewLabel_3_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_6.setBounds(178, 248, 83, 14);
+		lblNewLabel_3_6.setBounds(172, 244, 244, 23);
 		frmCustomer.getContentPane().add(lblNewLabel_3_6);
 	}
 	private int statusPercent(int projectID) {

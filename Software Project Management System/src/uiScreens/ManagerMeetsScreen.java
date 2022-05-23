@@ -161,13 +161,9 @@ public class ManagerMeetsScreen {
 
 				try {
 
-					if (selectedMeetId == null) {
-
-						System.out.println("Silmedim");
-					} else {
-						DB.deleteData("DELETE FROM meet WHERE meet.idMeet=" + selectedMeetId);
-						refreshTable(teamid);
-					}
+					DB.deleteData("DELETE FROM attendence WHERE attendence.meet_idMeet=" + selectedMeetId);
+					DB.deleteData("DELETE FROM meet WHERE meet.idMeet=" + selectedMeetId);
+					refreshTable(teamid);
 
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
@@ -324,10 +320,11 @@ public class ManagerMeetsScreen {
 
 		while (rs.next()) {
 
-			Meet meet = new Meet(rs.getInt("idMeet"), Integer.parseInt(teamid),rs.getString("meetName"), rs.getString("meetDescription"),
-					rs.getString("meetTime"));
+			Meet meet = new Meet(rs.getInt("idMeet"), Integer.parseInt(teamid), rs.getString("meetName"),
+					rs.getString("meetDescription"), rs.getString("meetTime"));
 
-			String[] row = { Integer.toString(meet.getMeetingId()), meet.getName(), meet.getDescription(), meet.getMeetingTime() };
+			String[] row = { Integer.toString(meet.getMeetingId()), meet.getName(), meet.getDescription(),
+					meet.getMeetingTime() };
 
 			tableModel.addRow(row);
 

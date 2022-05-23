@@ -26,21 +26,22 @@ import keeptoo.KGradientPanel;
 import softwareProjectManagement.Customer;
 import softwareProjectManagement.Project;
 
-public class CustomerOrderScreen {
+public class CustomerMessageScreen {
 
 	private JFrame frame;
-	private JTextField textField;
 	private JTextField textField_1;
-	private static GeneralDB DB=GeneralDB.getObject();
+	private static GeneralDB DB = GeneralDB.getObject();
+
 	/**
 	 * Launch the application.
-	 * @param customer 
+	 * 
+	 * @param customer
 	 */
 	public static void OpenCustomerOrderScreen(Customer customer) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CustomerOrderScreen window = new CustomerOrderScreen(customer);
+					CustomerMessageScreen window = new CustomerMessageScreen(customer);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,92 +52,73 @@ public class CustomerOrderScreen {
 
 	/**
 	 * Create the application.
-	 * @param customer 
+	 * 
+	 * @param customer
 	 */
-	public CustomerOrderScreen(Customer customer) {
+	public CustomerMessageScreen(Customer customer) {
 		initialize(customer);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @param customer 
+	 * 
+	 * @param customer
 	 */
 	private void initialize(Customer customer) {
-		
+
 		try {
-			UIManager.setLookAndFeel( new FlatDarkLaf() );
+			UIManager.setLookAndFeel(new FlatDarkLaf());
 		} catch (UnsupportedLookAndFeelException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 791, 596);
+		frame.setBounds(100, 100, 791, 574);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Order Project");
+
+		JLabel lblNewLabel = new JLabel("Message to Manager");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
-		lblNewLabel.setBounds(20, -17, 204, 72);
+		lblNewLabel.setBounds(20, -17, 335, 72);
 		frame.getContentPane().add(lblNewLabel);
-		
-		JLabel lblProjectName = new JLabel("Project Name:");
-		lblProjectName.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblProjectName.setBounds(20, 11, 204, 72);
-		frame.getContentPane().add(lblProjectName);
-		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textField.setBounds(30, 66, 364, 33);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
+
 		KGradientPanel gradientPanel = new KGradientPanel();
-		gradientPanel.setBounds(0, 209, 789, 358);
+		gradientPanel.setBounds(0, 139, 789, 407);
 		frame.getContentPane().add(gradientPanel);
 		gradientPanel.setLayout(null);
-		
+
 		JButton btnNewButton = new JButton("Order Project");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setBounds(282, 302, 189, 38);
+		btnNewButton.setBounds(285, 345, 189, 38);
 		gradientPanel.add(btnNewButton);
 
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textArea.setBounds(10, 11, 755, 280);
+		textArea.setBounds(10, 54, 755, 280);
 		gradientPanel.add(textArea);
 		
-		JLabel lblProjectDescription = new JLabel("Offered Amount:");
+				JLabel lblMessage = new JLabel("Message:");
+				lblMessage.setBounds(10, -11, 204, 72);
+				gradientPanel.add(lblMessage);
+				lblMessage.setFont(new Font("Tahoma", Font.BOLD, 19));
+
+		JLabel lblProjectDescription = new JLabel("Message Title:");
 		lblProjectDescription.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblProjectDescription.setBounds(20, 81, 204, 72);
+		lblProjectDescription.setBounds(20, 24, 204, 72);
 		frame.getContentPane().add(lblProjectDescription);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		textField_1.setColumns(10);
-		textField_1.setBounds(20, 139, 364, 33);
+		textField_1.setBounds(20, 80, 364, 33);
 		frame.getContentPane().add(textField_1);
 		btnNewButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (textField.getText().isEmpty()||textField_1.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame, "At least one area is empty! Try again",
-							"EMPTY AREA!", JOptionPane.WARNING_MESSAGE);
-					return;
-				}
-
-				String insertQueryProject = String.format(
-						"INSERT INTO project (ProjectName,ProjectDescription,projectStatus, Customer_idCustomer,Customer_Title_idTitle,offeredAmount,Team_idTeam)\r\n"
-								+ "VALUES (\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\");",
-						textField.getText(), textArea.getText(), 0, customer.getId(),3,textField_1.getText(),1);				
-				try {
-					DB.insertData(insertQueryProject);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				System.out.println(textArea.getText());
 			}
 		});
 	}

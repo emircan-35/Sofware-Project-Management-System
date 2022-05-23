@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
+import softwareProjectManagement.Customer;
 import softwareProjectManagement.Manager;
 import softwareProjectManagement.Person;
 
@@ -240,9 +241,62 @@ public class ManagerScreen {
 		lblNewLabel_1_7.setBounds(10, 494, 169, 34);
 		frame.getContentPane().add(lblNewLabel_1_7);
 
-		JLabel lblNewLabel_3_7 = new JLabel("New label");
+		ResultSet allTasksCountRs = DB.selectData("select count(task.idTask) from project inner join\r\n"
+				+ "task on task.Project_idProject=project.idProject\r\n" + "where project.Team_idTeam=" + teamid);
+
+		allTasksCountRs.next();
+
+		double allTasksCount = allTasksCountRs.getInt(1);
+
+		allTasksCountRs.close();
+
+		ResultSet completedTasksCountRs = DB.selectData("select count(task.idTask) from project inner join\r\n"
+				+ "task on task.Project_idProject=project.idProject\r\n"
+				+ "where task.Taskstatus=1 and project.Team_idTeam=" + teamid);
+
+		completedTasksCountRs.next();
+
+		double completedTasksCount = completedTasksCountRs.getInt(1);
+		completedTasksCountRs.close();
+
+		System.out.println("All Tasks Number: " + allTasksCount);
+
+		System.out.println("Completed Tasks Number: " + completedTasksCount);
+
+		// Percentagei kontrol ederek gerekli algoritma kurularak projenin complete
+		// olmasý buton ile saðlanabilir.!!
+
+		double percentage = (completedTasksCount / allTasksCount) * 100;
+
+		System.out.println(percentage);
+
+		ResultSet customerRS = DB.selectData(
+				"select customer.idCustomer, customer.customerName, customer.customerSurname,customer.customerPhone\r\n"
+						+ "from project inner join \r\n" + "customer where project.Team_idTeam=" + teamid);
+
+		customerRS.next();
+
+		System.out.println(customerRS.getInt(1) + "");
+		System.out.println(customerRS.getString(2));
+		System.out.println(customerRS.getString(3));
+		System.out.println(customerRS.getString(4));
+
+		Customer customer = new Customer(customerRS.getInt(1), "Customer", customerRS.getString(2),
+				customerRS.getString(3), customerRS.getString(4));
+		customerRS.close();
+
+		ResultSet countWorkerRS = DB
+				.selectData("select count(workerid) from worker \r\n" + "where worker.Team_idTeam=" + teamid);
+
+		countWorkerRS.next();
+
+		int workercount = countWorkerRS.getInt(1);
+
+		countWorkerRS.close();
+
+		JLabel lblNewLabel_3_7 = new JLabel(customer.getPersonName() + " " + customer.getPersonSurname());
 		lblNewLabel_3_7.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_7.setBounds(167, 505, 83, 14);
+		lblNewLabel_3_7.setBounds(167, 505, 153, 14);
 		frame.getContentPane().add(lblNewLabel_3_7);
 
 		JLabel lblNewLabel_1_7_1 = new JLabel("Project Status:");
@@ -250,7 +304,7 @@ public class ManagerScreen {
 		lblNewLabel_1_7_1.setBounds(10, 530, 169, 34);
 		frame.getContentPane().add(lblNewLabel_1_7_1);
 
-		JLabel lblNewLabel_3_7_1 = new JLabel("New label");
+		JLabel lblNewLabel_3_7_1 = new JLabel(percentage + "%");
 		lblNewLabel_3_7_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_7_1.setBounds(167, 541, 83, 14);
 		frame.getContentPane().add(lblNewLabel_3_7_1);
@@ -260,7 +314,7 @@ public class ManagerScreen {
 		lblNewLabel_1_7_1_1.setBounds(10, 566, 187, 34);
 		frame.getContentPane().add(lblNewLabel_1_7_1_1);
 
-		JLabel lblNewLabel_3_7_1_1 = new JLabel("15");
+		JLabel lblNewLabel_3_7_1_1 = new JLabel(workercount+"");
 		lblNewLabel_3_7_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_7_1_1.setBounds(167, 575, 83, 14);
 		frame.getContentPane().add(lblNewLabel_3_7_1_1);
