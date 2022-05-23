@@ -104,7 +104,7 @@ public class CustomerScreen {
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(186, 54, 254, 27);
 		gradientPanel.add(progressBar);
-		progressBar.setValue(statusPercent(1));
+		progressBar.setValue(50);
 		
 		JLabel lblProjectProgress = new JLabel("Project Progress:");
 		lblProjectProgress.setForeground(Color.WHITE);
@@ -167,21 +167,21 @@ public class CustomerScreen {
 		lblNewLabel_3_6.setBounds(172, 244, 244, 23);
 		frmCustomer.getContentPane().add(lblNewLabel_3_6);
 	}
-	private int statusPercent(int projectID) {
+	
+	private static int progressBarPercentage() {
 		
-		int totalTask=0;
-		int completedTask=0;
-		try {
-			ResultSet rs=DB.selectData("select * from task where Project_idProject="+projectID);
-			while (rs.next()) {
-				totalTask++;
-				if (rs.getBoolean(3)) completedTask++;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (totalTask==0||completedTask==0) return 0;
-		else return completedTask/totalTask;
+		
+		
+	//PROGRESS BARIN DEÐERÝ FONKSÝYONU
+		
+		
+		
+		
+		
+		
+		return 0;
+		
+		
 	}
+	
 }

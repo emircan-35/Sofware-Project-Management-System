@@ -314,7 +314,7 @@ public class ManagerScreen {
 		lblNewLabel_1_7_1_1.setBounds(10, 566, 187, 34);
 		frame.getContentPane().add(lblNewLabel_1_7_1_1);
 
-		JLabel lblNewLabel_3_7_1_1 = new JLabel(workercount+"");
+		JLabel lblNewLabel_3_7_1_1 = new JLabel(workercount + "");
 		lblNewLabel_3_7_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_7_1_1.setBounds(167, 575, 83, 14);
 		frame.getContentPane().add(lblNewLabel_3_7_1_1);
