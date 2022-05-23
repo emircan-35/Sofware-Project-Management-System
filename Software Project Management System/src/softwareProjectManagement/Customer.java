@@ -8,25 +8,22 @@ import databaseProcesses.GeneralDB;
 
 public class Customer extends Person {
 
-	private ArrayList<Project> projects;
+	private Project project;
 	private GeneralDB DB=GeneralDB.getObject();
 	public Customer(int id,String title, String personName, String personSurname, String personPhone) throws SQLException {
 		
 		super(id,title, personName, personSurname, personPhone);
-		projects=new ArrayList<Project>();
+		this.project=project;
 		// TODO Auto-generated constructor stub
 	}
-	@SuppressWarnings("unused")
+	public Project getProject() {
+		return project;
+	}
+	public void setProject(Project project) {
+		this.project = project;
+	}
 	
-	public void addProject(Project newProject) {
-		projects.add(newProject);
-	}
-	public ArrayList<String> getProjectNames() {
-		ArrayList<String> projectNames=new ArrayList<>();
-		for (Project project : projects) {
-			projectNames.add(project.getProjectName());
-		}
-		return projectNames;
-	}
+	
+
 	
 }

@@ -104,7 +104,7 @@ public class CustomerScreen {
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(186, 54, 254, 27);
 		gradientPanel.add(progressBar);
-		progressBar.setValue(50);
+		progressBar.setValue(statusPercent(customer));
 		
 		JLabel lblProjectProgress = new JLabel("Project Progress:");
 		lblProjectProgress.setForeground(Color.WHITE);
@@ -112,9 +112,7 @@ public class CustomerScreen {
 		lblProjectProgress.setBounds(186, 14, 171, 32);
 		gradientPanel.add(lblProjectProgress);
 		
-		ArrayList<String> projectNames=customer.getProjectNames();
-		String[] projectNames1=new String[projectNames.size()];
-		for (int i = 0; i < projectNames1.length; i++) projectNames1[i]=projectNames.get(i);
+
 
 		JLabel lblNewLabel_1 = new JLabel("Personal \r");
 		lblNewLabel_1.setBackground(Color.WHITE);
@@ -168,20 +166,22 @@ public class CustomerScreen {
 		frmCustomer.getContentPane().add(lblNewLabel_3_6);
 	}
 	
-	private static int progressBarPercentage() {
-		
-		
-		
-	//PROGRESS BARIN DEÐERÝ FONKSÝYONU
-		
-		
-		
-		
-		
-		
-		return 0;
-		
-		
+	private int statusPercent(Customer customer) {
+		if (customer.getProject().getProjectId()==0) return 0; //Means not having a project
+		int totalTask=0;
+		int completedTask=0;
+		try {
+			ResultSet rs=DB.selectData("select * from task where Project_idProject="+customer.getProject().getProjectId());
+			while (rs.next()) {
+				totalTask++;
+				if (rs.getBoolean(3)) completedTask++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (totalTask==0||completedTask==0) return 0;
+		else return (int) (((float)completedTask/totalTask)*100);
 	}
 	
 }

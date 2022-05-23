@@ -25,6 +25,7 @@ import softwareProjectManagement.Customer;
 import softwareProjectManagement.ITWorker;
 import softwareProjectManagement.Manager;
 import softwareProjectManagement.Person;
+import softwareProjectManagement.Project;
 
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
@@ -128,7 +129,11 @@ public class LoginScreen {
 						
 						Customer customer = new Customer(Integer.parseInt(persondata.getString(1)), "Customer",
 								persondata.getString(2), persondata.getString(3), persondata.getString(4));
-
+						persondata.close();
+						ResultSet projectOfCustomer=DB.selectData("select * FROM softwaremanagementsystem.project where Customer_idCustomer="+customer.getId()+";");
+						if (projectOfCustomer.next()) {
+							customer.setProject(new Project(projectOfCustomer.getInt(1),customer.getId(),projectOfCustomer.getString(2),projectOfCustomer.getString(3)));
+						}
 						CustomerScreen.OpenCustomerScreen(customer);
 
 					} else {
