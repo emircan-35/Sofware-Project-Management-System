@@ -10,6 +10,7 @@ import softwareProjectManagement.Person;
 
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -31,6 +32,7 @@ public class ManagerScreen {
 	private JFrame frame;
 	private GeneralDB DB = GeneralDB.getObject();
 	private String projectName;
+	private int projectId;
 	private int teamid;
 
 	/**
@@ -126,6 +128,37 @@ public class ManagerScreen {
 		btnTeam.setBounds(38, 482, 125, 32);
 		gradientPanel.add(btnTeam);
 
+		JButton btnNewButton_1 = new JButton("Show message");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+
+					ResultSet messageRS = DB.selectData(
+							"SELECT customer.messageTitle , currentMessage FROM softwaremanagementsystem.project\r\n"
+									+ "inner join customer on project.Customer_idCustomer=customer.idCustomer where project.idProject="
+									+ projectId);
+
+					messageRS.next();
+
+					System.out.println(messageRS.getString("messageTitle"));
+					System.out.println(messageRS.getString("currentMessage"));
+					
+					JOptionPane.showMessageDialog(frame, messageRS.getString("currentMessage"),
+
+							messageRS.getString("messageTitle"), JOptionPane.DEFAULT_OPTION);
+
+					messageRS.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		btnNewButton_1.setBounds(63, 632, 127, 48);
+		gradientPanel.add(btnNewButton_1);
+
 		Manager manager = (Manager) person;
 
 		JLabel lblNewLabel = new JLabel("Personal \r");
@@ -185,11 +218,14 @@ public class ManagerScreen {
 
 		try {
 			ResultSet resultset = DB.selectData(
-					"select projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
+					"select idProject, projectname from worker inner join project on worker.Team_idTeam = project.Team_idTeam\r\n"
 							+ "where workerid =+" + manager.getId());
 			resultset.next();
-			projectName = resultset.getString(1);
-			JLabel lblNewLabel_3_3 = new JLabel(resultset.getString(1));
+
+			projectId = resultset.getInt(1);
+
+			projectName = resultset.getString(2);
+			JLabel lblNewLabel_3_3 = new JLabel(resultset.getString(2));
 			lblNewLabel_3_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			lblNewLabel_3_3.setBounds(183, 292, 166, 34);
 			frame.getContentPane().add(lblNewLabel_3_3);

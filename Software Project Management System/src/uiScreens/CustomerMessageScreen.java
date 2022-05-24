@@ -89,7 +89,7 @@ public class CustomerMessageScreen {
 		frame.getContentPane().add(gradientPanel);
 		gradientPanel.setLayout(null);
 
-		JButton btnNewButton = new JButton("Order Project");
+		JButton btnNewButton = new JButton("Send Message");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton.setBounds(285, 345, 189, 38);
 		gradientPanel.add(btnNewButton);
@@ -118,7 +118,39 @@ public class CustomerMessageScreen {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println(textField_1.getText());
 				System.out.println(textArea.getText());
+				
+				
+				
+				
+				
+				
+				try {
+					
+					String updateQuery=String.format(
+							"UPDATE customer \r\n"
+									+ "SET customer.messageTitle = \"%s\",customer.currentMessage = \"%s\"\r\n"
+									+ "WHERE customer.idCustomer=%s"
+									,textField_1.getText(),textArea.getText(),customer.getId());
+					
+					DB.updateData(updateQuery);
+					
+					JOptionPane.showMessageDialog(frame, "Your message has been sent succesfully",
+							"Message has been sent", JOptionPane.WARNING_MESSAGE);
+					
+					
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
+				
 			}
 		});
 	}
