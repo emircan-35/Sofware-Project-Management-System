@@ -76,7 +76,7 @@ public class CustomerMessageScreen {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 791, 574);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Message to Manager");
@@ -98,11 +98,11 @@ public class CustomerMessageScreen {
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		textArea.setBounds(10, 54, 755, 280);
 		gradientPanel.add(textArea);
-		
-				JLabel lblMessage = new JLabel("Message:");
-				lblMessage.setBounds(10, -11, 204, 72);
-				gradientPanel.add(lblMessage);
-				lblMessage.setFont(new Font("Tahoma", Font.BOLD, 19));
+
+		JLabel lblMessage = new JLabel("Message:");
+		lblMessage.setBounds(10, -11, 204, 72);
+		gradientPanel.add(lblMessage);
+		lblMessage.setFont(new Font("Tahoma", Font.BOLD, 19));
 
 		JLabel lblProjectDescription = new JLabel("Message Title:");
 		lblProjectDescription.setFont(new Font("Tahoma", Font.BOLD, 19));
@@ -118,39 +118,28 @@ public class CustomerMessageScreen {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				System.out.println(textField_1.getText());
 				System.out.println(textArea.getText());
-				
-				
-				
-				
-				
-				
+
 				try {
-					
-					String updateQuery=String.format(
+
+					String updateQuery = String.format(
 							"UPDATE customer \r\n"
 									+ "SET customer.messageTitle = \"%s\",customer.currentMessage = \"%s\"\r\n"
-									+ "WHERE customer.idCustomer=%s"
-									,textField_1.getText(),textArea.getText(),customer.getId());
-					
+									+ "WHERE customer.idCustomer=%s",
+							textField_1.getText(), textArea.getText(), customer.getId());
+
 					DB.updateData(updateQuery);
-					
+
 					JOptionPane.showMessageDialog(frame, "Your message has been sent succesfully",
 							"Message has been sent", JOptionPane.WARNING_MESSAGE);
-					
-					
-					
+
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				
-				
-				
-				
+
 			}
 		});
 	}

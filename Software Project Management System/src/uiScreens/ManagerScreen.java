@@ -76,7 +76,7 @@ public class ManagerScreen {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 575, 728);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		KGradientPanel gradientPanel = new KGradientPanel();

@@ -121,18 +121,20 @@ public class LoginScreen {
 										+ passwordField.getText() + "\"" + ";");
 						persondata.next();
 
-						
 						System.out.println(persondata.getString(1));
 						System.out.println(persondata.getString(2));
 						System.out.println(persondata.getString(3));
 						System.out.println(persondata.getString(4));
-						
+
 						Customer customer = new Customer(Integer.parseInt(persondata.getString(1)), "Customer",
 								persondata.getString(2), persondata.getString(3), persondata.getString(4));
 						persondata.close();
-						ResultSet projectOfCustomer=DB.selectData("select * FROM softwaremanagementsystem.project where Customer_idCustomer="+customer.getId()+";");
+						ResultSet projectOfCustomer = DB
+								.selectData("select * FROM softwaremanagementsystem.project where Customer_idCustomer="
+										+ customer.getId() + ";");
 						if (projectOfCustomer.next()) {
-							customer.setProject(new Project(projectOfCustomer.getInt(1),customer.getId(),projectOfCustomer.getString(2),projectOfCustomer.getString(3)));
+							customer.setProject(new Project(projectOfCustomer.getInt(1), customer.getId(),
+									projectOfCustomer.getString(2), projectOfCustomer.getString(3)));
 						}
 						CustomerScreen.OpenCustomerScreen(customer);
 
@@ -144,7 +146,7 @@ public class LoginScreen {
 										+ "where workerUsername = \"" + textField.getText()
 										+ "\" and workerPassword =\"" + passwordField.getText() + "\";");
 						persondata.next();
-						
+
 						if (persondata.getString(7).equalsIgnoreCase("manager")) {
 							System.out.println(persondata.getString(1));
 							System.out.println(persondata.getString(2));
