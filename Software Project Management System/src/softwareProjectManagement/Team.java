@@ -11,26 +11,16 @@ public class Team {
 		this.teamId=teamId;
 	}
 
-	public int getTeamId() {
-		return teamId;
-	}
 
-	public void setTeamId(int teamId) {
-		this.teamId = teamId;
-	}
 
-	public void addTeamMember(ITWorker worker) {
 
-		members.add(worker);
 
-	}
+
 
 	public ArrayList<ITWorker> getMembers() {
 		return members;
 	}
 
-	public void setMembers(ArrayList<ITWorker> members) {
-		this.members = members;
-	}
+
 
 }

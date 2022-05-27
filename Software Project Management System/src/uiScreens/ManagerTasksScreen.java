@@ -3,11 +3,9 @@ package uiScreens;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import keeptoo.KGradientPanel;
 import softwareProjectManagement.Manager;
 import softwareProjectManagement.Person;
 
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -17,19 +15,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.lang.System.Logger.Level;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import javax.swing.JSeparator;
-import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 
 import databaseProcesses.GeneralDB;
 

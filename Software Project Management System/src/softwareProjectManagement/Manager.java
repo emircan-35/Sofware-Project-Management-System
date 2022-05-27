@@ -14,9 +14,7 @@ public class Manager extends Person {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
+
 
 
 	

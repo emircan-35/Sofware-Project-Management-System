@@ -8,16 +8,11 @@ import softwareProjectManagement.Customer;
 import softwareProjectManagement.Manager;
 import softwareProjectManagement.Person;
 
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
-import com.formdev.flatlaf.FlatDarkLaf;
 
 import databaseProcesses.GeneralDB;
-import jdk.jfr.Percentage;
 
 import java.awt.Font;
 import java.awt.Color;

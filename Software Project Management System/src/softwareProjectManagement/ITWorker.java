@@ -20,25 +20,19 @@ public class ITWorker extends Person {
 		return teamId;
 	}
 
-	public void setTeamId(int teamId) {
-		this.teamId = teamId;
-	}
+
 
 	public int getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
+
 
 	public int getExperience() {
 		return experience;
 	}
 
-	public void setExperience(int experience) {
-		this.experience = experience;
-	}
+
 
 
 }

@@ -2,12 +2,10 @@ package softwareProjectManagement;
 
 import java.sql.SQLException;
 
-import databaseProcesses.GeneralDB;
 
 public class Customer extends Person {
 
 	private Project project;
-	private GeneralDB DB = GeneralDB.getObject();
 
 	public Customer(int id, String title, String personName, String personSurname, String personPhone)
 			throws SQLException {

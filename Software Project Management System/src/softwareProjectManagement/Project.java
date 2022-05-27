@@ -1,6 +1,5 @@
 package softwareProjectManagement;
 
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class Project {
@@ -37,33 +36,19 @@ public class Project {
 			this.deadline = deadline;
 		}
 
-		public String getWorkerName() {
-			return workerName;
-		}
-
 		public int getId() {
 			return id;
 		}
 
-		public void setId(int id) {
-			this.id = id;
-		}
 
-		public void setWorkerName(String workerName) {
-			this.workerName = workerName;
-		}
 
 		public String getTaskDescription() {
 			return taskDescription;
 		}
 
-		public void setTaskDescription(String taskDescription) {
-			this.taskDescription = taskDescription;
-		}
 
-		public boolean isStatus() {
-			return status;
-		}
+
+
 
 		public String getStatus() {
 			if (isStatus()) {
@@ -72,27 +57,16 @@ public class Project {
 				return "False";
 		}
 
-		public void setStatus(boolean status) {
-			this.status = status;
-		}
 
 		public String getDeadline() {
 			return deadline;
 		}
 
-		public void setDeadline(String deadline) {
-			this.deadline = deadline;
-		}
 
 	}
 
-	public String getProjectName() {
-		return projectName;
-	}
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
+
 
 	public String getProjectDescription() {
 		return projectDescription;
@@ -137,13 +111,9 @@ public class Project {
 		return meets;
 	}
 
-	public void setMeets(Meet[] meets) {
-		this.meets = meets;
-	}
 
-	public int getCustomerID() {
-		return customerID;
-	}
+
+
 
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;

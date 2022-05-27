@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -24,7 +23,6 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import keeptoo.KGradientPanel;
 import softwareProjectManagement.Customer;
-import softwareProjectManagement.Project;
 
 public class CustomerMessageScreen {
 

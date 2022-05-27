@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import keeptoo.KGradientPanel;
 import softwareProjectManagement.Customer;
 
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -19,18 +18,13 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.Component;
 
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
-import javax.swing.JComboBox;
 
 public class CustomerScreen {
 

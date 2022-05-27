@@ -21,43 +21,26 @@ public class Meet {
 	}
 
 
-	public void setMeetingId(int meetingId) {
-		this.meetingId = meetingId;
-	}
 
 
-	public int getTeamID() {
-		return teamID;
-	}
-
-
-	public void setTeamID(int teamID) {
-		this.teamID = teamID;
-	}
 
 
 	public String getMeetingTime() {
 		return meetingTime;
 	}
 
-	public void setMeetingTime(String meetingTime) {
-		this.meetingTime = meetingTime;
-	}
+
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+
 
 	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+
 
 }

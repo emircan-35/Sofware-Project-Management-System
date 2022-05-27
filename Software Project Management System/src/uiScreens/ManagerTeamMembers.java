@@ -12,14 +12,12 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
-import com.formdev.flatlaf.FlatDarkLaf;
 
 import databaseProcesses.GeneralDB;
 

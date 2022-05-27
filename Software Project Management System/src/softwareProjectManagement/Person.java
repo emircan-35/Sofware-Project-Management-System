@@ -20,41 +20,31 @@ public abstract class Person {
 		return title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+
 
 	public String getPersonName() {
 		return personName;
 	}
 
-	public void setPersonName(String personName) {
-		this.personName = personName;
-	}
+
 
 	public String getPersonSurname() {
 		return personSurname;
 	}
 
-	public void setPersonSurname(String personSurname) {
-		this.personSurname = personSurname;
-	}
+
 
 	public String getPersonPhone() {
 		return personPhone;
 	}
 
-	public void setPersonPhone(String personPhone) {
-		this.personPhone = personPhone;
-	}
+
 	
 	
 }

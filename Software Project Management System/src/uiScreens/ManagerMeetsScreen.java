@@ -9,11 +9,9 @@ import softwareProjectManagement.Meet;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import com.formdev.flatlaf.FlatDarkLaf;
 
 import databaseProcesses.GeneralDB;
 
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,14 +19,12 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -76,6 +72,7 @@ public class ManagerMeetsScreen {
 	 * 
 	 * @throws SQLException
 	 */
+	@SuppressWarnings("unchecked")
 	private void initialize(String projectName, String teamid) throws SQLException {
 
 		frame = new JFrame();
@@ -175,15 +172,15 @@ public class ManagerMeetsScreen {
 		btnCancelMeet.setBounds(10, 471, 168, 38);
 		frame.getContentPane().add(btnCancelMeet);
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(
+		JComboBox<Object> comboBox = new JComboBox<Object>();
+		comboBox.setModel(new DefaultComboBoxModel<Object>(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 		comboBox.setBounds(10, 272, 51, 30);
 		frame.getContentPane().add(comboBox);
 
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(
+		JComboBox<Object> comboBox_1 = new JComboBox<Object>();
+		comboBox_1.setModel(new DefaultComboBoxModel<Object>(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 		comboBox_1.setBounds(67, 272, 51, 30);
 		frame.getContentPane().add(comboBox_1);
@@ -226,8 +223,8 @@ public class ManagerMeetsScreen {
 			minutes[i] = i + "";
 		}
 
-		JComboBox comboBox_3_1 = new JComboBox();
-		comboBox_3_1.setModel(new DefaultComboBoxModel(minutes));
+		JComboBox<Object> comboBox_3_1 = new JComboBox<Object>();
+		comboBox_3_1.setModel(new DefaultComboBoxModel<Object>(minutes));
 		comboBox_3_1.setBounds(88, 313, 51, 31);
 		frame.getContentPane().add(comboBox_3_1);
 

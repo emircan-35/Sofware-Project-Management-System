@@ -17,10 +17,8 @@ import java.sql.SQLException;
 import keeptoo.KGradientPanel;
 import softwareProjectManagement.ITWorker;
 import softwareProjectManagement.Person;
-import softwareProjectManagement.Project.Task;
 import softwareProjectManagement.Report;
 
-import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
