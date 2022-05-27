@@ -105,14 +105,29 @@ public class LoginScreen {
 
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 
 				try {
 					String selection = buttonGroup.getSelection().getActionCommand();
-
-
+					if (selection.isEmpty()) {
+						JOptionPane.showMessageDialog(frame, "NO BUTTON SELECTED",
+								"CHOOSE CUSTOMER OR WORKER BUTTON!", JOptionPane.WARNING_MESSAGE);
+						return;
+					}
+					if (passwordField.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(frame, "PASSWORD EMPTY",
+								"PASSWORD CANNOT BE EMPTY!", JOptionPane.WARNING_MESSAGE);
+						return;
+					}
+					if (textField.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(frame, "PASSWORD EMPTY",
+								"PASSWORD CANNOT BE EMPTY!", JOptionPane.WARNING_MESSAGE);
+						return;
+					}
 					if (selection.equalsIgnoreCase("Customer")) {
 
+						
 						ResultSet persondata = DB
 								.selectData("SELECT * FROM softwaremanagementsystem.customer where customerusername = "
 										+ "\"" + textField.getText() + "\"" + " and" + " customerpassword = " + "\""
@@ -162,7 +177,6 @@ public class LoginScreen {
 					}
 				} catch (Exception e1) {
 					// TODO: handle exception
-					System.out.println(e1);
 					JOptionPane.showMessageDialog(frame, "Wrong data was entered try again",
 							"Some data was given incorrect", JOptionPane.WARNING_MESSAGE);
 				}
