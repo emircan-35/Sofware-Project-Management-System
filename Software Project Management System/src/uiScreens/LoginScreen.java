@@ -110,7 +110,6 @@ public class LoginScreen {
 				try {
 					String selection = buttonGroup.getSelection().getActionCommand();
 
-					System.out.println(selection);
 
 					if (selection.equalsIgnoreCase("Customer")) {
 
@@ -120,10 +119,6 @@ public class LoginScreen {
 										+ passwordField.getText() + "\"" + ";");
 						persondata.next();
 
-						System.out.println(persondata.getString(1));
-						System.out.println(persondata.getString(2));
-						System.out.println(persondata.getString(3));
-						System.out.println(persondata.getString(4));
 
 						Customer customer = new Customer(Integer.parseInt(persondata.getString(1)), "Customer",
 								persondata.getString(2), persondata.getString(3), persondata.getString(4));
@@ -147,16 +142,7 @@ public class LoginScreen {
 						persondata.next();
 
 						if (persondata.getString(7).equalsIgnoreCase("manager")) {
-							System.out.println(persondata.getString(1));
-							System.out.println(persondata.getString(2));
-							System.out.println(persondata.getString(3));
-							System.out.println(persondata.getString(4));
-							System.out.println(persondata.getString(5));
-							System.out.println(persondata.getString(6));
-							System.out.println(persondata.getString(7));
 
-							// public Manager(int id,String title, String personName, String personSurname,
-							// String personPhone, int salary) {
 
 							Person person = new Manager(Integer.parseInt(persondata.getString(1)),
 									persondata.getString(7), persondata.getString(2), persondata.getString(3),

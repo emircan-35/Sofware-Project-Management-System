@@ -136,7 +136,6 @@ public class ManagerTasksScreen {
 
 				String selectedCellValue = (String) table.getValueAt(table.getSelectedRow(), 0);
 				selectedid = selectedCellValue;
-				System.out.println(selectedCellValue);
 
 			}
 		});
@@ -288,7 +287,6 @@ public class ManagerTasksScreen {
 						+ comboBox_2.getSelectedItem();
 				String selectedWorkerId = ("" + comboBox_3.getSelectedItem()).split(" ")[0];
 
-				System.out.println(selectedWorkerId);
 
 				String insertQuery = "INSERT INTO task (task.TaskDescription, task.Taskstatus, task.deadline, task.Project_idProject, task.Worker_workerid)\r\n"
 						+ "VALUES (\"%s\",\"0\",\"%s\",\"%s\",\"%s\");";

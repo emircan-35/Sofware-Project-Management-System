@@ -67,7 +67,6 @@ public class ManagerScreen {
 		ResultSet rs = DB.selectData("select * from worker\r\n" + "where workerid = " + person.getId());
 		rs.next();
 		teamid = rs.getInt("Team_idTeam");
-		System.out.println(teamid);
 
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -92,7 +91,6 @@ public class ManagerScreen {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println("MeetsScreen");
 				ManagerMeetsScreen.OpenManagerMeetsScreen(projectName, teamid + "");
 			}
 		});
@@ -103,7 +101,6 @@ public class ManagerScreen {
 		btnProjectTasks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println("Project Tasks");
 				ManagerTasksScreen.OpenManagerTasksScreen(person);
 
 			}
@@ -115,7 +112,6 @@ public class ManagerScreen {
 		btnTeam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println("Team Screen");
 
 				ManagerTeamMembers.OpenManagerTeamScreen(teamid, projectName);
 
@@ -137,8 +133,6 @@ public class ManagerScreen {
 
 					messageRS.next();
 
-					System.out.println(messageRS.getString("messageTitle"));
-					System.out.println(messageRS.getString("currentMessage"));
 					
 					JOptionPane.showMessageDialog(frame, messageRS.getString("currentMessage"),
 
@@ -287,12 +281,6 @@ public class ManagerScreen {
 		double completedTasksCount = completedTasksCountRs.getInt(1);
 		completedTasksCountRs.close();
 
-		System.out.println("All Tasks Number: " + allTasksCount);
-
-		System.out.println("Completed Tasks Number: " + completedTasksCount);
-
-		// Percentagei kontrol ederek gerekli algoritma kurularak projenin complete
-		// olması buton ile sağlanabilir.!!
 
 		double percentage = (completedTasksCount / allTasksCount) * 100;
 		if (percentage==100.0) {
@@ -302,7 +290,6 @@ public class ManagerScreen {
 			DB.updateData("update project set projectStatus = 0 where idProject="+projectId);
 
 		}
-		System.out.println(percentage);
 
 		ResultSet customerRS = DB.selectData(
 				"select customer.idCustomer, customer.customerName, customer.customerSurname,customer.customerPhone\r\n"
@@ -310,10 +297,6 @@ public class ManagerScreen {
 
 		customerRS.next();
 
-		System.out.println(customerRS.getInt(1) + "");
-		System.out.println(customerRS.getString(2));
-		System.out.println(customerRS.getString(3));
-		System.out.println(customerRS.getString(4));
 
 		Customer customer = new Customer(customerRS.getInt(1), "Customer", customerRS.getString(2),
 				customerRS.getString(3), customerRS.getString(4));

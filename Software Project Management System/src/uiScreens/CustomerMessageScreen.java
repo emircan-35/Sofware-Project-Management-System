@@ -117,9 +117,6 @@ public class CustomerMessageScreen {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println(textField_1.getText());
-				System.out.println(textArea.getText());
-
 				try {
 
 					String updateQuery = String.format(

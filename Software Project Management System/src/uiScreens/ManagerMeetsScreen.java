@@ -244,7 +244,6 @@ public class ManagerMeetsScreen {
 							+ comboBox_2.getSelectedItem() + "-" + comboBox_3.getSelectedItem() + ":"
 							+ comboBox_3_1.getSelectedItem();
 
-					System.out.println(meetTime);
 
 					String insertQueryMeet = String.format(
 							"INSERT INTO meet (meet.meetName, meet.meetDescription, meet.meetTime,meet.Team_idTeam)\r\n"
@@ -290,7 +289,6 @@ public class ManagerMeetsScreen {
 										+ "VALUES (%s,\"%s\",\"%s\");",
 								"0", workerids.get(i), lastMeetId);
 
-						System.out.println(insertAttendence);
 
 						try {
 							DB.insertData(insertAttendence);
@@ -312,7 +310,6 @@ public class ManagerMeetsScreen {
 
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		tableModel.setRowCount(0);
-		System.out.println("teamid=" + teamid);
 		ResultSet rs = DB.selectData("SELECT * FROM meet\r\n" + "where Team_idTeam=" + teamid);
 
 		while (rs.next()) {

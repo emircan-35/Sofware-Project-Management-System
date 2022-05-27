@@ -161,7 +161,6 @@ public class ITWorkerReportScreen {
 							"EMPTY TEXT AREA", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
-				//int id,ITWorker owner, String description, Task task) {
 				Report report=new Report(1, (ITWorker) person, textArea.getText(),null);
 				String insertQueryReport = String.format(
 						"INSERT INTO  report(reportDescription, Worker_workerid,Task_idTask,Task_Project_idProject)\r\n"

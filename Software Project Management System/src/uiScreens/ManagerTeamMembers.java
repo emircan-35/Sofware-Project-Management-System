@@ -128,11 +128,9 @@ public class ManagerTeamMembers {
 
 			teamWorkers.add(worker);
 
-			//System.out.println(worker.getPersonName());
 
 		}
 
-		// LÝSTEYE BURADAN SIRALANACAK UNUTMA!!!!!
 		Team team = new Team(teamid, teamWorkers);
 
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -221,7 +219,6 @@ public class ManagerTeamMembers {
 
 						if (Integer.toString(team.getMembers().get(i).getId()).equals(selectedId)) {
 
-							System.out.println(selectedId);
 							ManagerReportsList.OpenManagerReportsScreen(team.getMembers().get(i));
 							break;
 						}

@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class GeneralDB implements ISqlHelper {
 
-	private String username = "gokay2027";
-	private String password = "8605968605"; // Þifreyi tekrar GÝRERSÝN
+	private String username = "root";
+	private String password = "4152"; // Þifreyi tekrar GÝRERSÝN
 	private Connection con; // DATABASE ÞEMASI BAÞTAN KURULACAK DATABASE ADI AYNI OLACAK
 	private Statement stmt;
 	private static GeneralDB DB = new GeneralDB();
@@ -22,9 +22,7 @@ public class GeneralDB implements ISqlHelper {
 
 			this.stmt = con.createStatement();
 
-			System.out.println("DB connection established");
 
-			ResultSet aa = selectData("select * from customer");
 
 		} catch (Exception e) {
 

@@ -81,7 +81,6 @@ public class ITWorkerScreen {
 
 		ITWorker worker = (ITWorker) person;
 
-		System.out.println(worker.getTeamId());
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 981, 915);
@@ -185,7 +184,6 @@ public class ITWorkerScreen {
 
 		rs2.next();
 
-		// OKEY
 
 		Project project = new Project(rs2.getInt("idProject"), rs2.getInt("Customer_idCustomer"),
 				rs2.getString("ProjectName"), rs2.getString("ProjectDescription"));
@@ -193,7 +191,6 @@ public class ITWorkerScreen {
 
 		ResultSet rs = DB.selectData("select * from task where Worker_Workerid=" + person.getId());
 
-		// String workerName, String taskDescription, boolean status, String deadline)
 
 		while (rs.next())
 			tasks.add(project.new Task(rs.getInt(1), person.getPersonName(), rs.getString(2), rs.getBoolean(3),
@@ -208,7 +205,6 @@ public class ITWorkerScreen {
 
 		}
 
-		System.out.println("Worker ID: " + person.getId());
 
 		scrollPane_1.setViewportView(table_1);
 
