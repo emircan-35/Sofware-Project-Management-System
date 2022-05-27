@@ -15,6 +15,8 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import databaseProcesses.GeneralDB;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Component;
@@ -78,6 +80,20 @@ public class CustomerScreen {
 		frmCustomer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCustomer.getContentPane().setLayout(null);
 
+		
+		//CHECKING WHETHER THE PROJECT IS COMPLETED OR NOT
+		try {
+			ResultSet resultSet=DB.selectData("select projectStatus from project where idProject="+customer.getProject().getProjectId());
+			if (resultSet.next()) {
+				if(resultSet.getBoolean(1)) {
+					JOptionPane.showMessageDialog(frmCustomer, "COMPLETED",
+							"YOUR PROJECT HAS COMPLETED!", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		KGradientPanel gradientPanel = new KGradientPanel();
 		gradientPanel.kStartColor = Color.RED;
 		gradientPanel.setBounds(0, 282, 535, 120);
@@ -183,5 +199,4 @@ public class CustomerScreen {
 		if (totalTask==0||completedTask==0) return 0;
 		else return (int) (((float)completedTask/totalTask)*100);
 	}
-	
 }
