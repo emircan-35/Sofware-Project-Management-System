@@ -186,7 +186,7 @@ public class LoginScreen {
 		btnNewButton.setBounds(177, 241, 163, 31);
 		gradientPanel.add(btnNewButton);
 
-		JLabel lblNewLabel_2 = new JLabel("Software Development");
+		JLabel lblNewLabel_2 = new JLabel("Software Project");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel_2.setBounds(133, 11, 414, 68);
