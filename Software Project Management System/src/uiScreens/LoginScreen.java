@@ -45,7 +45,6 @@ public class LoginScreen {
 	/**
 	 * Launch the application.
 	 */
-	// FIRST PUSH FOR GOKAY BRANCH
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -217,11 +216,5 @@ public class LoginScreen {
 		buttonGroup.add(rdbtnNewRadioButton);
 		buttonGroup.add(rdbtnWorker);
 	}
-	private void initializeDB() {
-		try {
-			
-		} catch (Exception e) {
-			return; //means already initialized
-		}
-	}
+
 }
