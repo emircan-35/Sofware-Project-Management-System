@@ -216,6 +216,12 @@ public class LoginScreen {
 
 		buttonGroup.add(rdbtnNewRadioButton);
 		buttonGroup.add(rdbtnWorker);
-
+	}
+	private void initializeDB() {
+		try {
+			
+		} catch (Exception e) {
+			return; //means already initialized
+		}
 	}
 }
