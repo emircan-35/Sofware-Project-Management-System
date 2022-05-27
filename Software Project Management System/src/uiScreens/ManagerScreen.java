@@ -223,7 +223,6 @@ public class ManagerScreen {
 			resultset.next();
 
 			projectId = resultset.getInt(1);
-
 			projectName = resultset.getString(2);
 			JLabel lblNewLabel_3_3 = new JLabel(resultset.getString(2));
 			lblNewLabel_3_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -262,7 +261,14 @@ public class ManagerScreen {
 		JButton btnNewButton_1_1_1 = new JButton("Complete");
 		btnNewButton_1_1_1.setBounds(35, 21, 139, 37);
 		gradientPanel_1.add(btnNewButton_1_1_1);
-
+		btnNewButton_1_1_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		}
+		);
 		JLabel lblProjectInformation = new JLabel("Project Information");
 		lblProjectInformation.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblProjectInformation.setBounds(10, 414, 339, 75);
@@ -300,10 +306,16 @@ public class ManagerScreen {
 		System.out.println("Completed Tasks Number: " + completedTasksCount);
 
 		// Percentagei kontrol ederek gerekli algoritma kurularak projenin complete
-		// olmasý buton ile saðlanabilir.!!
+		// olmasÄ± buton ile saÄŸlanabilir.!!
 
 		double percentage = (completedTasksCount / allTasksCount) * 100;
+		if (percentage==100.0) {
+			DB.updateData("update project set projectStatus = 1 where idProject="+projectId);
+		}else {
+			//in the case of adding a new task after completing a project, needed to change its status
+			DB.updateData("update project set projectStatus = 0 where idProject="+projectId);
 
+		}
 		System.out.println(percentage);
 
 		ResultSet customerRS = DB.selectData(
@@ -341,8 +353,9 @@ public class ManagerScreen {
 		frame.getContentPane().add(lblNewLabel_1_7_1);
 
 		JLabel lblNewLabel_3_7_1 = new JLabel(percentage + "%");
+		if (percentage==100.0) lblNewLabel_3_7_1.setText(lblNewLabel_3_7_1.getText()+ " - COMPLETED");
 		lblNewLabel_3_7_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3_7_1.setBounds(167, 541, 83, 14);
+		lblNewLabel_3_7_1.setBounds(167, 541, 182, 14);
 		frame.getContentPane().add(lblNewLabel_3_7_1);
 
 		JLabel lblNewLabel_1_7_1_1 = new JLabel("Project Workers:");
