@@ -17,6 +17,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 import databaseProcesses.GeneralDB;
+import jdk.jfr.Percentage;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -258,17 +259,7 @@ public class ManagerScreen {
 		btnNewButton_1_1.setBounds(201, 21, 139, 37);
 		gradientPanel_1.add(btnNewButton_1_1);
 
-		JButton btnNewButton_1_1_1 = new JButton("Complete");
-		btnNewButton_1_1_1.setBounds(35, 21, 139, 37);
-		gradientPanel_1.add(btnNewButton_1_1_1);
-		btnNewButton_1_1_1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		}
-		);
+
 		JLabel lblProjectInformation = new JLabel("Project Information");
 		lblProjectInformation.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblProjectInformation.setBounds(10, 414, 339, 75);
@@ -342,6 +333,7 @@ public class ManagerScreen {
 
 		countWorkerRS.close();
 
+		
 		JLabel lblNewLabel_3_7 = new JLabel(customer.getPersonName() + " " + customer.getPersonSurname());
 		lblNewLabel_3_7.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_7.setBounds(167, 505, 153, 14);
@@ -353,7 +345,7 @@ public class ManagerScreen {
 		frame.getContentPane().add(lblNewLabel_1_7_1);
 
 		JLabel lblNewLabel_3_7_1 = new JLabel(percentage + "%");
-		if (percentage==100.0) lblNewLabel_3_7_1.setText(lblNewLabel_3_7_1.getText()+ " - COMPLETED");
+		if (percentage==100.0) lblNewLabel_3_7_1.setText(percentage+ "% - COMPLETED");
 		lblNewLabel_3_7_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_7_1.setBounds(167, 541, 182, 14);
 		frame.getContentPane().add(lblNewLabel_3_7_1);
@@ -367,5 +359,38 @@ public class ManagerScreen {
 		lblNewLabel_3_7_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3_7_1_1.setBounds(167, 575, 83, 14);
 		frame.getContentPane().add(lblNewLabel_3_7_1_1);
+		
+
+		JButton btnNewButton_1_1_1 = new JButton("Complete");
+		btnNewButton_1_1_1.setBounds(35, 21, 139, 37);
+		gradientPanel_1.add(btnNewButton_1_1_1);
+		btnNewButton_1_1_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (percentage==100.0) {
+					try {
+						DB.updateData("update project set projectStatus = 1 where idProject="+projectId);
+						lblNewLabel_3_7_1.setText(percentage+ "% - COMPLETED");
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}else {
+					int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to complete although all tasks are not completed?", "Complete?",  JOptionPane.YES_NO_OPTION);
+					if (reply == JOptionPane.YES_OPTION)
+					{
+						try {
+							DB.updateData("update project set projectStatus = 1 where idProject="+projectId);
+							lblNewLabel_3_7_1.setText(percentage+ "% - COMPLETED");					
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				}
+			}
+		}
+		);
 	}
 }
