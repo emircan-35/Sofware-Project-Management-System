@@ -3,14 +3,14 @@ package softwareProjectManagement;
 import softwareProjectManagement.Project.Task;
 
 public class Report {
-	private int id;
+
 	private ITWorker owner;
 	private String description;
-	private Task task;
+	private int taskid;
 
-	public Report(int id,ITWorker owner, String description, Task task) {
-		this.id=id;
-		this.task = task;
+	public Report(ITWorker owner, String description, int taskid) {
+
+		this.taskid = taskid;
 		this.owner = owner;
 		this.description = description;
 

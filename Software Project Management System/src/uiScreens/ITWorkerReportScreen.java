@@ -72,15 +72,11 @@ public class ITWorkerReportScreen {
 	private void initialize(int selectedTaskId, Person person) throws SQLException {
 		
 		
-		try {
-			UIManager.setLookAndFeel( new FlatDarkLaf() );
-		} catch (UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		ResultSet task=getTask(selectedTaskId);
-		if (!task.next()) return;
+		task.next();
+		String projectId = task.getString("Project_idProject");
 
+		
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(new Rectangle(0, 0, 1000, 1000));
@@ -161,11 +157,16 @@ public class ITWorkerReportScreen {
 							"EMPTY TEXT AREA", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
-				Report report=new Report(1, (ITWorker) person, textArea.getText(),null);
+				
+//				Report report=new Report(1, (ITWorker) person, textArea.getText(),null);
+				
+				
+				Report report = new Report((ITWorker) person,textArea.getText(),selectedTaskId);
 				String insertQueryReport = String.format(
 						"INSERT INTO  report(reportDescription, Worker_workerid,Task_idTask,Task_Project_idProject)\r\n"
 								+ "VALUES (\"%s\",\"%s\",\"%s\",\"%s\");",
-						report.getDescription(), person.getId(),1,1);
+						report.getDescription(), person.getId(),selectedTaskId, projectId);
+				
 				try {
 					DB.insertData(insertQueryReport);
 				} catch (SQLException e1) {
