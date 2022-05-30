@@ -78,12 +78,7 @@ public class ManagerTasksScreen {
 	private void initialize(Person person) {
 		Manager manager = (Manager) person;
 
-		try {
-			UIManager.setLookAndFeel(new FlatDarkLaf());
-		} catch (UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 
 		frame = new JFrame();
 		frame.setResizable(false);

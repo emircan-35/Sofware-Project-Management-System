@@ -51,7 +51,7 @@ public class ITWorkerScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(new FlatDarkLaf());
+					
 					ITWorkerScreen window = new ITWorkerScreen(person);
 					window.frame.setVisible(true);
 				} catch (Exception e) {

@@ -61,12 +61,7 @@ public class CustomerScreen {
 	 * @param customer 
 	 */
 	private void initialize(Customer customer) {
-		try {
-			UIManager.setLookAndFeel(new FlatDarkLaf());
-		} catch (UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 		frmCustomer = new JFrame();
 		frmCustomer.setTitle("Customer");
 		frmCustomer.setResizable(false);
