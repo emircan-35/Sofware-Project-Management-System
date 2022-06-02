@@ -4,7 +4,8 @@ The report of the SPMS project is given here as a readme file.
 If you need to contact with us for any reason, please do not hesitate. Here is our e-mails.
 - Emircan Tepe --> emircan.tepe@ceng.deu.edu.tr
 - Gökay Dinç   --> 
-[REPORT-01](https://user-images.githubusercontent.com/73601642/171597810-11a86c0b-1377-4ee5-a1a9-578b800636b0.png)
+
+![REPORT-01](https://user-images.githubusercontent.com/73601642/171598675-6bcbe365-5b98-4331-a951-86766e9b284f.png)
 ![REPORT-02](https://user-images.githubusercontent.com/73601642/171598258-790db236-91df-4af8-8f29-f425c07406a3.png)
 ![REPORT-03](https://user-images.githubusercontent.com/73601642/171598281-8a42d322-5443-4175-a3bb-7120a36a2f5d.png)
 ![REPORT-04](https://user-images.githubusercontent.com/73601642/171598291-b67db7f1-7156-4cd5-ba2f-dc636f05e9ab.png)
