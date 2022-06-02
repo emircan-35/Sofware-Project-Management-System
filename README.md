@@ -1,10 +1,23 @@
 # Sofware-Project-Management-System
-The report of the SPMS project is given here as a readme file. 
+
+Software Project Management System (SPMS) is conducted as a term project under the course named Object Oriented Analysis and Design.
+The project aims to show the ability of  using practically and understanding theoretically of basic OOP principles, UML diagrams, advanced design patterns, etc.
+
+We give a part of the report's introduction here again in first, afterwards, the report of the SPMS project is given below as a readme file, and also you can reach it above by directly downloading the report in PDF format.
 
 If you need to contact with us for any reason, please do not hesitate. Here is our e-mails.
 - Emircan Tepe --> emircan.tepe@ceng.deu.edu.tr
 - Gökay Dinç   --> 
 
+#Introduction
+Software programs are nowadays everywhere where it can give a solution, quickness, easiness and even sometimes intelligence. In the first phase of software programs in history, the programs are limited (Throughout the report, bold texts are used to refer to keywords.) and low in means of complexity because of the hardware limitations and discoveries that were not made yet. It has been rapidly improving and taking place nearly everywhere. As a natural result of this improvement, the complexity of software programs and the number of people working on a project has been increasing, and it still continues to grow rapidly with a big acceleration, e.g., windows 10 has approximately 50 million lines of code and Google has 2 billion lines of code1, these are not projects that could be managed by a few hundred people.
+This complexity also leads to failures, as stated in CHAOS2 report, just 17% of the software projects were finished with a success in means of time and planned financial situation and 33% of the software projects were completed, either with a planned time and financial situation in 2020.
+![image](https://user-images.githubusercontent.com/73601642/171600263-28391bb4-6618-449f-8832-de13eb59136e.png)
+Figure 1: Pie chart from CHAOS report
+There are many attempts to decrease complexity, make programs more efficient, and have less development time, called “Software Project Life Cycle Models” in the area of Project Management. That is exactly where the project, Software Project Management System (SPMS, Afterwards SPMS will be in use as abbreviation for Software Project Management System) , got inspired.
+The purpose of SPMS is to decrease the complexity of software project management by using the power of a software program, not ironically. It is designed for the usage of every person carrying responsibility and authority in a project, including every level and kind of programmer and even customer.
+
+#Report
 ![REPORT-01](https://user-images.githubusercontent.com/73601642/171598675-6bcbe365-5b98-4331-a951-86766e9b284f.png)
 ![REPORT-02](https://user-images.githubusercontent.com/73601642/171598258-790db236-91df-4af8-8f29-f425c07406a3.png)
 ![REPORT-03](https://user-images.githubusercontent.com/73601642/171598281-8a42d322-5443-4175-a3bb-7120a36a2f5d.png)
