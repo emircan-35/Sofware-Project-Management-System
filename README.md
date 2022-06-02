@@ -1,9 +1,9 @@
 # Sofware-Project-Management-System
 
-Software Project Management System (SPMS) is conducted as a term project under the course named Object Oriented Analysis and Design.
-The project aims to show the ability of  using practically and understanding theoretically of basic OOP principles, UML diagrams, advanced design patterns, etc.
+<p align="justify">Software Project Management System (SPMS) is conducted as a term project under the course named Object Oriented Analysis and Design.
+The project aims to show the ability of  using practically and understanding theoretically of basic OOP principles, UML diagrams, advanced design patterns, etc.</p>
 
-We give a part of the report's introduction here again in first, afterwards, the report of the SPMS project is given below as a readme file, and also you can reach it above by directly downloading the report in PDF format.
+<p align="justify">We give a part of the report's introduction here again in first, afterwards, the report of the SPMS project is given below as a readme file, and also you can reach it above by directly downloading the report in PDF format.</p>
 
 If you need to contact with us for any reason, please do not hesitate. Here is our e-mails.
 - Emircan Tepe --> emircan.tepe@ceng.deu.edu.tr
