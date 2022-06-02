@@ -1,4 +1,4 @@
-# Sofware-Project-Management-System!
+# Sofware-Project-Management-System
 The report of the SPMS project is given here as a readme file. 
 
 If you need to contact with us for any reason, please do not hesitate. Here is our e-mails.
