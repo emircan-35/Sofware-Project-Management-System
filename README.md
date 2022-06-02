@@ -14,7 +14,7 @@ Software programs are nowadays everywhere where it can give a solution, quicknes
 
 This complexity also leads to failures, as stated in CHAOS2 report, just 17% of the software projects were finished with a success in means of time and planned financial situation and 33% of the software projects were completed, either with a planned time and financial situation in 2020.
 <p align="center"><img src="https://user-images.githubusercontent.com/73601642/171600263-28391bb4-6618-449f-8832-de13eb59136e.png"></p>
-<p align="center"> *Figure 1:* Pie chart from CHAOS report</p>
+<p align="center"> <strong>Figure 1:</strong> Pie chart from CHAOS report</p>
 
 There are many attempts to decrease complexity, make programs more efficient, and have less development time, called “Software Project Life Cycle Models” in the area of Project Management. That is exactly where the project, Software Project Management System (SPMS, Afterwards SPMS will be in use as abbreviation for Software Project Management System) , got inspired.
 The purpose of SPMS is to decrease the complexity of software project management by using the power of a software program, not ironically. It is designed for the usage of every person carrying responsibility and authority in a project, including every level and kind of programmer and even customer.
