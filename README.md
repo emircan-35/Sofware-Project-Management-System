@@ -1,6 +1,6 @@
 # Sofware-Project-Management-System
 
-<p align="justify">Software Project Management System (SPMS) is conducted as a term project under the course named Object Oriented Analysis and Design.
+<p align="justify">Software Project Management System (SPMS) is conducted as a term project under the course named <strong>Object Oriented Analysis and Design</strong>.
 The project aims to show the ability of  using practically and understanding theoretically of basic OOP principles, UML diagrams, advanced design patterns, etc.
 
 We give a part of the report's introduction here again in first, afterwards, the report of the SPMS project is given below as a readme file, and also you can reach it above by directly downloading the report in PDF format.</p>
@@ -20,6 +20,7 @@ If you need to contact with us for any reason, please do not hesitate. Here is o
 <p align="justify">The purpose of SPMS is to decrease the complexity of software project management by using the power of a software program, not ironically. It is designed for the usage of every person carrying responsibility and authority in a project, including every level and kind of programmer and even customer.</p>
 
 # Report
+<p align="center">
 ![REPORT-01](https://user-images.githubusercontent.com/73601642/171598675-6bcbe365-5b98-4331-a951-86766e9b284f.png)
 ![REPORT-02](https://user-images.githubusercontent.com/73601642/171598258-790db236-91df-4af8-8f29-f425c07406a3.png)
 ![REPORT-03](https://user-images.githubusercontent.com/73601642/171598281-8a42d322-5443-4175-a3bb-7120a36a2f5d.png)
@@ -49,4 +50,4 @@ If you need to contact with us for any reason, please do not hesitate. Here is o
 ![REPORT-27](https://user-images.githubusercontent.com/73601642/171598481-d280c71c-daa9-4828-aff9-fc92cf93aba1.png)
 ![REPORT-28](https://user-images.githubusercontent.com/73601642/171598489-82bcc989-591a-495c-91d8-a4ab0853f990.png)
 ![REPORT-29](https://user-images.githubusercontent.com/73601642/171598509-78f1d06c-00cc-4167-b9d1-ce68c556efb6.png)
-![REPORT-30](https://user-images.githubusercontent.com/73601642/171598523-3ac6eeb6-d673-45a0-a012-1a18f3a925fa.png)
+![REPORT-30](https://user-images.githubusercontent.com/73601642/171598523-3ac6eeb6-d673-45a0-a012-1a18f3a925fa.png)</p>
