@@ -6,6 +6,7 @@ We give a part of the report's introduction here again in first, afterwards, the
 If you need to contact with us for any reason, please do not hesitate. Here is our e-mails.
 - Emircan Tepe: emircan.tepe@ceng.deu.edu.tr | emircan.tepe@ogr.deu.edu.tr
 - Gökay Dinç: gokay.dinc@ogr.deu.edu.tr | gokaydinc2000@gmail.com
+
 Also the course content, lecturer(s), etc., is fully available [here.](https://debis.deu.edu.tr/ders-katalog/2021-2022/eng/en_1210_1210_4077.html) 
 
 # Introduction
