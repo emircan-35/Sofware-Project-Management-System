@@ -7,7 +7,7 @@ If you need to contact with us for any reason, please do not hesitate. Here is o
 - Emircan Tepe: emircan.tepe@ceng.deu.edu.tr | emircan.tepe@ogr.deu.edu.tr
 - Gökay Dinç: gokay.dinc@ogr.deu.edu.tr | gokaydinc2000@gmail.com
 
-Also the course content, lecturer(s), etc., is fully available [here.](https://debis.deu.edu.tr/ders-katalog/2021-2022/eng/en_1210_1210_4077.html) 
+Also the course content, lecturer(s), etc., are fully available [here.](https://debis.deu.edu.tr/ders-katalog/2021-2022/eng/en_1210_1210_4077.html) 
 
 # Introduction
 <p align="justify">Software programs are nowadays everywhere where it can give a solution, quickness, easiness and even sometimes intelligence. In the first phase of software programs in history, the programs are limited (Throughout the report, bold texts are used to refer to keywords.) and low in means of complexity because of the hardware limitations and discoveries that were not made yet. It has been rapidly improving and taking place nearly everywhere. As a natural result of this improvement, the complexity of software programs and the number of people working on a project has been increasing, and it still continues to grow rapidly with a big acceleration, e.g., windows 10 has approximately 50 million lines of code and Google has 2 billion lines of code1, these are not projects that could be managed by a few hundred people.</p>
